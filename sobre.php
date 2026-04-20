@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,10 +12,6 @@
     <title>Sobre</title>
 </head>
 <body>
-    
-<?php
-session_start();
-?>
 
     <?php include 'includes/navbar.php'; ?>
 

@@ -170,6 +170,7 @@
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
+                    gap: 30px;
                 }
 
                 .menu ul {

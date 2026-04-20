@@ -28,7 +28,7 @@
             'email' => $email
         ]);
 
-        $link = "http://localhost/InfoGirls/nova_senha.php?token=$token";
+        $link = "http://infogirls.onrender.com/nova_senha.php?token=$token";
 
         $mail = new PHPMailer(true);
 

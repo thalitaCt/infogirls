@@ -27,6 +27,7 @@ session_start();
 <?php if (isset($_GET['erro'])): ?>
 <div class="alerta">
 <?php
+if ($_GET['erro'] == 'limite_estoque') echo "Quantidade máxima em estoque atingida";
 if ($_GET['erro'] == 'estoque') echo "Produto sem estoque";
 if ($_GET['erro'] == 'produto') echo "Produto não encontrado";
 ?>

@@ -15,13 +15,13 @@ $sql->execute([$id]);
 
 $produto = $sql->fetch(PDO::FETCH_ASSOC);
 
-$nome = $produto['nome'];
-$nomeCurto = mb_strimwidth($nome, 0, 35, "...");
-
 if (!$produto) {
     header("Location: ../produtos.php?erro=produto");
     exit;
 }
+
+$nome = $produto['nome'];
+$nomeCurto = mb_strimwidth($nome, 0, 35, "...");
 
 if ($produto['estoque'] <= 0) {
     header("Location: ../produtos.php?erro=estoque");
@@ -33,7 +33,14 @@ if (!isset($_SESSION['carrinho'])) {
 }
 
 if (isset($_SESSION['carrinho'][$id])) {
+
+    if ($_SESSION['carrinho'][$id]['quantidade'] < $produto['estoque']) {
     $_SESSION['carrinho'][$id]['quantidade']++;
+    } else {
+        header("Location: ../produtos.php?erro=limite_estoque");
+        exit;
+    }
+
 } else {
     $_SESSION['carrinho'][$id] = [
         'id_produtos' => $produto['id_produtos'],

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,11 +26,6 @@
 <span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
 </div>
 <?php endif; ?>
-
-
-<?php
-session_start();
-?>
 
     <?php include 'includes/navbar.php'; ?>
 

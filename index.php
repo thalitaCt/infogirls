@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,10 +12,6 @@
     <title>InfoGirls</title>
 </head>
 <body>
-
-<?php
-session_start();
-?>
 
 <?php if (isset($_GET['msg'])): ?>
 <div class="alerta-sucesso">

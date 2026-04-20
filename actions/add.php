@@ -36,7 +36,7 @@ if (isset($_SESSION['carrinho'][$id])) {
     $_SESSION['carrinho'][$id]['quantidade']++;
 } else {
     $_SESSION['carrinho'][$id] = [
-        'id' => $produto['id'],
+        'id_produtos' => $produto['id_produtos'],
         'nome' => $produto['nome'],
         'preco' => $produto['preco'],
         'imagem' => $produto['imagem'],
@@ -48,7 +48,7 @@ if (isset($_SESSION['carrinho'][$id])) {
 if ($acao == "comprar") {
     header("Location: ../checkout.php");
 } else {
-    header ("Location: ../produtos.php? msg=adicionado&nome=$nomeCurto");
+    header ("Location: ../produtos.php?msg=adicionado&nome=$nomeCurto");
 }
 exit;
 ?>

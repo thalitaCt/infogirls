@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: contas.php?erro=login");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +28,6 @@ if ($_GET['msg'] == 'feito') echo "Pedido realizado com sucesso!";
 <?php endif; ?>
 
 <?php
-
-if (!isset($_SESSION['usuario'])) {
-    header("Location: contas.php?erro=login");
-    exit;
-}
 
 include 'includes/conexao.php';
 include 'includes/navbar.php';

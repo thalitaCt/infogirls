@@ -3,15 +3,10 @@
     $db = "neondb";
     $user = "neondb_owner";
     $pass = "npg_FPsr5bXlzZB7";
-    $port = "5432";
-
-    $endpoint = "ep-square-cloud-acinz6ic";
-
-    $dns = "pgsql:host=$host;port=$port;dbname=$db;sslmode=require;options=endpoint=$endpoint";
 
     try {
-        $pdo = new PDO($dns, $user, $pass, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_EMULATE_PREPARES => false
+        $pdo = new PDO("pgsql:host=$host;port=5432;dbname=$db;sslmode=require", $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     } catch (PDOException $e) {
         echo "Erro: " . $e->getMessage();

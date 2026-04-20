@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
+
+:root {
+    --roxoEscuro: #7e22ce;
+    --roxoEscuro2: #6b21a8;
+    --roxoEscuro3: #581c87;
+    --roxoEscuro4: #3b0764;
+    --roxoEscuro5: #2b0047;
+    --branco: #ffffff;
+    --preto: #333333;
+    --roxoClaro: #c084fc;
+    --roxoClaro2: #d8b4fe;
+    --roxoClaro3: #e9d5ff;
+    --amarelo: #fde047;
+    --amarelo2: #facc15;
+}
+
+* {
+    font-family: Poppins;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    padding-top: 110px;
+    overflow-x: hidden;
+    background-color: var(--roxoEscuro5);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+#tittle {
+  text-decoration: underline;
+  text-align: center;
+  text-decoration-color: var(--amarelo2);
+  font-size: 28pt;
+  margin-bottom: 15px;
+}
+
+.card {
+    padding: 10px;
+    background-color: var(--roxoClaro2);
+    width: 290px;
+    border-radius: 10px;
+    height: 180px;
+    color: var(--preto);
+}
+
+button {
+    color: var(--branco);
+    margin-top: 10px;
+    margin-left: 40px;
+    border-color: var(--amarelo);
+    background-color: var(--roxoEscuro2);
+    padding: 10px;
+    font-size: 15pt;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-weight: 600;
+}
+button a {
+    color: var(--branco);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: var(--amarelo2);
+}
+
+button a:hover {
+    color: var(--roxoEscuro3);
+}
+
+select {
+    color: var(--branco);
+    border-color: var(--amarelo);
+    background-color: var(--roxoEscuro2);
+    padding: 3px;
+    font-size: 10pt;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 220px;
+        font-size: 11pt;
+        align-items: center;
+    }
+
+    button {
+        font-size: 12pt;
+    }
+}

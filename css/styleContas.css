@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
+
+:root {
+    --roxoEscuro: #7e22ce;
+    --roxoEscuro2: #6b21a8;
+    --roxoEscuro3: #581c87;
+    --roxoEscuro4: #3b0764;
+    --roxoEscuro5: #2b0047;
+    --branco: #ffffff;
+    --preto: #333333;
+    --roxoClaro: #c084fc;
+    --roxoClaro2: #d8b4fe;
+    --roxoClaro3: #e9d5ff;
+    --amarelo: #fde047;
+    --amarelo2: #facc15;
+}
+
+* {
+    font-family: Poppins;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--roxoClaro2);
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 800px;
+    height: 550px;
+    background-color: var(--branco);
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 0 8px var(--preto);
+    overflow: hidden;
+}
+
+.container h1 {
+    font-size: 23pt;
+    font-weight: 750;
+}
+
+.container h2 {
+    font-size: 23pt;
+    font-weight: 750;
+}
+
+form {
+    width: 100%;
+}
+
+.form-box {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--branco);
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    z-index: 1;
+    transition: 0.6s ease-in-out;
+    box-sizing: border-box;
+}
+
+.container.active .form-box {
+    right: 50%;
+}
+
+.form-box.cadastro {
+    visibility: hidden;
+}
+
+.container.active .form-box.cadastro {
+    visibility: visible;
+}
+
+.input-box {
+  position: relative;
+  margin: 15px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  background: #eee;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.input-box input::placeholder {
+  color: #888;
+  font-weight: 400;
+}
+
+
+#link-senha {
+    display: block;
+    text-align: right;
+    margin: 10px 0;
+    font-size: 10pt;
+    font-weight: 650;
+}
+
+#link-senha a {
+    color: var(--amarelo2);
+}
+
+button {
+    width: 70%;
+    height: 48px;
+    background-color: var(--roxoEscuro2);
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    color: var(--roxoClaro3);
+    font-weight: 700;
+    font-size: 12pt;
+}
+
+.toggle-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    left: -250px;
+    width: 86%;
+    height: 100%;
+    background-color: var(--roxoEscuro2);
+    z-index: 2;
+    border-radius: 150px;
+    transition: 1.8s ease-in-out;
+}
+
+.container.active .toggle-box::before {
+    left: 50%;
+}
+
+.toggle {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: 0.6s ease-in-out;
+}
+
+.toggle.esquerda {
+    left: 0;
+    transition-delay: 1.2s;
+}
+
+.container.active .toggle.esquerda {
+    left: -50%;
+    transition-delay: 0.6s;
+}
+
+.toggle.direita {
+    right: -50%;
+    transition-delay: 0.6s;
+}
+
+.container.active .toggle.direita {
+    right: 0;
+    transition-delay: 1.2s;
+}
+
+.toggle .btn {
+    width: 130px;
+    margin: 15px;
+    height: 36px;
+    background: transparent;
+    border: 2px solid #fff;
+    box-shadow: none;
+    font-size: 13pt;
+}
+
+.container .form-box .titulo {
+    color: var(--roxoEscuro2);
+    font-weight: 800;
+    font-size: 30pt;
+}
+
+.alerta {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(0, 207, 17);
+  color: var(--branco);
+  padding: 25px 33px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  font-weight: 650;
+}
+
+.alerta .fechar {
+  color: var(--branco);
+  font-size: 15px;
+  padding: 3px;
+  font-weight: 700;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.alerta-sucesso {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(0, 160, 13);
+  color: var(--branco);
+  padding: 25px 33px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  font-weight: 650;
+}
+
+.alerta-sucesso .fechar {
+  color: var(--branco);
+  font-size: 15px;
+  padding: 3px;
+  border-radius: 8px;
+  font-weight: 700;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: calc(100vh - 40px);
+  }
+  .form-box {
+    bottom: 0;
+    width: 100%;
+    height: 90%;
+  }
+
+  .container.active .form-box {
+    right: 0;
+    bottom: 20%;
+  }
+
+  .toggle-box::before {
+    left: 0;
+    top: -270%;
+    width: 100%;
+    height: 300%;
+    border-radius: 20vw;
+  }
+
+  .container.active .toggle-box::before {
+    left: 0;
+    top: 70%;
+  }
+
+  .container.active .toggle.esquerda {
+    left: 0;
+    top: -30%;
+  }
+
+  .toggle {
+    width: 100%;
+    height: 30%;
+  }
+  .toggle.esquerda {
+    top: 0;
+  }
+  .toggle.direita {
+    right: 0;
+    bottom: -30%;
+  }
+
+  .container.active .toggle.direita {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form-box {
+    padding: 20px;
+  }
+
+  .toggle h1 {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .alerta {
+      right: 5px;
+      margin: 15px;
+      font-size: 10pt;
+    }
+}

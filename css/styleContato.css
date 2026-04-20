@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
+
+:root {
+    --roxoEscuro: #7e22ce;
+    --roxoEscuro2: #6b21a8;
+    --roxoEscuro3: #581c87;
+    --roxoEscuro4: #3b0764;
+    --roxoEscuro5: #2b0047;
+    --branco: #ffffff;
+    --preto: #333333;
+    --roxoClaro: #c084fc;
+    --roxoClaro2: #d8b4fe;
+    --roxoClaro3: #e9d5ff;
+    --amarelo: #fde047;
+    --amarelo2: #facc15;
+}
+
+* {
+    font-family: Poppins;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    padding-top: 100px;
+    background-color: var(--roxoEscuro5);
+}
+
+#tittle {
+    margin: 20px;
+    text-decoration: underline;
+    text-decoration-color: var(--amarelo2);
+    font-size: 28pt;
+}
+
+#texto {
+    font-size: 15pt;
+    margin: 20px;
+    margin-bottom: 35px;
+    width: 340px;
+}
+
+input {
+    border: none;
+    border-radius: 5px;
+    padding:10px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    padding: 110px;
+    border-radius: 5px;
+}
+
+button {
+    position: relative;
+    margin: 7px;
+    border-color: var(--amarelo);
+    background-color: var(--roxoEscuro2);
+    padding: 10px;
+    font-size: 10pt;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: var(--branco);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.linha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.mapa {
+    align-items: center;
+
+}
+
+.lado-esquerdo {
+    text-align: start;
+    margin: 20px;
+    margin-left: 80px;
+}
+
+.lado-direito {
+    margin-top: 190px;
+    align-items: flex-end;
+}
+
+.lados {
+    display: flex;
+}
+
+.info {
+    flex-wrap: wrap;
+    display:flex;
+    gap: 20px;
+    text-align: center;
+}
+
+.infos {
+    margin: 20px;
+
+    span {
+        font-weight: 700;
+        font-size: 17pt;
+        color: var(--roxoClaro2);
+    }
+}
+
+.alerta {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(0, 207, 17);
+  color: var(--branco);
+  padding: 25px 33px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  font-weight: 650;
+}
+
+.alerta .fechar {
+  color: var(--branco);
+  font-size: 15px;
+  padding: 3px;
+  font-weight: 700;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #tittle {
+        text-align: center;
+        font-size: 25pt;
+        line-height: 38px;
+    }
+
+    #texto {
+        margin: 18px;
+        font-size: 18pt;
+        text-align: center;
+    }
+
+    .lados {
+    display: block;
+    align-items: center;
+    text-align: center;
+    }
+
+    .mapa iframe {
+        height: 260px;
+        width: 260px;
+    }
+
+    .lado-direito {
+        display: block;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .lado-esquerdo {
+        display: block;
+        align-items: center;
+        text-align: center;
+        margin: 0px;
+        margin-left: 0px;
+    }
+
+    input {
+        width: 270px;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        padding: 80px;
+    }
+
+    .info {
+        display: block;
+        text-align: center;
+    }
+
+    .alerta {
+      right: 5px;
+      margin: 15px;
+      font-size: 10pt;
+    }
+}

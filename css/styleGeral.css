@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
+
+:root {
+    --roxoEscuro: #7e22ce;
+    --roxoEscuro2: #6b21a8;
+    --roxoEscuro3: #581c87;
+    --roxoEscuro4: #3b0764;
+    --roxoEscuro5: #2b0047;
+    --branco: #ffffff;
+    --preto: #333333;
+    --roxoClaro: #c084fc;
+    --roxoClaro2: #d8b4fe;
+    --roxoClaro3: #e9d5ff;
+    --amarelo: #fde047;
+    --amarelo2: #facc15;
+}
+
+* {
+    font-family: Poppins;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: var(--roxoEscuro5);
+    color: var(--branco);
+}
+
+#home {
+    top: 70px;
+    padding: 40px;
+    font-size: 18pt;
+    text-align: center;
+    align-items: center;
+    background-image: url('../imagens/geral1.avif');
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#home h1 {
+    position: relative;
+    line-height: 70px;
+    font-size: 45pt
+}
+
+#home p {
+    position: relative;
+    padding: 10px;
+    font-weight: 400;
+}
+
+.btn {
+    position: relative;
+    margin: 7px;
+    border-color: var(--amarelo);
+    background-color: var(--roxoEscuro2);
+    padding: 10px;
+    font-size: 15pt;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-weight: 600;
+}
+.btn a {
+    color: var(--branco);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background-color: var(--amarelo2);
+}
+
+.btn a:hover {
+    color: var(--roxoEscuro3);
+}
+
+#mid {
+    padding-top: 140px;
+}
+
+.bloco {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#informatizacao {
+    width: 580px;
+    height: 450px;
+    img {
+        width: 450px;
+        height: 280px;
+        border-radius: 70px;
+    }
+}
+
+#loja {
+    width: 580px;
+    height: 450px;
+    img {
+        width: 450px;
+        height: 280px;
+        border-radius: 70px;
+    }
+}
+
+#servico {
+    padding-top: 70px;
+    h1 {
+        text-align: center;
+        text-decoration: underline;
+        text-decoration-color: var(--amarelo);
+        font-size: 30pt;
+    }
+}
+
+.cards {
+    padding-top: 50px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    background-color: var(--roxoEscuro);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 3px 3px 5px var(--roxoClaro);
+    transition: 0.3s;
+
+    h2 {
+        font-size: 20pt;
+        padding: 8px;
+        line-height: 30px;
+    }
+
+    i {
+        padding-top: 60px;
+        font-size: 80px;
+    }
+}
+
+.card:hover {
+    transform: scale(1.08);
+}
+
+#escolher {
+    padding-top: 40px;
+    text-align: center;
+
+    h1 {
+        text-align: center;
+        text-decoration: underline;
+        text-decoration-color: var(--amarelo);
+        font-size: 30pt;
+    }
+
+    p {
+        padding-top: 10px;
+        font-size: 17pt;
+        font-weight: 600;
+    }
+}
+
+.opcoes {
+    padding-left: 520px;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 15pt;
+}
+
+.opcoes i {
+    color: var(--amarelo);
+}
+
+#cta {
+    text-align: center;
+
+    p {
+        font-size: 16pt;
+        padding-top: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        text-decoration: underline;
+        padding-top: 40px;
+        text-decoration-color: var(--amarelo);
+        font-size: 30pt;
+    }
+}
+
+.alerta-sucesso {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(0, 207, 17);
+  color: var(--branco);
+  padding: 25px 33px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  font-weight: 650;
+}
+
+.alerta-sucesso .fechar {
+  color: var(--branco);
+  font-size: 15px;
+  padding: 3px;
+  font-weight: 700;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #home {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        h1 {
+        padding-top: 50px;
+        font-size: 27pt;
+        line-height: 37px;
+        text-align: center;
+        }
+        p {
+            font-size: 12pt;
+            line-height: 20px;
+        }
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 14pt;
+    }
+
+    .bloco {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #informatizacao {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        margin: 30px;
+        margin-top: 10px;
+
+        img {
+            width: 290px;
+            height: 250px;
+        }
+    }
+
+    #loja {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        margin: 30px;
+
+        img {
+            width: 290px;
+            height: 220px;
+        }
+    }
+
+    .cards {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #escolher {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        margin: 20px;
+
+        h1 {
+            font-size: 28pt;
+            line-height: 36px;
+        }
+
+        p {
+            font-size: 15pt;
+        }
+
+        .opcoes {
+            margin-top: 10px;
+            text-align: center;
+            padding-left: 0px;
+        }
+        
+    }
+
+    #cta {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        margin: 20px;
+        h2 {
+            font-size: 28pt;
+            line-height: 36px;
+            padding-top: 10px;
+        }
+
+        p {
+            font-size: 15pt;
+        }
+    }
+
+    #servico {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        padding-top: 5px;
+
+        h1 {
+            font-size: 26pt;
+            
+        }
+    }
+
+    .alerta {
+      right: 5px;
+      margin: 15px;
+      font-size: 10pt;
+    }
+}

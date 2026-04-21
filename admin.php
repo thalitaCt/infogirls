@@ -35,7 +35,7 @@ $clientes = $pdo->query("
 
 /* ULTIMOS PEDIDOS */
 $pedidos = $pdo->query("
-    SELECT id_pedidos, nome_cliente, total
+    SELECT id_pedidos, cliente_nome, total
     FROM pedidos
     ORDER BY id_pedidos DESC
     LIMIT 5

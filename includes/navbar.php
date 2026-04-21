@@ -33,6 +33,7 @@
             }
 
             .navbar {
+                text-align: center;
                 background-color: var(--roxoEscuro3);
                 display: flex;
                 justify-content: space-between;
@@ -88,7 +89,6 @@
                 display: flex;
                 text-align: center;
                 align-items: center;
-                justify-content: space-between;
             }
 
             .navbar .menu ul li:hover {

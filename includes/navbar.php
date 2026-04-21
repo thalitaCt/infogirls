@@ -26,10 +26,6 @@
                 font-family: Poppins;
                 margin: 0px;
                 padding: 0px;
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-                justify-items: center;
             }
 
             body {
@@ -37,7 +33,6 @@
             }
 
             .navbar {
-                text-align: center;
                 background-color: var(--roxoEscuro3);
                 display: flex;
                 justify-content: space-between;
@@ -89,10 +84,15 @@
             .navbar .menu ul li {
                 transition: 0.5s
             }
+
+            ul {
+                text-align: center;
+                justify-content: center;
+                justify-items: center;
+                align-items: center;
+            }
             .menu {
                 display: flex;
-                text-align: center;
-                align-items: center;
             }
 
             .navbar .menu ul li:hover {

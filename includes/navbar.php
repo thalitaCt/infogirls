@@ -85,7 +85,7 @@
                 transition: 0.5s
             }
 
-            ul {
+            .menu ul {
                 text-align: center;
                 justify-content: center;
                 justify-items: center;

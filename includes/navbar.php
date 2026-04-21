@@ -26,6 +26,10 @@
                 font-family: Poppins;
                 margin: 0px;
                 padding: 0px;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                justify-items: center;
             }
 
             body {

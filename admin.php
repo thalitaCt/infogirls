@@ -46,104 +46,11 @@ $pedidos = $pdo->query("
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styleAdmin.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <title>Painel Admin</title>
-<link rel="stylesheet" href="css/style.css">
 <style>
-    :root {
-        --roxoEscuro: #7c3aed;
-        --roxoEscuro2: #6d28d9;
-        --roxoEscuro3: #5b21b6;
-        --roxoEscuro4: #4c1d95;
-        --roxoEscuro5: #2e1065;
-        --branco: #ffffff;
-        --preto: #333333;
-        --roxoClaro: #8b5cf6;
-        --roxoClaro2: #a78bfa;
-        --roxoClaro3: #c4b5fd;
-        --amarelo: #fde047;
-        --amarelo2: #facc15;
-    }
     
-body{
-    margin:0;
-    background:#f5f3ff;
-}
-
-
-.admin-container{
-    max-width:1200px;
-    margin:auto;
-    padding:30px;
-}
-
-
-.titulo{
-    color:#6d28d9;
-    margin-bottom:25px;
-}
-
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-bottom:30px;
-}
-
-
-.card{
-    background:#fff;
-    border-radius:14px;
-    padding:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-
-.card h3{
-    margin:0 0 10px 0;
-    color:#6d28d9;
-}
-
-
-.card p{
-    font-size:28px;
-    margin:0;
-    font-weight:bold;
-}
-
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-
-.box{
-    background:#fff;
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-
-.box h2{
-    color:#6d28d9;
-    margin-top:0;
-}
-
-
-.item{
-    padding:10px 0;
-    border-bottom:1px solid #eee;
-}
-
-
-@media(max-width:768px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
 </style>
 </head>
 <body>
@@ -204,7 +111,7 @@ body{
 <?php foreach($pedidos as $p): ?>
 <div class="item">
 Pedido #<?= $p['id_pedidos'] ?><br>
-<?= $p['nome_cliente'] ?><br>
+<?= $p['cliente_nome'] ?><br>
 <strong>R$ <?= number_format($p['total'],2,',','.') ?></strong>
 </div>
 <?php endforeach; ?>
@@ -221,5 +128,3 @@ Pedido #<?= $p['id_pedidos'] ?><br>
 
 </body>
 </html>
-
-

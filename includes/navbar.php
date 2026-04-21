@@ -86,7 +86,10 @@
             }
             .menu {
                 display: flex;
-                gap: 320px;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                justify-items: center;
             }
 
             .navbar .menu ul li:hover {

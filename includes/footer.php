@@ -22,7 +22,6 @@
         body {
             font-family: Poppins;
         }
-        
         footer {
             margin-top: 28px;
             display: flex;

@@ -88,8 +88,7 @@
                 display: flex;
                 text-align: center;
                 align-items: center;
-                justify-content: center;
-                justify-items: center;
+                justify-content: space-between;
             }
 
             .navbar .menu ul li:hover {

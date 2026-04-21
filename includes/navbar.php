@@ -65,10 +65,11 @@
 }
             }
 
+            .logo {
+                justify-self: flex-start;
+            }
+
             .navbar .menu ul {
-                align-items: center;
-                text-align: center;
-                justify-items: center;
                 list-style: none;
                 display: flex;
                 gap: 30px;
@@ -87,6 +88,8 @@
 
             .menu {
                 display: flex;
+                justify-self: center;
+                gap: 10px;
             }
 
             .navbar .menu ul li:hover {
@@ -121,6 +124,7 @@
             }
 
             .icons {
+                justify-self: end;
                 display: flex;
                 gap: 20px;
                 font-size: 15pt;

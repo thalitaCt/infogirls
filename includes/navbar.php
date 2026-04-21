@@ -36,7 +36,7 @@
                 background-color: var(--roxoEscuro3);
                 display: grid;
                 grid-template-columns: 1fr auto 1fr;
-                padding: 0 30px;
+                padding: 25px;
                 align-items: center;
                 position: fixed;
                 left: 0px;

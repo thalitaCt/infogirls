@@ -124,7 +124,6 @@
             }
 
             .icons {
-                margin-left: 40px;
                 justify-self: end;
                 display: flex;
                 gap: 20px;

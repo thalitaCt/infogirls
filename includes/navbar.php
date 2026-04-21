@@ -37,6 +37,7 @@
                 display: grid;
                 grid-template-columns: 1fr auto 1fr;
                 padding: 25px;
+                column-gap: 40px;
                 align-items: center;
                 position: fixed;
                 left: 0px;

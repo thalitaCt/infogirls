@@ -36,7 +36,7 @@
                 background-color: var(--roxoEscuro3);
                 display: grid;
                 grid-template-columns: 1fr auto 1fr;
-                padding: 25px;
+                padding: 0 30px;
                 align-items: center;
                 position: fixed;
                 left: 0px;
@@ -123,7 +123,8 @@
                 transform: scale(1.3);
             }
 
-            .icons i {
+            .icons {
+                margin-left: 40px;
                 justify-self: end;
                 display: flex;
                 gap: 20px;

@@ -136,6 +136,8 @@ body {
 }
 
 .card {
+  min-width: 300px;
+  min-height: 300px;
   width: 300px;
   height: 300px;
   background-color: var(--roxoEscuro);
@@ -319,7 +321,6 @@ body {
     .opcoes {
       margin-top: 10px;
       text-align: center;
-      padding-left: 0px;
     }
   }
 

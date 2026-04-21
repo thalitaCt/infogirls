@@ -49,6 +49,21 @@ $pedidos = $pdo->query("
 <title>Painel Admin</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+    :root {
+        --roxoEscuro: #7c3aed;
+        --roxoEscuro2: #6d28d9;
+        --roxoEscuro3: #5b21b6;
+        --roxoEscuro4: #4c1d95;
+        --roxoEscuro5: #2e1065;
+        --branco: #ffffff;
+        --preto: #333333;
+        --roxoClaro: #8b5cf6;
+        --roxoClaro2: #a78bfa;
+        --roxoClaro3: #c4b5fd;
+        --amarelo: #fde047;
+        --amarelo2: #facc15;
+    }
+    
 body{
     margin:0;
     background:#f5f3ff;

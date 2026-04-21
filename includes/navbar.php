@@ -123,7 +123,7 @@
                 transform: scale(1.3);
             }
 
-            .icons {
+            .icons i {
                 justify-self: end;
                 display: flex;
                 gap: 20px;

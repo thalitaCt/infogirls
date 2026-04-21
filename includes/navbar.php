@@ -34,8 +34,8 @@
 
             .navbar {
                 background-color: var(--roxoEscuro3);
-                display: flex;
-                justify-content: space-between;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
                 padding: 25px;
                 align-items: center;
                 position: fixed;
@@ -85,12 +85,6 @@
                 transition: 0.5s
             }
 
-            .menu ul {
-                text-align: center;
-                justify-content: center;
-                justify-items: center;
-                align-items: center;
-            }
             .menu {
                 display: flex;
             }

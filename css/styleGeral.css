@@ -132,7 +132,7 @@ body {
   padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
-  min-width: 600px;
+  min-width: 400px;
   gap: 30px;
   justify-content: center;
 }

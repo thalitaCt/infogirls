@@ -158,14 +158,15 @@
             @media (max-width: 768px) {
 
             .navbar {
-                display: flex;
+                display: flex !important;
                 align-items: center;
                 justify-content: space-between;
                 padding: 20px;
+                width: 100%;
             }
 
             .logo {
-                margin-right: auto;
+                order: 1;
             }
 
             .mobile-extra {
@@ -192,7 +193,7 @@
                     background:var(--roxoEscuro3);
                     position:absolute;
                     top:60px;
-                    right:0;
+                    right:15px;
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
@@ -205,6 +206,7 @@
                 }
 
                 .icons {
+                    order: 2;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
@@ -220,17 +222,20 @@
                 .menu.active{
                     display:flex;
                     flex-direction: column;
+                    position: absolute;
+                    top: 75px;
+                    right: 15px;
                 }
 
 
                 .menu-icon{
-                    justify-self: auto;
+                    order: 3;
                     display:block;
                     margin-left: 15px;
-                    font-size: 28px;
                 }
 
                 .carrinho-icon {
+                    order: 2;
                     display: flex;
                     flex-direction: row;
                     align-items: center;

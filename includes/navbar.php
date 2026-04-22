@@ -66,10 +66,6 @@
 }
             }
 
-            .mobile-icons {
-                display: none;
-            }
-
             .logo {
                 justify-self: flex-start;
             }
@@ -262,7 +258,7 @@
 
                 <div class="user-icon">
                     <?php if(isset($_SESSION['nome'])): ?>
-                        <i class="fa-solid fa-user"></i>
+                        <a href="logout.php" title="Sair"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 
                             <?php
                             $nome = $_SESSION['nome'];
@@ -273,12 +269,11 @@
                             ?>
 
                         <span class="nome-user"><?= $nomeFormatado?></span>
-                        <a href="logout.php" title="Sair"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-
                         <?php else: ?>
+
                             <a href="contas.php"><i class="fa-solid fa-user"></i></a>
 
-                            <?php endif; ?>
+                        <?php endif; ?>
                 </div>
                 </div>
         

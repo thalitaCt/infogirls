@@ -157,6 +157,17 @@
 
             @media (max-width: 768px) {
 
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+            }
+
+            .logo {
+                margin-right: auto;
+            }
+
             .mobile-extra {
                 display: block;
                 cursor: pointer;
@@ -195,8 +206,10 @@
 
                 .icons {
                     display: flex;
-                    text-align: center;
-                    margin-right: 20px;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 15px;
+                    margin-left: auto;
                 }
 
                 .user-icon {
@@ -212,6 +225,8 @@
 
                 .menu-icon{
                     display:block;
+                    margin-left: 15px;
+                    font-size: 28px;
                 }
 
                 .carrinho-icon {

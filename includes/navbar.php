@@ -187,9 +187,10 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 20px;
-                min-height: 70px;
+                padding: 15px;
                 width: 100%;
+                min-height: 70px;
+                box-sizing: border-box;
             }
 
 
@@ -204,20 +205,19 @@
             }
 
 
-            .menu a {
+            .menu a{
                 color:white;
                 text-decoration:none;
             }
-
-            .menu-icon {
+            .menu-icon{
                 display:block;
                 font-size:30px;
                 cursor:pointer;
-                margin-left: 10px;
                 flex-shrink: 0;
+                margin-left: 20px;
             }
 
-                .menu {
+                .menu{
                     justify-self: end;
                     text-align: center;
                     display:none;
@@ -246,7 +246,6 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
-                    margin-right: 10px;
                 }
 
 
@@ -269,7 +268,6 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
-                    margin-right: 10px;
 
 
                     #numeroC {

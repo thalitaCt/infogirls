@@ -162,6 +162,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 20px;
+                height: 40px;
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -183,7 +184,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 10px;
+                margin-left: 5px;
                 flex-shrink: 0;
             }
 
@@ -213,9 +214,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 15px;
+                    gap: 8px;
                     margin-left: auto;
-                    margin-right: 10px;
+                    margin-right: 4px;
                 }
 
                 .user-icon {
@@ -236,9 +237,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 15px;
+                    gap: 8px;
                     margin-left: auto;
-                    margin-right: 10px;
+                    margin-right: 4px;
 
                     #numeroC {
                         margin-right: 65px;

@@ -198,7 +198,7 @@
                     background:var(--roxoEscuro3);
                     position:absolute;
                     top:60px;
-                    right:10px;
+                    right:20px;
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
@@ -216,8 +216,7 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 0px;
-                    margin-left: auto;
-                    margin-right: 0px;
+                    margin-right: -10px;
                 }
 
                 .user-icon {

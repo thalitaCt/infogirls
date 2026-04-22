@@ -190,6 +190,10 @@
                     margin-right: 20px;
                 }
 
+                .user-icon {
+                    display: none;
+                }
+
 
                 .menu.active{
                     display:flex;
@@ -268,6 +272,27 @@
                 <div class="carrinho-icon">
                     <a href="carrinho.php"> <i class="fa-solid fa-cart-shopping"></i> </a>
                     <span id="numeroC"><?php echo $totalItens; ?></span> 
+                </div>
+
+                <div class="user-icon">
+                    <?php if(isset($_SESSION['nome'])): ?>
+                        <i class="fa-solid fa-user"></i>
+                        <a href="logout.php" title="Sair"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+
+                            <?php
+                            $nome = $_SESSION['nome'];
+                            $partes = explode(" ", trim($nome));
+                            $primeiro = $partes[0];
+                            $segundo = $partes[1];
+                            $nomeFormatado = $primeiro . "  " . $segundo;
+                            ?>
+
+                        <span class="nome-user"><?= $nomeFormatado?></span>
+
+                        <?php else: ?>
+                            <a href="contas.php"><i class="fa-solid fa-user"></i></a>
+
+                            <?php endif; ?>
                 </div>
                 </div>
         

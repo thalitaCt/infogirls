@@ -22,6 +22,11 @@
                 --amarelo2: #facc15;
             }
 
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
             * {
                 font-family: Poppins;
                 margin: 0px;
@@ -165,6 +170,8 @@
                 padding: 15px;
                 min-height: 70px;
                 width: 100%;
+                left: 0;
+                right: 0;
                 box-sizing: border-box;
             }
 
@@ -235,7 +242,7 @@
 
                 .carrinho-icon {
                     #numeroC {
-                        margin-right: 30px;
+                        margin-right: 10px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

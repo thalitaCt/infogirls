@@ -22,16 +22,10 @@
                 --amarelo2: #facc15;
             }
 
-            html, body {
-                overflow-x: hidden;
-                width: 100%;
-            }
-
             * {
                 font-family: Poppins;
                 margin: 0px;
                 padding: 0px;
-                box-sizing: border-box;
             }
 
             body {
@@ -167,11 +161,9 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 15px;
+                padding: 18px 20px;
                 min-height: 70px;
                 width: 100%;
-                left: 0;
-                right: 0;
                 box-sizing: border-box;
             }
 
@@ -193,7 +185,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 0px;
+                margin-left: 3px;
                 flex-shrink: 0;
             }
 
@@ -206,11 +198,11 @@
                     background:var(--roxoEscuro3);
                     position:absolute;
                     top:60px;
-                    right:20px;
+                    right:15px;
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
-                    gap: 10px;
+                    gap: 20px;
                 }
 
                 .menu ul {
@@ -223,8 +215,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 0px;
-                    margin-right: 0px;
+                    gap: 5px;
+                    margin-left: auto;
+                    margin-right: 4px;
                 }
 
                 .user-icon {
@@ -236,13 +229,21 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 45px;
+                    top: 75px;
                     right: 15px;
                 }
 
                 .carrinho-icon {
+                    order: 2;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: auto;
+                    margin-right: 4px;
+
                     #numeroC {
-                        margin-right: 10px;
+                        margin-right: 65px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

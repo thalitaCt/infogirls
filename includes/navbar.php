@@ -185,7 +185,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 3px;
+                margin-left: 10px;
                 flex-shrink: 0;
             }
 
@@ -216,7 +216,7 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 0px;
-                    margin-right:30px;
+                    margin-right: -10px;
                 }
 
                 .user-icon {

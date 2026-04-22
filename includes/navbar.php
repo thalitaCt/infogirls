@@ -233,7 +233,7 @@
 
                 .carrinho-icon {
                     #numeroC {
-                        margin-right: 60px;
+                        margin-right: 30px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

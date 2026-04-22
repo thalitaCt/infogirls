@@ -161,8 +161,8 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 20px;
-                height: 40px;
+                padding: 18px 20px;
+                min-height: 70px;
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -180,6 +180,7 @@
                 color:white;
                 text-decoration:none;
             }
+
             .menu-icon{
                 order: 3;
                 display: block;
@@ -214,7 +215,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 8px;
+                    gap: 5px;
                     margin-left: auto;
                     margin-right: 4px;
                 }
@@ -237,7 +238,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 8px;
+                    gap: 5px;
                     margin-left: auto;
                     margin-right: 4px;
 

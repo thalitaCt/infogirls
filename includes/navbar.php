@@ -216,7 +216,7 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 0px;
-                    margin-right: 0px;
+                    margin-right:30px;
                 }
 
                 .user-icon {

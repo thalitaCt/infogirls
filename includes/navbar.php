@@ -162,7 +162,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 18px 20px;
-                min-height: 70px;
+                min-height: 100px;
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -216,7 +216,7 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 0px;
-                    margin-right: -10px;
+                    margin-right: -20px;
                 }
 
                 .user-icon {

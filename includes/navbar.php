@@ -163,6 +163,7 @@
                 justify-content: space-between;
                 padding: 18px 20px;
                 min-height: 70px;
+                width: 100%;
                 box-sizing: border-box;
             }
 
@@ -196,7 +197,7 @@
                     flex-direction:column;
                     background:var(--roxoEscuro3);
                     position:absolute;
-                    top:60px;
+                    top:40px;
                     right:20px;
                     width:200px;
                     padding:10px;

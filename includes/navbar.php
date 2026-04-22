@@ -185,7 +185,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 5px;
+                margin-left: 3px;
                 flex-shrink: 0;
             }
 
@@ -202,7 +202,7 @@
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
-                    gap: 30px;
+                    gap: 20px;
                 }
 
                 .menu ul {
@@ -215,9 +215,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
+                    gap: 3px;
                     margin-left: auto;
-                    margin-right: 4px;
+                    margin-right: 3px;
                 }
 
                 .user-icon {
@@ -238,12 +238,12 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
+                    gap: 3px;
                     margin-left: auto;
-                    margin-right: 4px;
+                    margin-right: 3px;
 
                     #numeroC {
-                        margin-right: 65px;
+                        margin-right: 20px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -7,6 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
 
+
             :root {
                 --roxoEscuro: #7c3aed;
                 --roxoEscuro2: #6d28d9;
@@ -22,15 +23,18 @@
                 --amarelo2: #facc15;
             }
 
+
             * {
                 font-family: Poppins;
                 margin: 0px;
                 padding: 0px;
             }
 
+
             body {
                 color: var(--branco);
             }
+
 
             .navbar {
                 background-color: var(--roxoEscuro3);
@@ -46,10 +50,12 @@
                 z-index: 1000;
                 height: 40px;
 
+
                 .carrinho-icon {
                     position: relative;
                     display: inline-block;
                     margin-top: 13px;
+
 
                     #numeroC {
                     position:absolute;
@@ -63,12 +69,15 @@
                     padding: 2px;
                     }
 
+
 }
             }
+
 
             .logo {
                 justify-self: flex-start;
             }
+
 
             .navbar .menu ul {
                 list-style: none;
@@ -77,21 +86,25 @@
                 transition: 0.5s;
             }
 
+
             .navbar .menu a {
                 color: var(--branco);
                 text-decoration: none;
                 transition: 0.5s;
             }
 
+
             .navbar .menu ul li {
                 transition: 0.5s
             }
+
 
             .menu {
                 display: flex;
                 justify-self: center;
                 gap: 10px;
             }
+
 
             .navbar .menu ul li:hover {
                 transform: scale(1.1);
@@ -101,9 +114,11 @@
                 font-weight: 700;
             }
 
+
             .navbar .menu a:hover {
                 color: var(--roxoEscuro2);
             }
+
 
             .navbar .icons a {
                 color: var(--branco);
@@ -112,17 +127,21 @@
                 transition: 0.5s;
             }
 
+
             .navbar .icons a:hover {
                 color: var(--amarelo2);
             }
+
 
             .icons i {
                 transition: 0.5s;
             }
 
+
             .icons i:hover {
                 transform: scale(1.3);
             }
+
 
             .icons {
                 justify-self: end;
@@ -131,15 +150,18 @@
                 font-size: 15pt;
             }
 
+
             .user-icon {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
 
+
                 i {
                     margin-top: 18px;
                 }
+
 
                 span {
                     font-size: 9pt;
@@ -147,47 +169,51 @@
                 }
             }
 
+
             .menu-icon {
                 display: none;
             }
+
 
             .mobile-extra {
                 display: none;
             }
 
+
             @media (max-width: 768px) {
+
 
             .navbar {
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 18px 20px;
-                min-height: 70px;
+                padding: 20px;
                 width: 100%;
-                box-sizing: border-box;
             }
+
 
             .logo {
                 order: 1;
             }
+
 
             .mobile-extra {
                 display: block;
                 cursor: pointer;
             }
 
+
             .menu a{
                 color:white;
                 text-decoration:none;
             }
-
             .menu-icon{
-                order: 3;
-                display: block;
-                font-size: 30px;
-                margin-left: 5px;
-                flex-shrink: 0;
+                display:none;
+                font-size:30px;
+                cursor:pointer;
             }
+
+
 
 
                 .menu{
@@ -205,24 +231,28 @@
                     gap: 30px;
                 }
 
+
                 .menu ul {
                     text-align: center;
                     flex-direction: column;
                 }
+
 
                 .icons {
                     order: 2;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 8px;
+                    gap: 15px;
                     margin-left: auto;
-                    margin-right: 4px;
                 }
+
 
                 .user-icon {
                     display: none;
                 }
+
+
 
 
                 .menu.active{
@@ -233,14 +263,24 @@
                     right: 15px;
                 }
 
+
+
+
+                .menu-icon{
+                    order: 3;
+                    display:block;
+                    margin-left: 15px;
+                }
+
+
                 .carrinho-icon {
                     order: 2;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 8px;
+                    gap: 15px;
                     margin-left: auto;
-                    margin-right: 4px;
+
 
                     #numeroC {
                         margin-right: 65px;
@@ -250,9 +290,9 @@
                     }
                 }
 
+
                
             }
-
     </style>
 <body>
     <header class="navbar">

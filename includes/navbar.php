@@ -161,7 +161,7 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 18px 20px;
+                padding: 16px 17px;
                 min-height: 70px;
                 width: 100%;
                 box-sizing: border-box;
@@ -232,7 +232,7 @@
                 }
 
                 .carrinho-icon {
-                    margin-right: -70px;
+                    margin-right: 40px;
                     #numeroC {
                         margin-right: 30px;
                         padding: 3px;

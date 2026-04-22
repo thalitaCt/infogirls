@@ -229,11 +229,18 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 75px;
+                    top: 45px;
                     right: 15px;
                 }
 
                 .carrinho-icon {
+                    order: 2;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: auto;
+                    margin-right: 4px;
 
                     #numeroC {
                         margin-right: 65px;

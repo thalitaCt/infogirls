@@ -66,6 +66,10 @@
 }
             }
 
+            .mobile-icons {
+                display: none;
+            }
+
             .logo {
                 justify-self: flex-start;
             }
@@ -152,6 +156,11 @@
             }
 
             @media (max-width: 768px) {
+
+            .mobile-icons {
+                display: none;
+                cursor: pointer;
+            }
 
             .menu a{
                 color:white;

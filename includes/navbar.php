@@ -237,6 +237,7 @@
                 <li><a href="produtos.php">Produtos</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
             </ul>
+            </div>
 
             <div class="icons">
 
@@ -265,7 +266,6 @@
                             <?php endif; ?>
                 </div>
                 </div>
-            </div>
         
     </header>
 

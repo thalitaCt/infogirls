@@ -26,6 +26,7 @@
                 font-family: Poppins;
                 margin: 0px;
                 padding: 0px;
+                box-sizing: border-box;
             }
 
             body {
@@ -163,8 +164,14 @@
                 justify-content: space-between;
                 padding: 15px 15px;
                 min-height: 70px;
-                width: 100%;
+                width: 100vw;
+                max-width: 100%;
+                overflow-x: hidden;
                 box-sizing: border-box;
+            }
+
+            .icons a {
+                padding-left: 0 !important;
             }
 
             .logo {
@@ -185,7 +192,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 10px;
+                margin-left: 0px;
                 flex-shrink: 0;
             }
 
@@ -215,8 +222,8 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 0px;
-                    margin-right: 10px;
+                    gap: 6px;
+                    margin-right: 0;
                 }
 
                 .user-icon {
@@ -234,7 +241,7 @@
 
                 .carrinho-icon {
                     #numeroC {
-                        margin-right: 30px;
+                        margin-right: 20px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

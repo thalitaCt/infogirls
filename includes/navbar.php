@@ -190,6 +190,8 @@
                 padding: 20px;
                 min-height: 70px;
                 width: 100%;
+                left: 0;
+                right: 0;
             }
 
 
@@ -208,7 +210,7 @@
                 color:white;
                 text-decoration:none;
             }
-            
+
             .menu-icon {
                 display:block;
                 font-size:30px;

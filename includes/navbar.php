@@ -188,6 +188,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 20px;
+                min-height: 70px;
                 width: 100%;
             }
 
@@ -203,18 +204,18 @@
             }
 
 
-            .menu a{
+            .menu a {
                 color:white;
                 text-decoration:none;
             }
-            .menu-icon{
-                display:none;
+            
+            .menu-icon {
+                display:block;
                 font-size:30px;
                 cursor:pointer;
+                margin-left: 10px;
+                flex-shrink: 0;
             }
-
-
-
 
                 .menu{
                     justify-self: end;
@@ -252,9 +253,6 @@
                     display: none;
                 }
 
-
-
-
                 .menu.active{
                     display:flex;
                     flex-direction: column;
@@ -262,16 +260,6 @@
                     top: 75px;
                     right: 15px;
                 }
-
-
-
-
-                .menu-icon{
-                    order: 3;
-                    display:block;
-                    margin-left: 15px;
-                }
-
 
                 .carrinho-icon {
                     order: 2;

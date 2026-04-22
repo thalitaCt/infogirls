@@ -218,7 +218,6 @@
                     gap: 5px;
                     margin-left: auto;
                     margin-right: 0px;
-                    right: 5px;
                 }
 
                 .user-icon {

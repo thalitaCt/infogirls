@@ -214,7 +214,7 @@
                 font-size:30px;
                 cursor:pointer;
                 flex-shrink: 0;
-                margin-left: 60px;
+                margin-left: 80px;
             }
 
                 .menu{

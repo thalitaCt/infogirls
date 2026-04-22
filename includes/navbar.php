@@ -185,7 +185,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 3px;
+                margin-left: 5px;
                 flex-shrink: 0;
             }
 
@@ -202,7 +202,7 @@
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
-                    gap: 20px;
+                    gap: 30px;
                 }
 
                 .menu ul {
@@ -215,7 +215,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
+                    gap: 8px;
                     margin-left: auto;
                     margin-right: 4px;
                 }
@@ -229,7 +229,7 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 45px;
+                    top: 75px;
                     right: 15px;
                 }
 
@@ -238,12 +238,12 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
+                    gap: 8px;
                     margin-left: auto;
                     margin-right: 4px;
 
                     #numeroC {
-                        margin-right: 35px;
+                        margin-right: 65px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

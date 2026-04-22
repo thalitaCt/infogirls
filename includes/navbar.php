@@ -217,7 +217,7 @@
                     align-items: center;
                     gap: 5px;
                     margin-left: auto;
-                    margin-right: 0px;
+                    margin-right: 4px;
                 }
 
                 .user-icon {

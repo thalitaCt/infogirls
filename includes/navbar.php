@@ -190,8 +190,6 @@
                 padding: 20px;
                 min-height: 70px;
                 width: 100%;
-                left: 0;
-                right: 0;
             }
 
 
@@ -219,7 +217,7 @@
                 flex-shrink: 0;
             }
 
-                .menu{
+                .menu {
                     justify-self: end;
                     text-align: center;
                     display:none;
@@ -248,6 +246,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
+                    margin-right: 10px;
                 }
 
 
@@ -270,6 +269,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
+                    margin-right: 10px;
 
 
                     #numeroC {

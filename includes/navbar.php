@@ -230,6 +230,12 @@
                 }
 
                 .carrinho-icon {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 15px;
+                    margin-left: auto;
+                    
                     #numeroC {
                         margin-right: 65px;
                         padding: 3px;

@@ -26,7 +26,6 @@
                 font-family: Poppins;
                 margin: 0px;
                 padding: 0px;
-                box-sizing: border-box;
             }
 
             body {
@@ -158,20 +157,16 @@
 
             @media (max-width: 768px) {
 
+
+
             .navbar {
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 15px 15px;
+                padding: 18px 20px;
                 min-height: 70px;
-                width: 100vw;
-                max-width: 100%;
-                overflow-x: hidden;
+                width: 100%;
                 box-sizing: border-box;
-            }
-
-            .icons a {
-                padding-left: 0 !important;
             }
 
             .logo {
@@ -192,7 +187,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 0px;
+                margin-left: 10px;
                 flex-shrink: 0;
             }
 
@@ -204,7 +199,7 @@
                     flex-direction:column;
                     background:var(--roxoEscuro3);
                     position:absolute;
-                    top:40px;
+                    top:30px;
                     right:20px;
                     width:200px;
                     padding:10px;
@@ -222,8 +217,8 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 6px;
-                    margin-right: 0;
+                    gap: 0px;
+                    margin-right: 0px;
                 }
 
                 .user-icon {
@@ -241,7 +236,7 @@
 
                 .carrinho-icon {
                     #numeroC {
-                        margin-right: 20px;
+                        margin-right: 60px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

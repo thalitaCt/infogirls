@@ -234,14 +234,6 @@
                 }
 
                 .carrinho-icon {
-                    order: 2;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 3px;
-                    margin-left: auto;
-                    margin-right: 3px;
-
                     #numeroC {
                         margin-right: 20px;
                         padding: 3px;

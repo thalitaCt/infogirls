@@ -184,7 +184,7 @@
                 }
 
                 .icons {
-                    flex-direction: column;
+                    display: none;
                     text-align: center;
                     margin-right: 20px;
                 }
@@ -237,6 +237,29 @@
                 <li><a href="produtos.php">Produtos</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
             </ul>
+
+            <div class="mobile-icons">
+
+                <div class="user-icon">
+                    <?php if(isset($_SESSION['nome'])): ?>
+                        <a href="logout.php" title="Sair">Sair</a>
+
+                            <?php
+                            $nome = $_SESSION['nome'];
+                            $partes = explode(" ", trim($nome));
+                            $primeiro = $partes[0];
+                            $segundo = $partes[1];
+                            $nomeFormatado = $primeiro . "  " . $segundo;
+                            ?>
+
+                        <span class="nome-user"><?= $nomeFormatado?></span>
+
+                        <?php else: ?>
+                            <a href="contas.php">Minha Conta</i></a>
+
+                            <?php endif; ?>
+                </div>
+                </div>
             </div>
 
             <div class="icons">

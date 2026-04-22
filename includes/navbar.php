@@ -198,11 +198,11 @@
                     background:var(--roxoEscuro3);
                     position:absolute;
                     top:60px;
-                    right:15px;
+                    right:10px;
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
-                    gap: 20px;
+                    gap: 10px;
                 }
 
                 .menu ul {
@@ -215,9 +215,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 3px;
+                    gap: 0px;
                     margin-left: auto;
-                    margin-right: 3px;
+                    margin-right: 0px;
                 }
 
                 .user-icon {

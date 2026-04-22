@@ -243,7 +243,7 @@
                     margin-right: 4px;
 
                     #numeroC {
-                        margin-right: 65px;
+                        margin-right: 35px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -158,8 +158,6 @@
 
             @media (max-width: 768px) {
 
-
-
             .navbar {
                 display: flex !important;
                 align-items: center;
@@ -188,7 +186,7 @@
                 order: 3;
                 display: block;
                 font-size: 30px;
-                margin-left: 10px;
+                margin-left: 0px;
                 flex-shrink: 0;
             }
 
@@ -200,7 +198,7 @@
                     flex-direction:column;
                     background:var(--roxoEscuro3);
                     position:absolute;
-                    top:30px;
+                    top:60px;
                     right:20px;
                     width:200px;
                     padding:10px;
@@ -231,13 +229,13 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 75px;
+                    top: 45px;
                     right: 15px;
                 }
 
                 .carrinho-icon {
                     #numeroC {
-                        margin-right: 60px;
+                        margin-right: 30px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -251,29 +251,6 @@
                 <li><a href="produtos.php">Produtos</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
             </ul>
-
-            <div class="mobile-icons">
-
-                <div class="user-icon">
-                    <?php if(isset($_SESSION['nome'])): ?>
-                        <a href="logout.php" title="Sair">Sair</a>
-
-                            <?php
-                            $nome = $_SESSION['nome'];
-                            $partes = explode(" ", trim($nome));
-                            $primeiro = $partes[0];
-                            $segundo = $partes[1];
-                            $nomeFormatado = $primeiro . "  " . $segundo;
-                            ?>
-
-                        <span class="nome-user"><?= $nomeFormatado?></span>
-
-                        <?php else: ?>
-                            <a href="contas.php">Minha Conta</i></a>
-
-                            <?php endif; ?>
-                </div>
-                </div>
             </div>
 
             <div class="icons">
@@ -286,7 +263,6 @@
                 <div class="user-icon">
                     <?php if(isset($_SESSION['nome'])): ?>
                         <i class="fa-solid fa-user"></i>
-                        <a href="logout.php" title="Sair"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 
                             <?php
                             $nome = $_SESSION['nome'];
@@ -297,6 +273,7 @@
                             ?>
 
                         <span class="nome-user"><?= $nomeFormatado?></span>
+                        <a href="logout.php" title="Sair"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 
                         <?php else: ?>
                             <a href="contas.php"><i class="fa-solid fa-user"></i></a>

@@ -163,6 +163,7 @@
                 justify-content: space-between;
                 padding: 20px;
                 width: 100%;
+                box-sizing: border-box;
             }
 
             .logo {
@@ -179,9 +180,11 @@
                 text-decoration:none;
             }
             .menu-icon{
-                display:none;
-                font-size:30px;
-                cursor:pointer;
+                order: 3;
+                display: block;
+                font-size: 30px;
+                margin-left: 10px;
+                flex-shrink: 0;
             }
 
 
@@ -212,6 +215,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
+                    margin-right: 10px;
                 }
 
                 .user-icon {
@@ -227,13 +231,6 @@
                     right: 15px;
                 }
 
-
-                .menu-icon{
-                    order: 3;
-                    display:block;
-                    margin-left: 15px;
-                }
-
                 .carrinho-icon {
                     order: 2;
                     display: flex;
@@ -241,6 +238,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
+                    margin-right: 10px;
 
                     #numeroC {
                         margin-right: 65px;

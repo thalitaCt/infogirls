@@ -163,7 +163,6 @@
                 justify-content: space-between;
                 padding: 18px 20px;
                 min-height: 70px;
-                width: 100%;
                 box-sizing: border-box;
             }
 

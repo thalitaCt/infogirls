@@ -224,6 +224,7 @@
 
 
                 .menu-icon{
+                    justify-self: auto;
                     display:block;
                     margin-left: 15px;
                     font-size: 28px;
@@ -235,7 +236,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
-                    
+
                     #numeroC {
                         margin-right: 65px;
                         padding: 3px;

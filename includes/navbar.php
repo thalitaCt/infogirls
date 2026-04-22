@@ -165,6 +165,7 @@
 
 
                 .menu{
+                    justify-self: end;
                     text-align: center;
                     display:none;
                     flex-direction:column;

@@ -151,10 +151,14 @@
                 display: none;
             }
 
+            .mobile-extra {
+                display: none;
+            }
+
             @media (max-width: 768px) {
 
-            .mobile-icons {
-                display: none;
+            .mobile-extra {
+                display: block;
                 cursor: pointer;
             }
 
@@ -246,7 +250,27 @@
                 <li><a href="contato.php">Contato</a></li>
                 <li><a href="produtos.php">Produtos</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
-            </ul>
+
+                <div class="mobile-extra">
+                    <?php if(isset($_SESSION['nome'])): ?>
+                        <li><a href="logout.php" title="Sair">Sair</a></li>
+
+                            <?php
+                            $nome = $_SESSION['nome'];
+                            $partes = explode(" ", trim($nome));
+                            $primeiro = $partes[0];
+                            $segundo = $partes[1];
+                            $nomeFormatado = $primeiro . "  " . $segundo;
+                            ?>
+
+                        <span class="nome-user"><?= $nomeFormatado?></span>
+                        <?php else: ?>
+
+                            <li><a href="contas.php">Minha Conta</a></li>
+
+                        <?php endif; ?>
+                </div>
+                </ul>
             </div>
 
             <div class="icons">

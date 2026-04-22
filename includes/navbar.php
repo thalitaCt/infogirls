@@ -216,7 +216,7 @@
                     flex-direction: row;
                     align-items: center;
                     gap: 0px;
-                    margin-right: -50px;
+                    margin-right: -60px;
                 }
 
                 .user-icon {
@@ -234,7 +234,7 @@
 
                 .carrinho-icon {
                     #numeroC {
-                        margin-right: 70px;
+                        margin-right: 60px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -51,12 +51,10 @@
                 z-index: 1000;
                 height: 40px;
 
-
                 .carrinho-icon {
                     position: relative;
                     display: inline-block;
                     margin-top: 13px;
-
 
                     #numeroC {
                     position:absolute;
@@ -190,7 +188,12 @@
                 padding: 20px;
                 width: 100%;
                 gap: 10px;
+                min-height: 70px;
                 box-sizing: border-box;
+            }
+
+            .navbar .icons a {
+                padding-left: 5px;
             }
 
 
@@ -246,7 +249,7 @@
                     align-items: center;
                     gap: 10px;
                     margin-left: auto;
-                    margin-right: 80px;
+                    margin-right: 10px;
                 }
 
 

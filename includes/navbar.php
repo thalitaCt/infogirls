@@ -277,6 +277,7 @@
                     display: flex;
                     flex-direction: row;
                     font-size:30px;
+                    padding-bottom: 5px;
                     justify-content: center;
                     justify-items: center;
                     align-items: center;

@@ -183,13 +183,13 @@
 
             @media (max-width: 768px) {
 
-
             .navbar {
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
                 padding: 20px;
                 width: 100%;
+                gap: 10px;
                 box-sizing: border-box;
             }
 
@@ -229,7 +229,7 @@
                     width:200px;
                     padding:10px;
                     border-radius: 15px;
-                    gap: 30px;
+                    gap: 20px;
                 }
 
 
@@ -244,7 +244,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 15px;
+                    gap: 10px;
                     margin-left: auto;
                     margin-right: 10px;
                 }
@@ -258,7 +258,7 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 75px;
+                    top: 35px;
                     right: 15px;
                 }
 
@@ -267,7 +267,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 15px;
+                    gap: 5px;
                     margin-left: auto;
 
 

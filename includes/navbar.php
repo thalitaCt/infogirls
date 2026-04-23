@@ -281,7 +281,7 @@
                     #numeroC {
                         margin-right: 55px;
                         padding: 3px;
-                        margin-top: 11px;
+                        margin-top: 13px;
                         font-size: 6pt;
                     }
                 }

@@ -276,6 +276,7 @@
                     order: 2;
                     display: flex;
                     flex-direction: row;
+                    font-size:30px;
                     justify-content: center;
                     justify-items: center;
                     align-items: center;

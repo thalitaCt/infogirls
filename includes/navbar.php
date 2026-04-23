@@ -251,6 +251,9 @@
                     order: 2;
                     display: flex;
                     align-items: center;
+                    justify-content: center;
+                    justify-items: center;
+                    align-items: center;
                     gap: 15px;
                     margin-left: auto;
                     margin-right: 0px;

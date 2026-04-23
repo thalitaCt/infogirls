@@ -68,19 +68,22 @@ body {
     font-size: 17pt;
     font-weight: 800;
     margin-left: 20px;
-    text-align: left;
+    text-align: left !important;
+    align-items: start !important;
   }
 
   p {
     color: var(--roxoEscuro4);
     margin-left: 20px;
-    text-align: left;
+    text-align: left !important;
+    align-items: start !important;
   }
   span {
     font-weight: 770;
     font-size: 15pt;
     margin-left: 20px;
-    text-align: left;
+    text-align: left !important;
+    align-items: start !important;
   }
 }
 

@@ -32,6 +32,8 @@ body {
   font-size: 18pt;
   text-align: center;
   align-items: center;
+  justify-content: center;
+  justify-items: center;
   background-image: url("../imagens/geral1.avif");
   height: 70vh;
   background-size: cover;

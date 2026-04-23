@@ -181,6 +181,10 @@
 
             @media (max-width: 768px) {
 
+            html, body {
+                overflow-x: hidden;
+            }
+
             .navbar {
                 display: flex !important;
                 align-items: center;
@@ -193,7 +197,7 @@
             }
 
             .navbar .icons a {
-                padding-left: 0px;
+                padding-left: 0 !important;
             }
 
 

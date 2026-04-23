@@ -265,8 +265,8 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 55px;
-                    right: 15px;
+                    top: 48px;
+                    right: 10px;
                 }
 
                 .carrinho-icon {

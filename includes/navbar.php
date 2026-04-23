@@ -273,10 +273,11 @@
                     order: 2;
                     display: flex;
                     flex-direction: row;
+                    justify-content: center;
+                    justify-items: center;
                     align-items: center;
                     gap: 10px;
                     margin-left: auto;
-                    padding-top: 3px;
 
                     #numeroC {
                         margin-right: 57px;

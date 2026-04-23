@@ -43,7 +43,7 @@ body {
   margin: 15px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: stretch !important;
   border-radius: 20px;
   background-color: var(--branco);
   border: solid;
@@ -58,7 +58,7 @@ body {
     justify-content: center;
     justify-items: center;
     justify-self: center;
-    align-items: center;
+    align-items: stretch;
     margin-top: 15px;
     margin-bottom: 10px;
     border-radius: 20px;

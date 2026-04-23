@@ -274,7 +274,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 0px;
+                    gap: 10px;
                     margin-left: auto;
 
 

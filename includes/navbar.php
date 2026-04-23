@@ -276,12 +276,10 @@
                     align-items: center;
                     gap: 10px;
                     margin-left: auto;
-                    margin-top: 5px;
-
-
+                    padding-top: 8px;
 
                     #numeroC {
-                        margin-right: 53px;
+                        margin-right: 57px;
                         padding: 3px;
                         margin-top: 8px;
                         font-size: 6pt;

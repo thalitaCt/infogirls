@@ -214,7 +214,7 @@
             }
 
             .menu-icon{
-                display:none;
+                display: flex;
                 font-size:30px;
                 margin-left: 10px;
                 flex-shrink: 0;

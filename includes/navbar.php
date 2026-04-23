@@ -246,7 +246,7 @@
                     align-items: center;
                     gap: 10px;
                     margin-left: auto;
-                    margin-right: 10px;
+                    margin-right: 80px;
                 }
 
 

@@ -243,6 +243,7 @@ body {
     text-align: center;
     align-items: center;
     height: 50vh;
+    top: 60px;
     justify-content: center;
     justify-items: center;
     h1 {

@@ -276,8 +276,8 @@
                     order: 2;
                     display: flex;
                     flex-direction: row;
-                    font-size:30px;
-                    padding-bottom: 5px;
+                    font-size:25px;
+                    padding-bottom: 10px;
                     justify-content: center;
                     justify-items: center;
                     align-items: center;

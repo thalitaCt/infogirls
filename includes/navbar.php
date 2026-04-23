@@ -276,7 +276,7 @@
                     align-items: center;
                     gap: 10px;
                     margin-left: auto;
-                    padding-top: 8px;
+                    padding-top: 3px;
 
                     #numeroC {
                         margin-right: 57px;

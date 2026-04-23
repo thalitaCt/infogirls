@@ -42,42 +42,44 @@ body {
   padding: 10px;
   margin: 15px;
   border-radius: 20px;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  justify-self: center;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   background-color: var(--branco);
   border: solid;
   border-color: var(--amarelo2);
   color: var(--roxoEscuro4);
+}
 
-  img {
+h3 {
+    font-size: 17pt;
+    font-weight: 800;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+p {
+    color: var(--roxoEscuro4);
+    margin-left: 20px;
+    text-align: left;
+  }
+
+span {
+    font-weight: 770;
+    font-size: 15pt;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+img {
     width: 350px;
     height: 350px;
+    display: block;
     margin-top: 15px;
     margin-bottom: 10px;
     border-radius: 20px;
   }
-
-  h3 {
-    font-size: 17pt;
-    font-weight: 800;
-    margin-left: 20px;
-    text-align: start !important;
-  }
-
-  p {
-    color: var(--roxoEscuro4);
-    margin-left: 20px;
-    text-align: start !important;
-  }
-  span {
-    font-weight: 770;
-    font-size: 15pt;
-    margin-left: 20px;
-    text-align: start !important;
-  }
-}
 
 .acoes {
   display: flex;
@@ -86,11 +88,10 @@ body {
 }
 
 button {
+  display: block;
+  width: 90%;
   margin: 5px;
   border-color: var(--amarelo);
-  justify-content: center;
-  justify-items: center;
-  justify-self: center;
   background-color: var(--roxoEscuro2);
   padding: 9px;
   font-size: 12pt;

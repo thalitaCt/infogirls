@@ -215,7 +215,7 @@
 
             .menu-icon {
                 order: 3;
-                display: block;
+                display: block !important;
                 font-size:30px;
                 margin-left: 0px;
                 flex-shrink: 0;
@@ -246,9 +246,8 @@
                 .icons {
                     order: 2;
                     display: flex;
-                    flex-direction: row;
                     align-items: center;
-                    gap: 0px;
+                    gap: 6px;
                     margin-left: auto;
                     margin-right: 0px;
                 }

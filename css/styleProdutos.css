@@ -43,7 +43,7 @@ body {
   margin: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   border-radius: 20px;
   background-color: var(--branco);
   border: solid;
@@ -53,6 +53,7 @@ body {
   img {
     width: 350px;
     height: 350px;
+    display: block;
     text-align: center;
     justify-content: center;
     justify-items: center;

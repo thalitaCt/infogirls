@@ -265,7 +265,7 @@
                     display:flex;
                     flex-direction: column;
                     position: absolute;
-                    top: 35px;
+                    top: 55px;
                     right: 15px;
                 }
 
@@ -279,7 +279,7 @@
 
 
                     #numeroC {
-                        margin-right: 60px;
+                        margin-right: 70px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -266,7 +266,7 @@
                     flex-direction: column;
                     position: absolute;
                     top: 48px;
-                    right: 10px;
+                    right: 5px;
                 }
 
                 .carrinho-icon {
@@ -279,9 +279,9 @@
 
 
                     #numeroC {
-                        margin-right: 55px;
+                        margin-right: 58px;
                         padding: 3px;
-                        margin-top: 13px;
+                        margin-top: 8px;
                         font-size: 6pt;
                     }
                 }

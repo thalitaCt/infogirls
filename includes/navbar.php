@@ -185,7 +185,7 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding: 20px;
+                padding: 10px;
                 width: 100%;
                 gap: 10px;
                 min-height: 70px;
@@ -214,6 +214,7 @@
             }
 
             .menu-icon {
+                order: 3;
                 display: block;
                 font-size:30px;
                 margin-left: 0px;

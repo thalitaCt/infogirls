@@ -279,7 +279,7 @@
 
 
                     #numeroC {
-                        margin-right: 10px;
+                        margin-right: 20px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -89,6 +89,10 @@ body {
 }
 
 button {
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-items: center;
   margin: 5px;
   border-color: var(--amarelo);
   background-color: var(--roxoEscuro2);

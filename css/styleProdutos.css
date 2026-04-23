@@ -88,6 +88,9 @@ body {
 button {
   margin: 5px;
   border-color: var(--amarelo);
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
   background-color: var(--roxoEscuro2);
   padding: 9px;
   font-size: 12pt;

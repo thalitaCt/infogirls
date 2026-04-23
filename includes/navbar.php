@@ -193,7 +193,7 @@
             }
 
             .navbar .icons a {
-                padding-left: 5px;
+                padding-left: 0px;
             }
 
 

@@ -213,10 +213,10 @@
                 text-decoration:none;
             }
 
-            .menu-icon{
-                display: flex;
+            .menu-icon {
+                display: block;
                 font-size:30px;
-                margin-left: 10px;
+                margin-left: 0px;
                 flex-shrink: 0;
             }
 

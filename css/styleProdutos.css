@@ -43,6 +43,7 @@ body {
   margin: 15px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border-radius: 20px;
   background-color: var(--branco);
   border: solid;

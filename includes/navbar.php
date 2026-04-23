@@ -247,9 +247,9 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 10px;
+                    gap: 0px;
                     margin-left: auto;
-                    margin-right: 10px;
+                    margin-right: 0px;
                 }
 
 
@@ -270,12 +270,12 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    gap: 5px;
+                    gap: 0px;
                     margin-left: auto;
 
 
                     #numeroC {
-                        margin-right: 65px;
+                        margin-right: 30px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

@@ -253,7 +253,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
-                    margin-right: 10px;
+                    margin-right: 0px;
                 }
 
 

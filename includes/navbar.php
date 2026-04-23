@@ -253,7 +253,7 @@
                     align-items: center;
                     gap: 15px;
                     margin-left: auto;
-                    margin-right: 0px;
+                    margin-right: 10px;
                 }
 
 
@@ -279,7 +279,7 @@
 
 
                     #numeroC {
-                        margin-right: 70px;
+                        margin-right: 65px;
                         padding: 3px;
                         margin-top: 11px;
                         font-size: 6pt;

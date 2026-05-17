@@ -1,45 +1,78 @@
 <?php
-    session_start();
-    
-    include '../includes/conexao.php';
+session_start();
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+include '../includes/conexao.php';
 
-    $sql = "SELECT * FROM clientes WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['email' => $email]);
+$email = trim($_POST['email']);
+$senha = $_POST['senha'];
 
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM usuarios WHERE email = :email";
 
-    if ($usuario) {
+$stmt = $pdo->prepare($sql);
 
-        if (password_verify($senha, $usuario['senha'])) {
-            $_SESSION['usuario'] = $usuario['email'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['tipo'] = $usuario['tipo'];
+$stmt->execute([
+    'email' => $email
+]);
 
-            if (!$usuario['verificado']) {
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+if($usuario){
+
+    if(password_verify($senha, $usuario['senha'])){
+
+        if(!$usuario['verificado']){
             header("Location: ../verificar.php?erro=nao_verificado&email=$email");
             exit;
-    }
-            if ($usuario['tipo'] == 'admin') {
-            header("Location: ../admin.php?msg=login_sucesso");
-            exit;
-            } else {
-                header("Location: ../index.php?msg=login_sucesso");
-                exit;
-            }
+        }
 
+        $_SESSION['id'] = $usuario['id_usuario'];
+        $_SESSION['usuario'] = $usuario['email'];
+        $_SESSION['tipo'] = $usuario['tipo'];
+
+
+        if($usuario['tipo'] == 'cliente'){
+
+            $sql = $pdo->prepare("
+                SELECT nome
+                FROM clientes
+                WHERE usuario_id = ?
+            ");
 
         } else {
-            header("Location: ../contas.php?erro=senha");
-            exit;
+
+            $sql = $pdo->prepare("
+                SELECT nome
+                FROM funcionarios
+                WHERE usuario_id = ?
+            ");
         }
+
+        $sql->execute([
+            $usuario['id_usuario']
+        ]);
+
+        $user = $sql->fetch(PDO::FETCH_ASSOC);
+
+        $_SESSION['nome'] = $user['nome'] ?? 'Usuário';
+
+        switch($usuario['tipo']){
+            case 'admin':
+                header("Location: ../admin.php?msg=login_sucesso");
+                break;
+
+            default:
+                header("Location: ../index.php?msg=login_sucesso");
+        }
+        exit;
+
     } else {
-        header ("Location: ../contas.php?erro=email");
+        header("Location: ../contas.php?erro=senha");
         exit;
     }
 
-    
-?> 
+} else {
+    header("Location: ../contas.php?erro=email");
+    exit;
+}
+?>

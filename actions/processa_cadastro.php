@@ -1,79 +1,128 @@
 <?php
-    include '../includes/conexao.php';
+include '../includes/conexao.php';
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+$nome = trim($_POST['nome']);
+$cpf_cnpj = preg_replace('/\D/', '', $_POST['cpf_cnpj']);
+$telefone = preg_replace('/\D/', '', $_POST['telefone']);
+$email = strtolower(trim($_POST['email']));
+$endereco = trim($_POST['endereco']);
+$senha = $_POST['senha'];
 
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+$codigo = rand(100000, 999999);
 
-    $nome = $_POST['nome'];
-    $cpf_cnpj = preg_replace('/\D/', '',$_POST['cpf_cnpj']);
-    $telefone = preg_replace('/\D/', '',$_POST['telefone']);
-    $email = $_POST['email'];
-    $endereco = $_POST['endereco'];
-    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-    $codigo = rand(100000, 999999);
 
-    $sql = "SELECT * FROM CLIENTES WHERE email = ?";
+$sql = "SELECT id_usuario FROM usuarios WHERE email = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$email]);
+
+
+if($stmt->rowCount() > 0){
+    header("Location: ../contas.php?erro=email_existente");
+    exit;
+}
+
+
+$sql = "SELECT id_cliente FROM clientes WHERE cpf_cnpj = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$cpf_cnpj]);
+
+if($stmt->rowCount() > 0){
+    header("Location: ../contas.php?erro=cpf_cnpj");
+    exit;
+}
+
+try{
+
+    $sql = "INSERT INTO usuarios
+    (email, senha, tipo, codigo_verificacao, verificado)
+    VALUES (?, ?, 'cliente', ?, FALSE)";
+
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$email]);
+    $stmt->execute([$email, $senha_hash, $codigo]);
 
-    if ($stmt->rowCount() > 0) {
-        header("Location: ../contas.php?erro=email_existente");
-        exit;
+    $id_usuario = $pdo->lastInsertId();
+
+
+    $sql = "INSERT INTO clientes
+    (usuario_id, nome, cpf_cnpj, telefone, endereco)
+    VALUES (?, ?, ?, ?, ?)";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        $id_usuario,
+        $nome,
+        $cpf_cnpj,
+        $telefone,
+        $endereco
+    ]);
+
+    $apiKey = getenv('SENDGRID_API_KEY');
+
+    $data = [
+        "personalizations" => [
+            [
+                "to" => [
+                    ["email" => $email]
+                ]
+            ]
+        ],
+        "from" => [
+            "email" => "infogirlsfive1@gmail.com",
+            "name" => "InfoGirls"
+        ],
+        "subject" => "Verificação de conta",
+        "content" => [
+            [
+                "type" => "text/html",
+                "value" => "
+                    <h2>Bem-vindo à InfoGirls</h2>
+
+                    <p>Olá, $nome</p>
+
+                    <p>Seu código de verificação é:</p>
+
+                    <h1 style='letter-spacing:5px;'>
+                        $codigo
+                    </h1>
+
+                    <p>
+                    Digite esse código no site para ativar sua conta.
+                    </p>
+                "
+            ]
+        ]
+    ];
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/v3/mail/send");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Authorization: Bearer $apiKey",
+        "Content-Type: application/json"
+    ]);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    curl_close($ch);
+
+    if($httpCode >= 400){
+        error_log("Erro SendGrid: " . $response);
     }
 
-    $sql = "SELECT * FROM CLIENTES WHERE cpf_cnpj = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$cpf_cnpj]);
+    header("Location: ../verificar.php?email=$email");
+    exit;
 
-    if ($stmt->rowCount() > 0) {
-        header("Location: ../contas.php?erro=cpf_cnpj");
-        exit;
-    }
+}catch(PDOException $e){
+    error_log($e->getMessage());
 
-    try {
-    $sql = "INSERT INTO clientes (nome, cpf_cnpj, telefone, email, endereco, senha, codigo_verificacao, verificado) VALUES (?, ?, ?, ?, ?, ?, ?, false)";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nome, $cpf_cnpj, $telefone, $email, $endereco, $senha, $codigo]);
-
-    $mail = new PHPMailer(true);
-
-    try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'infogirlsfive1@gmail.com';
-        $mail->Password = 'ymdf jfwn tnjw tual';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-
-        $mail->CharSet = 'UTF-8';
-        $mail->Encoding = 'base64';
-
-        $mail->setFrom('infogirlsfive1@gmail.com', 'InfoGirls');
-        $mail->addAddress($email);
-        $mail->isHTML(true);
-        $mail->Subject = 'Verificação de conta';
-
-        $mail->Body = "<h2>Seu código de verificação</h2>
-        <p>Olá, $nome</p>
-        <p>Seu código é:</p>
-        
-        <h1 style='letter-spacing:5px;'>$codigo</h1>
-        
-        <p>Digite esse código no site para ativar sua conta.</p>";
-
-        $mail->send();
-    } catch (Exception $e) {
-
-    } header("Location: ../verificar.php?email=$email");
-      exit;
-    }  catch(PDOException $e) {
-        header("Location: ../contas.php?erro=geral");
-        exit;
-    }
+    header("Location: ../contas.php?erro=geral");
+    exit;
+}
 ?>

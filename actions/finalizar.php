@@ -170,13 +170,7 @@ try{
     exit;
 
 }catch(PDOException $e){
-
-    $pdo->rollBack();
-
-    error_log("Erro finalizar pedido: " . $e->getMessage());
-
-    header("Location: ../checkout.php?erro=geral");
-    exit;
+    die ($e->getMessage());
 
 }
 ?>

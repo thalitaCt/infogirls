@@ -712,7 +712,7 @@ if(isset($_SESSION['carrinho'])){
 
 
             <li>
-                <a href="login.php">Entrar / Criar Conta</a>
+                <a href="contas.php">Entrar / Criar Conta</a>
             </li>
 
 
@@ -839,7 +839,7 @@ if(isset($_SESSION['carrinho'])){
         <?php else: ?>
 
 
-        <a href="login.php">
+        <a href="contas.php">
 
 
             <div class="user-avatar">

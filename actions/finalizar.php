@@ -4,7 +4,7 @@ session_start();
 include '../includes/conexao.php';
 
 if(!isset($_SESSION['usuario'])){
-    header("Location: ../login.php");
+    header("Location: ../contas.php");
     exit;
 }
 

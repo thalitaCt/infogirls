@@ -1,3 +1,12 @@
+<?php
+$email = $_GET['email'] ?? null;
+
+if (!$email) {
+    header("Location: contas.php?erro=login");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,211 +37,234 @@
     margin: 0px;
     padding: 0px;
 }
-body {
-    justify-items: center;
-    background-color: var(--roxoClaro3);
-    text-align: center;
+body{
+    background: var(--roxoClaro3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
 }
-        .container {
-            justify-items: center;
-            margin-top: 130px;
-            background-color: var(--roxoEscuro2);
-            width: 450px;
-            height:280px;
-            color: var(--branco);
-            border-radius: 25px;
-        }
-        input {
-            margin-top: 30px;
-            width: 100%;
-            padding: 10px;
-            background: #eee;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: #333;
-            font-weight: 500;
-            width: 380px;
-            }   
-        button {
-            margin: 15px;
-            width: 70%;
-            height: 48px;
-            background-color: var(--roxoEscuro3);
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-            border: none;
-            color: var(--roxoClaro2);
-            font-weight: 700;
-            font-size: 15pt;
-        }
-        h2 {
-            padding-top: 30px;
-            background-color: var(--amarelo2);
-            padding: 15px;
-            width: 470px;
-            font-size: 25pt;
-            border-radius: 20px;
-        }
 
-        a {
-            color: var(--amarelo);
-            font-weight: 600;
-        }
+.container{
+    background: var(--roxoClaro);
+    padding:30px;
+    border-radius:20px;
+    width:90%;
+    max-width:420px;
+    color: var(--branco);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
 
-        .alerta {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: rgb(0, 160, 13);
-            color: var(--branco);
-            padding: 25px 33px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 9999;
-            font-weight: 650;
-            }
+h2{
+    margin-bottom:20px;
+}
 
-            .alerta .fechar {
-            color: var(--branco);
-            font-size: 15px;
-            padding: 3px;
-            font-weight: 700;
-            position: absolute;
-            top: 8px;
-            right: 10px;
-            cursor: pointer;
-            }
+.codigo-container{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px 0;
+}
 
-            @media (max-width: 768px) {
-                .container {
-                    margin-top: 230px;
-                    width: 320px;
-                    height: 250px;
-                    text-align: center;
-                }
+.codigo{
+    width:50px;
+    height:60px;
+    text-align:center;
+    font-size:22px;
+    border-radius:10px;
+    border:2px solid #eee;
+    outline:none;
+    font-weight:bold;
+}
 
-                h2 {
-                    padding: 15px;
-                    font-size: 18pt;
-                    width: 290px;
-                }
+.codigo:focus{
+    border-color: var(--roxoEscuro2);
+    transform: scale(1.05);
+}
 
-                .alerta {
-                    right: 5px;
-                    margin: 15px;
-                    font-size: 10pt;
-                }
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background: var(--roxoClaro2);
+    color: var(--roxoEscuro4);
+    font-weight:700;
+    font-size:16px;
+    cursor:pointer;
+}
 
-                input {
-                    width: 80%;
-                }
+button:hover{
+    background: var(--roxoClaro3);
+}
 
-                .texto-reenvio {
-                    font-size: 10pt;
-                }
-            }
+
+.texto-reenvio{
+    margin-top:15px;
+    font-size:13px;
+}
+
+.texto-reenvio a{
+    color:yellow;
+    text-decoration:none;
+    font-weight:600;
+}
+
+
+.alerta{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#00a00d;
+    color:white;
+    padding:20px;
+    border-radius:10px;
+    font-weight:600;
+    z-index:9999;
+}
+
     </style>
 
-<body>
+    <body>
 
+
+<!-- ALERTAS -->
 <?php if(isset($_GET['msg'])): ?>
 <div class="alerta">
-<?php
-if ($_GET['msg'] == 'reenviado') echo "Novo código enviado";
-if($_GET['msg'] == 'verificado') echo "Conta verificada com sucesso!";
-?>
-<span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
+    <?php
+        if($_GET['msg'] == 'reenviado') echo "Novo código enviado";
+        if($_GET['msg'] == 'verificado') echo "Conta verificada com sucesso!";
+    ?>
+           <span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
 </div>
 <?php endif; ?>
+
 
 <?php if(isset($_GET['erro'])): ?>
-<div class="alerta">
-<?php
-if($_GET['erro'] == 'codigo') echo "Código inválido.";
-if($_GET['erro'] == 'nao_verificado') echo "Conta não verificada.";
-?>
-<span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
+<div class="alerta" style="background:#c0392b;">
+    <?php
+        if($_GET['erro'] == 'codigo') echo "Código inválido.";
+        if($_GET['erro'] == 'nao_verificado') echo "Conta não verificada.";
+    ?>
+           <span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
 </div>
 <?php endif; ?>
 
 
 
-    <div class="container">
-    <form action="actions/processa_verificacao.php" method="POST">
-        <h2>Verificar Conta</h2>
-        <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
-        <div class="input-box"><input type="text" name="codigo" placeholder="Digite o código" required></div>
+
+<div class="container">
+
+
+    <h2>Verificar Conta</h2>
+
+    <form action="actions/processa_verificacao.php" method="POST" id="formVerificacao">
+
+        <!-- EMAIL -->
+        <input type="hidden" name="email" value="<?= htmlspecialchars($email) ?>">
+
+        <!-- CÓDIGO -->
+        <div class="codigo-container">
+            <input maxlength="1" class="codigo" inputmode="numeric">
+            <input maxlength="1" class="codigo" inputmode="numeric">
+            <input maxlength="1" class="codigo" inputmode="numeric">
+            <input maxlength="1" class="codigo" inputmode="numeric">
+            <input maxlength="1" class="codigo" inputmode="numeric">
+            <input maxlength="1" class="codigo" inputmode="numeric">
+
+
+            <input type="hidden" name="codigo" id="codigoFinal">
+        </div>
+
+
         <button type="submit">Verificar</button>
-        </form>
-        <p class="texto-reenvio">
-            Não recebeu o código?
-            <a href="#" onclick="document.getElementById('formReenviar').submit(); return false;">
-                Reenviar código
-            </a>
-            <span id="contador"></span>
-        </p>
 
-        <form id="formReenviar" action="actions/reenviar_codigo.php" method="POST">
-            <input type="hidden" name="email" value="<?= $_GET['email'] ?? '' ?>">
-        </form>
-    </div>
 
-    <script>
+    </form>
 
-let tempo = 60;
 
-window.onload = function(){
+    <p class="texto-reenvio">
+        Não recebeu o código?
+        <a href="#" onclick="document.getElementById('formReenviar').submit(); return false;">
+            Reenviar código
+        </a>
+    </p>
 
-bloquearLink();
 
+    <form id="formReenviar" action="actions/reenviar_codigo.php" method="POST">
+        <input type="hidden" name="email" value="<?= htmlspecialchars($email) ?>">
+    </form>
+
+
+</div>
+
+
+<script>
+const inputs = document.querySelectorAll(".codigo");
+const hidden = document.getElementById("codigoFinal");
+const form = document.getElementById("formVerificacao");
+
+
+/* foco inicial */
+inputs[0].focus();
+
+
+/* digitação */
+inputs.forEach((input, index) => {
+    input.addEventListener("input", (e) => {
+        e.target.value = e.target.value.replace(/\D/g, "");
+
+
+        if (e.target.value && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+        }
+
+
+        atualizarCodigo();
+    });
+
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !input.value && index > 0) {
+            inputs[index - 1].focus();
+        }
+    });
+});
+
+
+/* colar código */
+inputs[0].addEventListener("paste", (e) => {
+    let paste = (e.clipboardData || window.clipboardData).getData("text");
+    paste = paste.replace(/\D/g, "").slice(0, 6);
+
+
+    inputs.forEach((input, i) => {
+        input.value = paste[i] || "";
+    });
+
+
+    atualizarCodigo();
+});
+
+
+/* atualizar hidden */
+function atualizarCodigo(){
+    let codigo = "";
+    inputs.forEach(i => codigo += i.value);
+    hidden.value = codigo;
 }
 
-function bloquearLink(){
 
-let link = document.getElementById("linkReenviar");
-let contador = document.getElementById("contador");
-
-link.style.pointerEvents = "none";
-link.style.opacity = "0.5";
-
-contador.innerHTML = " em " + tempo + "s";
-
-let intervalo = setInterval(function(){
-
-tempo--;
-
-contador.innerHTML = " em " + tempo + "s";
-
-if(tempo <= 0){
-
-clearInterval(intervalo);
-
-link.style.pointerEvents = "auto";
-link.style.opacity = "1";
-
-contador.innerHTML = "";
-
-link.innerHTML = "Reenviar código";
-
-}
-
-},1000);
-
-}
-
-function reenviarCodigo(){
-
-document.getElementById("formReenviar").submit();
-
-}
-
+/* validação antes de enviar */
+form.addEventListener("submit", (e) => {
+    if (hidden.value.length !== 6) {
+        e.preventDefault();
+        alert("Digite o código completo");
+    }
+});
 </script>
+
 
 </body>
 </html>

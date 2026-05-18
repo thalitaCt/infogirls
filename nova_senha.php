@@ -44,88 +44,187 @@
     padding: 0px;
 }
 body {
-    justify-items: center;
-    background-color: var(--roxoClaro3);
-    text-align: center;
+    background:var(--roxoClaro2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
-        .container {
-            justify-items: center;
-            margin-top: 130px;
-            background-color: var(--roxoEscuro2);
-            width: 450px;
-            height:250px;
-            color: var(--branco);
-            border-radius: 25px;
-        }
-        input {
-            margin-top: 30px;
-            width: 100%;
-            padding: 10px;
-            background: #eee;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: #333;
-            font-weight: 500;
-            width: 380px;
-            }   
-        button {
-            margin: 15px;
-            width: 70%;
-            height: 48px;
-            background-color: var(--roxoEscuro3);
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-            border: none;
-            color: var(--roxoClaro2);
-            font-weight: 700;
-            font-size: 15pt;
-        }
-        h2 {
-            padding-top: 30px;
-            background-color: var(--amarelo2);
-            padding: 15px;
-            width: 470px;
-            font-size: 25pt;
-            border-radius: 20px;
-        }
 
-        @media (max-width: 768px) {
-                .container {
-                    margin-top: 230px;
-                    width: 320px;
-                    height: 250px;
-                    text-align: center;
-                }
 
-                h2 {
-                    padding: 15px;
-                    font-size: 18pt;
-                    width: 290px;
-                }
+.container {
+    background:var(--roxoClaro);
+    padding:30px;
+    border-radius:20px;
+    width:90%;
+    max-width:420px;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
 
-                .alerta {
-                    right: 5px;
-                    margin: 15px;
-                    font-size: 10pt;
-                }
 
-                input {
-                    width: 80%;
-                }
-            }
-    </style>
+h2 {
+    margin-bottom:20px;
+}
+
+
+input {
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+
+button {
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:var(--roxoClaro2);
+    color:var(--roxoEscuro3);
+    font-weight:700;
+    cursor:pointer;
+}
+
+
+button:disabled {
+    opacity:0.5;
+    cursor:not-allowed;
+}
+
+
+small {
+    display:block;
+    margin-top:6px;
+    font-weight:600;
+}
+
+
+.senha-box {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* input normal */
+.senha-box input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    box-sizing: border-box;
+}
+
+
+.olho {
+    position: absolute;
+    padding-top: 8px;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    height: 100%;
+    cursor: pointer;
+    color: gray;
+    font-size: 16px;
+    user-select: none;
+}
+
+
+.olho:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-    <form action="actions/processa_nova_senha.php" method="POST">
-        <h2>Nova Senha</h2>
-        <input type="hidden" name="token" value="<?php echo $token; ?>">
-        <div class="input-box"><input type="password" name="senha" placeholder="Nova senha" required></div>
-        <button type="submit">Alterar senha</button>
-    </form>
-    </div>
+
+<div class="container">
+
+<h2>Nova Senha</h2>
+
+<?php if(isset($_GET['erro']) && $_GET['erro'] == 'senha_diferente'): ?>
+    <p style="color:yellow; font-weight:600;">
+        As senhas não coincidem
+    </p>
+<?php endif; ?>
+
+<form action="actions/processa_nova_senha.php" method="POST">
+
+    <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+
+    <div class="senha-box">
+    <input type="password" id="senha" name="senha" placeholder="Nova senha" required>
+    <i class="fa-solid fa-eye olho" onclick="toggleSenha('senha', this)"></i>
+</div>
+
+<div class="senha-box">
+    <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar senha" required>
+    <i class="fa-solid fa-eye olho" onclick="toggleSenha('confirmar_senha', this)"></i>
+</div>
+    <small id="msgSenha"></small>
+
+    <button type="submit" id="btn">Alterar senha</button>
+
+</form>
+</div>
+
+
+<script>
+const senha = document.getElementById('senha');
+const confirmar = document.getElementById('confirmar_senha');
+const msg = document.getElementById('msgSenha');
+const btn = document.getElementById('btn');
+
+
+function validar() {
+
+    if (!senha.value || !confirmar.value) {
+        msg.textContent = "";
+        btn.disabled = false;
+        return;
+    }
+
+    if (senha.value === confirmar.value) {
+        msg.textContent = "✔ Senhas coincidem";
+        msg.style.color = "green";
+        btn.disabled = false;
+    } else {
+        msg.textContent = "✖ Senhas não coincidem";
+        msg.style.color = "red";
+        btn.disabled = true;
+    }
+}
+
+senha.addEventListener('input', validar);
+confirmar.addEventListener('input', validar);
+</script>
+
+<script>
+function toggleSenha(id, icon) {
+    const input = document.getElementById(id);
+
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+</script>
+    
 </body>
 </html>

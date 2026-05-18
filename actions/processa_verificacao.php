@@ -1,25 +1,42 @@
 <?php
-    include '../includes/conexao.php';
+include '../includes/conexao.php';
 
-    $email = $_POST['email'];
-    $codigo = $_POST['codigo'];
+$email = $_POST['email'] ?? null;
+$codigo = $_POST['codigo'] ?? null;
 
-    $sql = "SELECT * FROM clientes WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['email' => $email]);
 
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+if (empty($email) || empty($codigo)) {
+    header("Location: ../verificar.php?email=$email&erro=codigo");
+    exit;
+}
 
-    if ($usuario && $usuario['codigo_verificacao'] == $codigo) {
-        $sql = "UPDATE clientes SET verificado = true, codigo_verificacao = NULL WHERE email = :email";
+$codigo = trim($codigo);
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['email' => $email]);
+$sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['email' => $email]);
 
-        header("Location: ../contas.php?msg=verificado");
-        exit;
-    } else {
-        header("Location: ../verificar.php?email=$email&erro=codigo");
-        exit;
-    }
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$usuario) {
+    header("Location: ../verificar.php?email=$email&erro=codigo");
+    exit;
+}
+
+if ((string)$usuario['codigo_verificacao'] !== (string)$codigo) {
+    header("Location: ../verificar.php?email=$email&erro=codigo");
+    exit;
+}
+
+
+$sql = "UPDATE usuarios 
+        SET verificado = TRUE, 
+            codigo_verificacao = NULL 
+        WHERE email = :email";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['email' => $email]);
+
+header("Location: ../contas.php?msg=verificado");
+exit;
 ?>

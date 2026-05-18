@@ -1,51 +1,86 @@
 <?php
 include '../includes/conexao.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+$email = $_POST['email'] ?? null;
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+if (empty($email)) {
+    header("Location: ../contas.php?erro=email");
+    exit;
+}
 
-$email = $_POST['email'];
+$sql = "SELECT id_usuario FROM usuarios WHERE email = :email LIMIT 1";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['email' => $email]);
 
-$codigo = rand(100000,999999);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+if (!$usuario) {
+    header("Location: ../verificar.php?erro=codigo");
+    exit;
+}
+
+$codigo = random_int(100000, 999999);
+
 
 $sql = $pdo->prepare("
-UPDATE clientes
-SET codigo_verificacao = ?
-WHERE email = ?
+    UPDATE usuarios
+    SET codigo_verificacao = ?
+    WHERE email = ?
 ");
+
 
 $sql->execute([$codigo, $email]);
 
-$mail = new PHPMailer(true);
+$apiKey = getenv('SENDGRID_API_KEY');
 
-$mail->isSMTP();
-$mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
-$mail->Username = 'infogirlsfive1@gmail.com';
-$mail->Password = 'ymdf jfwn tnjw tual';
-$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
+$data = [
+    "personalizations" => [
+        [
+            "to" => [
+                ["email" => $email]
+            ]
+        ]
+    ],
+    "from" => [
+        "email" => "infogirlsfive1@gmail.com",
+        "name" => "Info Girls"
+    ],
+    "subject" => "Novo código de verificação",
+    "content" => [
+        [
+            "type" => "text/html",
+            "value" => "
+                <h2>Seu novo código</h2>
+                <h1 style='letter-spacing:5px;'>$codigo</h1>
+                <p>Use este código para verificar sua conta.</p>
+            "
+        ]
+    ]
+];
 
-$mail->CharSet = 'UTF-8';
 
-$mail->setFrom('infogirlsfive1@gmail.com', 'InfoGirls');
-$mail->addAddress($email);
+$ch = curl_init();
 
-$mail->isHTML(true);
+curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/v3/mail/send");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Authorization: Bearer $apiKey",
+    "Content-Type: application/json"
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
-$mail->Subject = 'Novo código de verificação';
 
-$mail->Body = "
-<h2>Seu novo código</h2>
-<h1>$codigo</h1>
-<p>Use este código para verificar sua conta.</p>
-";
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-$mail->send();
+curl_close($ch);
+
+
+if ($httpCode >= 400) {
+    error_log("Erro SendGrid: " . $response);
+}
 
 header("Location: ../verificar.php?email=$email&msg=reenviado");
 exit;

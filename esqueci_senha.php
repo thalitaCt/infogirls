@@ -28,122 +28,126 @@
     padding: 0px;
 }
 body {
-    background-color: var(--roxoClaro3);
-    justify-items: center;
+    background: var(--roxoClaro3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
 }
-        .container {
-            justify-items: center;
-            margin-top: 130px;
-            background-color: var(--roxoEscuro2);
-            width: 450px;
-            height:250px;
-            color: var(--branco);
-            border-radius: 25px;
-        }
-        input {
-            margin-top: 30px;
-            width: 100%;
-            padding: 10px;
-            background: #eee;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: #333;
-            font-weight: 500;
-            width: 380px;
-            }   
-        button {
-            margin: 15px;
-            width: 70%;
-            height: 48px;
-            background-color: var(--roxoEscuro3);
-            border-radius: 10px;
-            outline: none;
-            cursor: pointer;
-            border: none;
-            color: var(--roxoClaro2);
-            font-weight: 700;
-            font-size: 15pt;
-        }
-        h2 {
-            padding-top: 30px;
-            background-color: var(--amarelo2);
-            padding: 15px;
-            width: 470px;
-            font-size: 25pt;
-            border-radius: 20px;
-        }
 
-        .alerta {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: rgb(0, 207, 17);
-            color: var(--branco);
-            padding: 25px 33px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 9999;
-            font-weight: 650;
-            }
 
-            .alerta .fechar {
-            color: var(--branco);
-            font-size: 15px;
-            padding: 3px;
-            font-weight: 700;
-            position: absolute;
-            top: 8px;
-            right: 10px;
-            cursor: pointer;
-            }
+.container {
+    background: var(--roxoEscuro);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    color: white;
+}
 
-        @media (max-width: 768px) {
-                .container {
-                    margin-top: 230px;
-                    width: 320px;
-                    height: 250px;
-                    text-align: center;
-                }
 
-                h2 {
-                    padding: 15px;
-                    font-size: 18pt;
-                    width: 290px;
-                }
+h2 {
+    margin-bottom: 20px;
+}
 
-                .alerta {
-                    right: 5px;
-                    margin: 15px;
-                    font-size: 10pt;
-                }
 
-                input {
-                    width: 80%;
-                }
-            }
-    </style>
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+}
+
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--roxoClaro2);
+    color: var(--roxoEscuro3);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background: var(--roxoClaro3);
+}
+
+
+.alerta {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #e53935;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-weight: 600;
+}
+
+
+.fechar {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+}
+
+    .alerta {
+        right: 10px;
+        left: 10px;
+        font-size: 14px;
+    }
+}
+</style>
 </head>
 <body>
+
 <?php if(isset($_GET['erro'])): ?>
 <div class="alerta">
+
 <?php
-if($_GET['erro'] == 'email') echo "E-mail não encontrado.";
+if($_GET['erro'] === 'email') {
+    echo "E-mail não encontrado.";
+} else {
+    echo "Erro ao processar solicitação.";
+}
 ?>
+
 <span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
 </div>
 <?php endif; ?>
-    <div class="container">
+
+
+<div class="container">
+
+    <h2>Esqueci minha senha</h2>
+
     <form action="actions/processa_esqueci.php" method="POST">
-        <h2>Esqueci Minha Senha</h2>
-    <div class="input-box"><input type="email" name="email" placeholder="Digite seu email" required>
-    <button type="submit">Enviar</button></div>
+
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Digite seu email"
+            required
+        >
+        <button type="submit">Enviar link</button>
+
 </form>
-    </div>
+
+</div>
+
 </body>
 </html>

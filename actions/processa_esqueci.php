@@ -1,103 +1,121 @@
 <?php
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+include '../includes/conexao.php';
 
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+$email = $_POST['email'] ?? null;
 
-    include '../includes/conexao.php';
+if (empty($email)) {
+    header("Location: ../esqueci_senha.php?erro=email");
+    exit;
+}
 
-    $email = $_POST['email'];
+$sql = "SELECT * FROM usuarios WHERE email = :email";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['email' => $email]);
 
-    $sql = "SELECT * FROM  clientes WHERE email = :email";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['email' => $email]);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$usuario) {
+    header("Location: ../esqueci_senha.php?erro=email");
+    exit;
+}
 
-    if ($usuario) {
-        $token = bin2hex(random_bytes(16));
-        $expira = date("Y-m-d H:i:s", strtotime("+1 hour"));
+$nome = 'Usuário';
 
-        $sql = "UPDATE clientes SET token = :token, token_expira = :expira WHERE email = :email";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'token' => $token,
-            'expira' => $expira,
-            'email' => $email
-        ]);
+if ($usuario['tipo'] === 'cliente') {
+    $sqlNome = $pdo->prepare("SELECT nome FROM clientes WHERE usuario_id = ?");
+} else {
+    $sqlNome = $pdo->prepare("SELECT nome FROM funcionarios WHERE usuario_id = ?");
+}
 
-        $link = "http://infogirls.onrender.com/nova_senha.php?token=$token";
+$sqlNome->execute([$usuario['id_usuario']]);
+$user = $sqlNome->fetch(PDO::FETCH_ASSOC);
 
-        $mail = new PHPMailer(true);
+if (!empty($user['nome'])) {
+    $nome = $user['nome'];
+}
 
-        try {
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'infogirlsfive1@gmail.com';
-            $mail->Password = 'ymdf jfwn tnjw tual';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
+$token = bin2hex(random_bytes(16));
+$expira = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
-            $mail->CharSet = 'UTF-8';
-            $mail->Encoding = 'base64';
 
-            $mail->setFrom('infogirlsfive1@gmail.com', 'InfoGirls');
-            $mail->addAddress($email);
+$sql = "UPDATE usuarios 
+        SET token = :token, token_expira = :expira 
+        WHERE email = :email";
 
-            $mail->isHTML(true);
-            $mail->Subject = 'Recuperação de Senha';
-            
-            $mail->Body = "
-            <table width='100%'
-            style='background:#f0f0f0; padding:20px;'>
-            <tr><td align='center'>
-            <table width='500'
-            style='background:#fff;
-            border-radius:10px; font-family:Arial;'>
 
-        <tr>
-            <td style='background:#7e22ce; padding:20px; text-align:center; color:white; font-size:24px;'>
-            InfoGirls
-                </td>
-        </tr>
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    'token' => $token,
+    'expira' => $expira,
+    'email' => $email
+]);
 
-        <tr>
-        <td style='padding:30px;'>
 
-        <h2>Recuperação de Senha</h2>
+$link = "http://infogirls.onrender.com/nova_senha.php?token=$token";
 
-        <p>Olá, {$usuario['nome']}</p>
-        <p>Clique no botão abaixo para redefinir sua senha;</p>
+$apiKey = getenv('SENDGRID_API_KEY');
 
-        <div style='text-align:center; margin:30px 0;'>
-        <a href='$link' style='background:#7e22ce; color:white; padding:12px 25px; text-decoration:none; border-radius:5px; font-weight:bold;'>Redefinir Senha</a>
+$data = [
+    "personalizations" => [
+        [
+            "to" => [
+                ["email" => $email]
+            ]
+        ]
+    ],
+    "from" => [
+        "email" => "infogirlsfive1@gmail.com",
+        "name" => "Info Girls"
+    ],
+    "subject" => "Recuperação de Senha",
+    "content" => [
+        [
+            "type" => "text/html",
+            "value" => "
+                <h2>Recuperação de Senha</h2>
+                <p>Olá, $nome</p>
+                <p>Clique no botão abaixo para redefinir sua senha:</p>
 
-        <p style='font-size:12px; color:#777;'>
-        Este link expira em 1 hora. </p>
-        </td>
-        </tr>
 
-        <tr>
-        <td stle='background:#f0f0f0; padding:15px; text-align:center; font-size:12px;'>
-        @ 2026 InfoGirls
-        </td
-        </tr>
-        </table
-        </td></tr>
-        </table>";
+                <div style='margin:20px 0;'>
+                    <a href='$link'
+                       style='background:#7c3aed;color:#fff;padding:12px 20px;text-decoration:none;border-radius:5px;'>
+                       Redefinir Senha
+                    </a>
+                </div>
 
-        $mail->send();
-        
-        header("Location: ../contas.php?msg=email_enviado");
-        exit;
-        } catch (Exception $e) {
-            echo "Erro: {$mail->ErrorInfo}";
-        }
-    } else {
-        header ("Location: ../esqueci_senha.php?erro=email");
-        exit;
-    }
+
+                <p style='font-size:12px;color:#777;'>
+                    Este link expira em 1 hora.
+                </p>
+            "
+        ]
+    ]
+];
+
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/v3/mail/send");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Authorization: Bearer $apiKey",
+    "Content-Type: application/json"
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+curl_close($ch);
+
+
+if ($httpCode >= 400) {
+    error_log("Erro SendGrid: " . $response);
+}
+
+header("Location: ../contas.php?msg=email_enviado");
+exit;
 ?>

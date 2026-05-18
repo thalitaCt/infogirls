@@ -425,90 +425,91 @@
 
 @media (max-width: 768px) {
 
-  .navbar {
-    padding: 12px 15px;
-    height: 75px;
-    box-sizing: border-box;
-  }
+.navbar{
+            padding:0 18px;
+            height:85px;
+        }
 
-  /* 🔥 ESCONDE MENU NORMAL NO MOBILE */
-  .menu {
-    display: none;
-    position: absolute;
-    top: 75px;
-    right: 10px;
-    background: var(--roxoEscuro4);
-    flex-direction: column;
-    width: 200px;
-    border-radius: 15px;
-    padding: 15px;
-    z-index: 9999;
-  }
+        .menu-icon{
+            display:block;
+        }
 
-  .menu.active {
-    display: flex;
-  }
+        .menu{
+            position:absolute;
 
-  .menu ul {
-    flex-direction: column;
-    gap: 15px;
-  }
+            top:90px;
+            right:15px;
 
-  /* LOGO */
-  .logo {
-    flex: 0;
-  }
+            width:240px;
 
-  /* ICONS SEM SUMIR */
-  .icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-left: auto;
-  }
+            background:var(--roxoEscuro4);
 
-  /* MENU ICON */
-  .menu-icon {
-    display: block;
-    font-size: 28px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
+            border-radius:20px;
 
-  /* CARRINHO GARANTIDO VISÍVEL */
-  .carrinho-icon {
-    display: flex;
-    position: relative;
-  }
+            padding:20px;
 
-  #numeroC {
-    top: -8px;
-    right: -8px;
-  }
+            display:none;
 
-    .user-menu {
-    display: none !important;
-  }
+            box-shadow:0 10px 25px rgba(0,0,0,0.18);
+        }
 
-  /* MOSTRA LOGIN NO MENU MOBILE */
-  .mobile-user {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
+        .menu.active{
+            display:flex;
+        }
 
-  .mobile-user li {
-    list-style: none;
-  }
+        .menu ul{
+            width:100%;
 
-  .mobile-user a {
-    color: white;
-    text-decoration: none;
-    padding: 8px;
-    display: block;
-  }
-}
+            flex-direction:column;
+            align-items:flex-start;
+
+            gap:8px;
+        }
+
+        .menu li{
+            width:100%;
+        }
+
+        .menu a{
+            display:block;
+            width:100%;
+        }
+
+        .mobile-user{
+            display:flex;
+            flex-direction:column;
+
+            width:100%;
+
+            margin-top:10px;
+            padding-top:15px;
+
+            border-top:1px solid rgba(255,255,255,0.15);
+        }
+
+        .mobile-user span{
+            color:var(--amarelo);
+
+            font-size:15px;
+            font-weight:600;
+
+            margin-bottom:8px;
+        }
+
+        .user-menu{
+            display:none;
+        }
+
+        .logo-text h1{
+            font-size:28px;
+        }
+
+        .logo-circle{
+            width:48px;
+            height:48px;
+        }
+
+        }
 
     </style>
 </head>

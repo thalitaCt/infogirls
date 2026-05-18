@@ -52,6 +52,9 @@
         overflow-x:hidden;
     }
 
+    html, body {
+  overflow-x: hidden;
+    }
 
     /* NAVBAR */
 
@@ -68,7 +71,7 @@
 
         height:95px;
 
-
+        box-sizing: border-box;
         background:linear-gradient(
         90deg,
         var(--roxoEscuro4),
@@ -423,46 +426,55 @@
 @media (max-width: 768px) {
 
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 12px 15px;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden;
+    height: 75px;
+    gap: 10px;
   }
 
-  /* LOGO */
+  /* LOGO SEM SUMIR */
   .logo {
-    order: 1;
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
+    gap: 10px;
   }
 
-  /* CARRINHO */
-  .carrinho-icon {
-    order: 2;
-    flex: 0;
+  .logo-text h1 {
+    font-size: 22px;
+  }
+
+  .logo-text span {
+    font-size: 9px;
+  }
+
+  /* ICONS */
+  .icons {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  /* MENU ICON SEM EMPURRAR LAYOUT */
+  .menu-icon {
+    display: block;
+    font-size: 28px;
+    margin-left: 10px;
+  }
+
+  /* CARRINHO AJUSTADO */
+  .carrinho-icon {
+    position: relative;
   }
 
   #numeroC {
-    right: -10px;
-    top: -10px;
+    top: -8px;
+    right: -8px;
   }
 
-  /* MENU HAMBURGUER */
-  .menu-icon {
-    order: 3;
-    flex: 0;
-    font-size: 28px;
-    margin-left: 12px;
-  }
-
-  /* REMOVE QUALQUER ESTICAMENTO */
+  /* REMOVE BUG DE OVERFLOW FORÇADO */
   .navbar * {
-    max-width: 100%;
+    max-width: unset;
   }
 }
 

@@ -485,6 +485,29 @@
     top: -8px;
     right: -8px;
   }
+
+    .user-menu {
+    display: none !important;
+  }
+
+  /* MOSTRA LOGIN NO MENU MOBILE */
+  .mobile-user {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .mobile-user li {
+    list-style: none;
+  }
+
+  .mobile-user a {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+  }
 }
 
     </style>

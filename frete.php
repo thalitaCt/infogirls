@@ -174,7 +174,7 @@ if(
     $totalFinal = $total + $frete;
 
 
-    $_SESSION['entrega'] = [
+    $_SESSION['endereco_pedido'] = [
 
 
         'frete' => $frete,
@@ -651,14 +651,42 @@ foreach($estados as $sigla => $nome){
 <select name="regiao" id="regiao" required>
 
 <option value="">Selecione</option>
-<option value="Centro">Centro</option>
-<option value="Zona Sul">Zona Sul</option>
-<option value="Zona Norte">Zona Norte</option>
-<option value="Zona Oeste">Zona Oeste</option>
-<option value="Zona Sudoeste">Zona Sudoeste</option>
-<option value="Entrega Externa">Entrega Externa</option>
 
-<option value="Retirada na Loja">
+<option value="Centro"
+<?= ($cliente['regiao'] ?? '') == 'Centro' ? 'selected' : '' ?>>
+Centro
+</option>
+
+
+<option value="Zona Sul"
+<?= ($cliente['regiao'] ?? '') == 'Zona Sul' ? 'selected' : '' ?>>
+Zona Sul
+</option>
+
+
+<option value="Zona Norte"
+<?= ($cliente['regiao'] ?? '') == 'Zona Norte' ? 'selected' : '' ?>>
+Zona Norte
+</option>
+
+
+<option value="Zona Oeste"
+<?= ($cliente['regiao'] ?? '') == 'Zona Oeste' ? 'selected' : '' ?>>
+Zona Oeste
+</option>
+
+<option value="Zona Sudoeste"
+<?= ($cliente['regiao'] ?? '') == 'Zona Sudoeste' ? 'selected' : '' ?>>
+Zona Sudoeste
+</option>
+
+
+<option value="Entrega Externa"
+<?= ($cliente['regiao'] ?? '') == 'Entrega Externa' ? 'selected' : '' ?>>
+Entrega Externa
+</option>
+
+<option value="Retirada na Loja"<?= ($cliente['regiao'] ?? '') == 'Retirada na Loja' ? 'selected' : '' ?>>
 Retirada na Loja
 </option>
 

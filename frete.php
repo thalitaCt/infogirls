@@ -4,7 +4,7 @@ include 'includes/conexao.php';
 
 
 if(!isset($_SESSION['usuario'])){
-    header("Location: login.php");
+    header("Location: contas.php");
     exit;
 }
 
@@ -238,7 +238,7 @@ if(
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Entrega | InfoGirls</title>
+<title>Entrega</title>
 
 
 <link rel="stylesheet"

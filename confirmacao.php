@@ -4,7 +4,7 @@ include 'includes/conexao.php';
 
 
 if(!isset($_SESSION['usuario'])){
-    header("Location: login.php?erro=login");
+    header("Location: contas.php?erro=login");
     exit;
 }
 
@@ -22,7 +22,7 @@ $pedidoId = intval($_GET['pedido']);
 $sql = $pdo->prepare("
 SELECT *
 FROM pedidos
-WHERE id_pedido = ?
+WHERE id_pedidos = ?
 AND cliente_email = ?
 ");
 
@@ -542,7 +542,7 @@ Seu pedido foi enviado para a InfoGirls e já está sendo processado.
 
 
 <p class="valor">
-INF-<?= str_pad($pedido['id_pedido'], 5, '0', STR_PAD_LEFT); ?>
+INF-<?= str_pad($pedido['id_pedidos'], 5, '0', STR_PAD_LEFT); ?>
 </p>
 </div>
 

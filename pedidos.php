@@ -3,7 +3,7 @@ session_start();
 
 
 if(!isset($_SESSION['usuario'])){
-    header("Location: login.php?erro=login");
+    header("Location: contas.php?erro=login");
     exit;
 }
 

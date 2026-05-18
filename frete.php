@@ -174,22 +174,17 @@ if(
     $totalFinal = $total + $frete;
 
 
+    $_SESSION['frete'] = $frete;
+    $_SESSION['prazo'] = $prazo;
+
     $_SESSION['endereco_pedido'] = [
-
-
-        'frete' => $frete,
-        'prazo' => $prazo,
-
-
-        'endereco' => [
-            'cep' => $cep,
-            'endereco' => $endereco,
-            'numero' => $numero,
-            'bairro' => $bairro,
-            'cidade' => $cidade,
-            'estado' => $estado,
-            'regiao' => $regiao
-        ]
+        'cep' => $cep,
+        'endereco' => $endereco,
+        'numero' => $numero,
+        'bairro' => $bairro,
+        'cidade' => $cidade,
+        'estado' => $estado,
+        'regiao' => $regiao
     ];
 
 

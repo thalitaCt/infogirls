@@ -1,229 +1,148 @@
 <?php 
-    session_start();
-    include 'includes/conexao.php';
+session_start();
+include 'includes/conexao.php';
 
-    if (!isset($_SESSION['carrinho'])) {
-        $_SESSION['carrinho'] = [];
-    }
-    
-    if(isset($_POST['atualizarQtd'])){
-
-    $id = $_POST['id'];
-    $novaQtd = (int) $_POST['quantidade'];
-
-    if(isset($_SESSION['carrinho'][$id])){
-
-        $estoque = $_SESSION['carrinho'][$id]['estoque'];
-
-        if($novaQtd <= 0){
-
-            unset($_SESSION['carrinho'][$id]);
-
-        } else {
-
-            if($novaQtd > $estoque){
-                $novaQtd = $estoque;
-            }
-
-            $_SESSION['carrinho'][$id]['quantidade'] = $novaQtd;
-        }
-    }
-
-    header("Location: carrinho.php");
-    exit;
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
 }
 
-    if (isset($_GET['aumentar'])) {
-    $id = $_GET['aumentar'];
-
-    $sql = $pdo->prepare("SELECT estoque FROM produtos WHERE id_produtos = ?");
-    $sql->execute([$id]);
-    $produtoBD = $sql->fetch(PDO::FETCH_ASSOC);
-
-    if (isset($_SESSION['carrinho'][$id])) {
-
-        $qtdAtual = $_SESSION['carrinho'][$id]['quantidade'];
-        $estoque = $produtoBD['estoque'] ?? 0;
-
-        if ($qtdAtual < $estoque) {
-            $_SESSION['carrinho'][$id]['quantidade']++;
-        }
-    }
-
-    header("Location: carrinho.php");
-    exit;
-}
-
-
-    if(isset($_GET['remover'])) {
-        $id = $_GET['remover'];
-
-        if(isset($_SESSION['carrinho'][$id])) {
-        if ($_SESSION['carrinho'][$id]['quantidade'] > 1) {
-            $_SESSION['carrinho'][$id]['quantidade']--;
-        } else {
-            unset($_SESSION['carrinho'][$id]);
-        }
-    }
-
-    header("Location: carrinho.php");
-    exit;
-    }
-
-    if (isset($_GET['removerTudo'])) {
-        $id = $_GET['removerTudo'];
-        unset($_SESSION['carrinho'][$id]);
-
-        header("Location: carrinho.php");
-        exit;
-    }
-
-    if(isset($_GET['limpar'])) {
-        $_SESSION['carrinho'] = [];
-
-        header("Location: carrinho.php");
-        exit;
-    }
-
-    $carrinho = $_SESSION['carrinho'];
-    $total = 0;
-    
+$carrinho = $_SESSION['carrinho'];
+$total = 0;
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho</title>
-    <link rel="stylesheet" href="css/styleCarrinho.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carrinho</title>
+
+<link rel="stylesheet" href="css/styleCarrinho.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
 <?php include 'includes/navbar.php'; ?>
 
-    <h1>Seu Carrinho</h1>
+<div class="container">
 
-    <?php if (empty($carrinho)):  ?> 
-        <p>Seu carrinho está vazio</p> 
-    <?php else: ?>
+    <div class="topo">
+        <h1><i class="fa-solid fa-cart-shopping"></i> Seu Carrinho</h1>
+        <p>Revise seus produtos antes de finalizar a compra</p>
+    </div>
 
-        <div class="carrinho-container">
+<?php if (empty($carrinho)): ?>
 
-         <div class="produtos">
+    <div class="vazio">
+        <i class="fa-solid fa-box-open"></i>
+        <h2>Seu carrinho está vazio</h2>
+        <a href="produtos.php">Ver produtos</a>
+    </div>
+
+<?php else: ?>
+
+<div class="layout">
+
+    <!-- LISTA -->
+    <div class="lista">
 
         <?php foreach ($carrinho as $id => $produto): ?>
 
-            <?php
-            $sql = $pdo->prepare("SELECT estoque FROM produtos WHERE id_produtos = ?");
-            $estoque = $sql->fetchColumn();
-            ?>
+        <?php
+        if (!isset($_SESSION['carrinho'][$id]['quantidade'])) {
+            $_SESSION['carrinho'][$id]['quantidade'] = 1;
+        }
 
-            <?php
+        $qtde = $_SESSION['carrinho'][$id]['quantidade'];
+        $totalItem = $produto['preco'] * $qtde;
+        $total += $totalItem;
+        ?>
 
-            if (!isset($_SESSION['carrinho'][$id]['quantidade'])) {
-                $_SESSION['carrinho'][$id]['quantidade'] = 1;
-            }
+        <div class="card">
 
-            $qtde = $_SESSION['carrinho'][$id]['quantidade'];
-            $totalItem = $produto['preco'] * $qtde;
-            $total += $totalItem;
-            ?>
+            <img src="<?= $produto['imagem']; ?>">
 
-            <div class="item">
+            <div class="info">
+                <h3><?= $produto['nome']; ?></h3>
+                <span class="preco">R$ <?= number_format($produto['preco'],2,',','.'); ?></span>
 
-                <img src="<?php  echo $produto['imagem']; ?>">
+                <div class="qtd">
 
-                <div class="nome">
-                <?php echo $produto['nome']; ?>
+                    <a href="carrinho.php?remover=<?= $id; ?>">-</a>
+
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<?= $id; ?>">
+                        <input type="number" name="quantidade" value="<?= $qtde; ?>" min="1" max="<?= $produto['estoque']; ?>">
+                        <input type="hidden" name="atualizarQtd" value="1">
+                    </form>
+
+                    <?php if($qtde < $produto['estoque']): ?>
+                        <a href="carrinho.php?aumentar=<?= $id; ?>">+</a>
+                    <?php else: ?>
+                        <span class="bloqueado">+</span>
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
+
+            <div class="acoes">
+                <span class="total-item">R$ <?= number_format($totalItem,2,',','.'); ?></span>
+                <a class="remover" href="carrinho.php?removerTudo=<?= $id; ?>">Remover</a>
+            </div>
+
         </div>
 
-            <div class="preco">
-        R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
+        <?php endforeach; ?>
+
+    </div>
+
+    <!-- RESUMO -->
+    <div class="resumo">
+
+        <h2>Resumo do Pedido</h2>
+
+        <div class="linha">
+            <span>Subtotal</span>
+            <span>R$ <?= number_format($total,2,',','.'); ?></span>
         </div>
-            
-        <div class="quantidade">
 
-    <a href="carrinho.php?remover=<?php echo $id; ?>">-</a>
+        <div class="linha">
+            <span>Frete</span>
+            <span>Calculado no checkout</span>
+        </div>
 
-    <form method="POST" class="form-qtd">
+        <div class="divisor"></div>
 
-        <input
-        type="hidden"
-        name="id"
-        value="<?php echo $id; ?>">
+        <div class="linha total">
+            <span>Total</span>
+            <span>R$ <?= number_format($total,2,',','.'); ?></span>
+        </div>
 
-        <input
-        type="number"
-        name="quantidade"
-        class="input-qtd"
-        min="1"
-        max="<?php echo $produto['estoque']; ?>"
-        value="<?php echo $qtde; ?>">
+        <a class="btn-finalizar" href="frete.php">
+            Finalizar compra
+        </a>
 
-        <input
-        type="hidden"
-        name="atualizarQtd"
-        value="1">
+        <a class="btn-limpar" href="carrinho.php?limpar=true">
+            Limpar carrinho
+        </a>
 
-    </form>
-
-    <?php if($qtde < $produto['estoque']): ?>
-        <a href="carrinho.php?aumentar=<?php echo $id; ?>">+</a>
-    <?php else: ?>
-        <span class="bloqueado">+</span>
-    <?php endif; ?>
+    </div>
 
 </div>
 
-        <div class="total">
-            R$ <?php echo number_format($totalItem, 2, ',', '.'); ?>
-        </div>
+<?php endif; ?>
 
-        <div class="remover">
-            <a href="carrinho.php?removerTudo=<?php echo $id; ?>">X</a>
-        </div>
-        </div>
-
-            <?php endforeach; ?>
-
-        </div>
-
-        <div class="resumo">
-            <h2>Resumo do Pedido</h2>
-
-            <p><span>Subtotal:</span> R$ <?php echo number_format($total, 2, ',', '.'); ?></p>
-
-            <p><span>Frete:</span>Será calculado</p>
-
-            <p id="linha"> </p>
-
-            <p> 
-                <strong>Total parcial:</strong> R$ <?php echo number_format($total, 2, ',', '.'); ?>
-                
-        </p>
-
-            <button id="finalizar"><a href="frete.php">Finalizar Compra</a></button>
-        </div>
-        </div>
-
-            <a href="carrinho.php?limpar=true"><button id="limpar">Limpar Carrinho</button></a>
-
-            <?php endif; ?>
+</div>
 
 <script>
-
-document.querySelectorAll('.input-qtd').forEach(input => {
-
-    input.addEventListener('change', function(){
-
+document.querySelectorAll('input[name="quantidade"]').forEach(input => {
+    input.addEventListener('change', function () {
         this.closest('form').submit();
-
     });
-
 });
-
 </script>
 
 </body>

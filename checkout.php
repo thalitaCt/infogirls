@@ -8,7 +8,7 @@ if(empty($_SESSION['carrinho'])){
 }
 
 
-include 'includes/navbar.php';
+include 'includes/conexao.php';
 
 
 $total = 0;
@@ -44,10 +44,9 @@ if(!$endereco){
 <link rel="stylesheet" href="css/styleCheckout.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
 
-<?php include 'includes/navbar.php'; ?>
+<?php include 'includes/navbar.php';?>
 
 
 <div class="checkout-container">

@@ -62,7 +62,7 @@ if ($_GET['erro'] == 'nao_verificado') echo "Verifique seu email antes de entrar
         <div class="input-box senha-box"><input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar senha" required>
     <small id="msgSenha"></small>
 </div>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" id="btn">Cadastrar</button>
     </form>
 </div>
 
@@ -124,27 +124,27 @@ doc.addEventListener('input', function () {
 
 <script>
         // validação de senha em tempo real
-const senha = document.querySelector('input[name="senha"]');
-const confirmar = document.querySelector('input[name="confirmar_senha"]');
+const senha = document.getElementById('senha');
+const confirmar = document.getElementById('confirmar_senha');
 const msg = document.getElementById('msgSenha');
-const botao = document.querySelector('button');
+const btn = document.getElementById('btn');
 
 function verificarSenha() {
 
     if (!senha.value || !confirmar.value) {
         msg.textContent = "";
-        botao.disabled = false;
+        btn.disabled = false;
         return;
     }
 
     if (senha.value === confirmar.value) {
         msg.textContent = "✔ Senhas coincidem";
         msg.style.color = "green";
-        botao.disabled = false;
+        btn.disabled = false;
     } else {
         msg.textContent = "✖ Senhas não coincidem";
         msg.style.color = "red";
-        botao.disabled = true;
+        btn.disabled = true;
     }
 }
 

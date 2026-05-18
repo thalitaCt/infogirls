@@ -30,12 +30,14 @@ body {
     margin: 20px;
     text-decoration: underline;
     text-decoration-color: var(--amarelo2);
+    color: var(--branco);
     font-size: 28pt;
 }
 
 #texto {
     font-size: 15pt;
     margin: 20px;
+    color: var(--branco);
     margin-bottom: 35px;
     width: 340px;
 }
@@ -83,10 +85,12 @@ button {
     text-align: start;
     margin: 20px;
     margin-left: 80px;
+    color: var(--branco);
 }
 
 .lado-direito {
     margin-top: 190px;
+    color: var(--branco);
     align-items: flex-end;
 }
 

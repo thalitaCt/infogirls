@@ -31,10 +31,12 @@ body {
   text-align: center;
   text-decoration-color: var(--amarelo2);
   font-size: 28pt;
+  color: var(--branco);
 }
 
 #texto {
   text-align: center;
+  color: var(--branco);
   justify-content: center;
 }
 

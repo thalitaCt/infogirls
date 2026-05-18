@@ -428,53 +428,62 @@
   .navbar {
     padding: 12px 15px;
     height: 75px;
-    gap: 10px;
+    box-sizing: border-box;
   }
 
-  /* LOGO SEM SUMIR */
-  .logo {
-    flex: 0 0 auto;
+  /* 🔥 ESCONDE MENU NORMAL NO MOBILE */
+  .menu {
+    display: none;
+    position: absolute;
+    top: 75px;
+    right: 10px;
+    background: var(--roxoEscuro4);
+    flex-direction: column;
+    width: 200px;
+    border-radius: 15px;
+    padding: 15px;
+    z-index: 9999;
+  }
+
+  .menu.active {
     display: flex;
-    align-items: center;
-    gap: 10px;
   }
 
-  .logo-text h1 {
-    font-size: 22px;
-  }
-
-  .logo-text span {
-    font-size: 9px;
-  }
-
-  /* ICONS */
-  .icons {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+  .menu ul {
+    flex-direction: column;
     gap: 15px;
   }
 
-  /* MENU ICON SEM EMPURRAR LAYOUT */
+  /* LOGO */
+  .logo {
+    flex: 0;
+  }
+
+  /* ICONS SEM SUMIR */
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+  }
+
+  /* MENU ICON */
   .menu-icon {
     display: block;
     font-size: 28px;
+    cursor: pointer;
     margin-left: 10px;
   }
 
-  /* CARRINHO AJUSTADO */
+  /* CARRINHO GARANTIDO VISÍVEL */
   .carrinho-icon {
+    display: flex;
     position: relative;
   }
 
   #numeroC {
     top: -8px;
     right: -8px;
-  }
-
-  /* REMOVE BUG DE OVERFLOW FORÇADO */
-  .navbar * {
-    max-width: unset;
   }
 }
 

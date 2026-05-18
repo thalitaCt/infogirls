@@ -102,7 +102,7 @@ try{
         $verifica = $pdo->prepare("
         SELECT estoque
         FROM produtos
-        WHERE id_produto = ?
+        WHERE id_produtos = ?
         ");
 
         $verifica->execute([$id]);
@@ -149,7 +149,7 @@ try{
         $update = $pdo->prepare("
         UPDATE produtos
         SET estoque = estoque - ?
-        WHERE id_produto = ?
+        WHERE id_produtos = ?
         ");
 
         $update->execute([

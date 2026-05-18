@@ -23,7 +23,7 @@ if($stmt->rowCount() > 0){
 }
 
 
-$sql = "SELECT id_cliente FROM clientes WHERE cpf_cnpj = ?";
+$sql = "SELECT id_clientes FROM clientes WHERE cpf_cnpj = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$cpf_cnpj]);
 

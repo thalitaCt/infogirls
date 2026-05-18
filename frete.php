@@ -739,6 +739,40 @@ document.getElementById('cep').addEventListener('input', function(e){
     e.target.value = v;
 });
 
+const cidade = document.getElementById('cidade');
+const estado = document.getElementById('estado');
+const regiao = document.getElementById('regiao');
+window.addEventListener('load', verificarEntrega);
+
+
+function verificarEntrega(){
+
+    let cidadeValor = cidade.value.toLowerCase().trim();
+    let estadoValor = estado.value.toUpperCase().trim();
+
+    if(
+        cidadeValor === 'rio de janeiro' &&
+        estadoValor === 'RJ'
+    ){
+
+        regiao.disabled = false;
+
+        if(regiao.value === 'Entrega Externa'){
+            regiao.value = '';
+        }
+
+    } else {
+        regiao.value = 'Entrega Externa';
+        regiao.disabled = true;
+    }
+}
+
+cidade.addEventListener('input', verificarEntrega);
+estado.addEventListener('change', verificarEntrega);
+
+verificarEntrega();
+
+
 </script>
 
 <script>

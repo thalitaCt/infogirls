@@ -5,7 +5,7 @@ $nome = trim($_POST['nome']);
 $cpf_cnpj = preg_replace('/\D/', '', $_POST['cpf_cnpj']);
 $telefone = preg_replace('/\D/', '', $_POST['telefone']);
 $email = strtolower(trim($_POST['email']));
-$endereco = trim($_POST['endereco']);
+
 $senha = $_POST['senha'];
 
 $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -45,16 +45,15 @@ try{
 
 
     $sql = "INSERT INTO clientes
-    (usuario_id, nome, cpf_cnpj, telefone, endereco)
-    VALUES (?, ?, ?, ?, ?)";
+    (usuario_id, nome, cpf_cnpj, telefone)
+    VALUES (?, ?, ?, ?)";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         $id_usuario,
         $nome,
         $cpf_cnpj,
-        $telefone,
-        $endereco
+        $telefone
     ]);
 
     $apiKey = getenv('SENDGRID_API_KEY');

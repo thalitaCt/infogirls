@@ -420,153 +420,51 @@
 
     /* RESPONSIVO */
 
-
-    @media(max-width:900px){
-
-
-        .navbar{
-            padding:0 18px;
-            height:85px;
-        }
-
-
-        .menu-icon{
-            display:block;
-        }
-
-
-        .menu{
-            position:absolute;
-
-
-            top:90px;
-            right:15px;
-
-
-            width:240px;
-
-
-            background:var(--roxoEscuro4);
-
-
-            border-radius:20px;
-
-
-            padding:20px;
-
-
-            display:none;
-
-
-            box-shadow:0 10px 25px rgba(0,0,0,0.18);
-        }
-
-
-        .menu.active{
-            display:flex;
-        }
-
-
-        .menu ul{
-            width:100%;
-
-
-            flex-direction:column;
-            align-items:flex-start;
-
-
-            gap:8px;
-        }
-
-
-        .menu li{
-            width:100%;
-        }
-
-
-        .menu a{
-            display:block;
-            width:100%;
-        }
-
-
-        .mobile-user{
-            display:flex;
-            flex-direction:column;
-
-
-            width:100%;
-
-
-            margin-top:10px;
-            padding-top:15px;
-
-
-            border-top:1px solid rgba(255,255,255,0.15);
-        }
-
-
-        .mobile-user span{
-            color:var(--amarelo);
-
-
-            font-size:15px;
-            font-weight:600;
-
-
-            margin-bottom:8px;
-        }
-
-
-        .user-menu{
-            display:none;
-        }
-
-
-        .logo-text h1{
-            font-size:28px;
-        }
-
-
-        .logo-circle{
-            width:48px;
-            height:48px;
-        }
-
-
-    }
-
-
-    @media(max-width:500px){
-
-
-        .navbar{
-            height:80px;
-        }
-
-
-        .logo-text span{
-            display:none;
-        }
-
-
-        .logo-text h1{
-            font-size:25px;
-        }
-
-
-        .icons{
-            gap:16px;
-        }
-
-
-        .carrinho-icon i{
-            font-size:22px;
-        }
-
-
-    }
-
+@media (max-width: 768px) {
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* LOGO */
+  .logo {
+    order: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  /* CARRINHO */
+  .carrinho-icon {
+    order: 2;
+    flex: 0;
+    margin-left: auto;
+  }
+
+  #numeroC {
+    right: -10px;
+    top: -10px;
+  }
+
+  /* MENU HAMBURGUER */
+  .menu-icon {
+    order: 3;
+    flex: 0;
+    font-size: 28px;
+    margin-left: 12px;
+  }
+
+  /* REMOVE QUALQUER ESTICAMENTO */
+  .navbar * {
+    max-width: 100%;
+  }
+}
 
     </style>
 </head>

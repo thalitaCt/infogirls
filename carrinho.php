@@ -5,6 +5,33 @@
     if (!isset($_SESSION['carrinho'])) {
         $_SESSION['carrinho'] = [];
     }
+    
+    if(isset($_POST['atualizarQtd'])){
+
+    $id = $_POST['id'];
+    $novaQtd = (int) $_POST['quantidade'];
+
+    if(isset($_SESSION['carrinho'][$id])){
+
+        $estoque = $_SESSION['carrinho'][$id]['estoque'];
+
+        if($novaQtd <= 0){
+
+            unset($_SESSION['carrinho'][$id]);
+
+        } else {
+
+            if($novaQtd > $estoque){
+                $novaQtd = $estoque;
+            }
+
+            $_SESSION['carrinho'][$id]['quantidade'] = $novaQtd;
+        }
+    }
+
+    header("Location: carrinho.php");
+    exit;
+}
 
     if (isset($_GET['aumentar'])) {
     $id = $_GET['aumentar'];
@@ -70,10 +97,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho</title>
     <link rel="stylesheet" href="css/styleCarrinho.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -121,18 +145,37 @@
             
         <div class="quantidade">
 
-            <a href="carrinho.php?remover=<?php echo $id; ?>">-</a>
+    <a href="carrinho.php?remover=<?php echo $id; ?>">-</a>
 
-            <span>
-                <?php echo $qtde; ?>
-            </span>
+    <form method="POST" class="form-qtd">
 
-            <?php if($qtde < $produto['estoque']): ?>
-            <a href="carrinho.php?aumentar=<?php echo $id; ?>">+</a>
-            <?php else: ?>
-                <span class="bloqueado">+</span>
-            <?php endif; ?>
-        </div>
+        <input
+        type="hidden"
+        name="id"
+        value="<?php echo $id; ?>">
+
+        <input
+        type="number"
+        name="quantidade"
+        class="input-qtd"
+        min="1"
+        max="<?php echo $produto['estoque']; ?>"
+        value="<?php echo $qtde; ?>">
+
+        <input
+        type="hidden"
+        name="atualizarQtd"
+        value="1">
+
+    </form>
+
+    <?php if($qtde < $produto['estoque']): ?>
+        <a href="carrinho.php?aumentar=<?php echo $id; ?>">+</a>
+    <?php else: ?>
+        <span class="bloqueado">+</span>
+    <?php endif; ?>
+
+</div>
 
         <div class="total">
             R$ <?php echo number_format($totalItem, 2, ',', '.'); ?>
@@ -145,11 +188,6 @@
 
             <?php endforeach; ?>
 
-<?php
-$frete = 15;
-$totalFinal = $total + $frete;
-?>
-
         </div>
 
         <div class="resumo">
@@ -157,22 +195,36 @@ $totalFinal = $total + $frete;
 
             <p><span>Subtotal:</span> R$ <?php echo number_format($total, 2, ',', '.'); ?></p>
 
-            <p><span>Frete:</span> R$ <?php echo number_format($frete, 2, ',', '.'); ?></p>
+            <p><span>Frete:</span>Será calculado</p>
 
             <p id="linha"> </p>
 
             <p> 
-                <strong>Total:</strong> R$ <?php echo number_format($totalFinal, 2, ',', '.'); ?>
+                <strong>Total parcial:</strong> R$ <?php echo number_format($total, 2, ',', '.'); ?>
                 
         </p>
 
-            <button id="finalizar"><a href="checkout.php">Finalizar Compra</a></button>
+            <button id="finalizar"><a href="frete.php">Finalizar Compra</a></button>
         </div>
         </div>
 
             <a href="carrinho.php?limpar=true"><button id="limpar">Limpar Carrinho</button></a>
 
             <?php endif; ?>
+
+<script>
+
+document.querySelectorAll('.input-qtd').forEach(input => {
+
+    input.addEventListener('change', function(){
+
+        this.closest('form').submit();
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>

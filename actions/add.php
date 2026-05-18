@@ -53,7 +53,7 @@ if (isset($_SESSION['carrinho'][$id])) {
 }
 
 if ($acao == "comprar") {
-    header("Location: ../checkout.php");
+    header("Location: ../frete.php");
 } else {
     header ("Location: ../produtos.php?msg=adicionado&nome=$nomeCurto");
 }

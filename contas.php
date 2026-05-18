@@ -58,8 +58,10 @@ if ($_GET['erro'] == 'nao_verificado') echo "Verifique seu email antes de entrar
         <div class="input-box"><input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="CPF ou CNPJ" maxlength="18" required></div>
         <div class="input-box"><input type="text" id="telefone" name="telefone" placeholder="Telefone" maxlength="15" required></div>
         <div class="input-box"><input type="email" name="email" placeholder="E-mail" required></div>
-        <div class="input-box"><input type="text" name="endereco" placeholder="Endereço" required></div>
-        <div class="input-box"><input type="password" name="senha" placeholder="Senha" required></div>
+        <div class="input-box senha-box"><input type="password" id="senha" name="senha" placeholder="Senha" required></div>
+        <div class="input-box senha-box"><input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirmar senha" required>
+    <small id="msgSenha"></small>
+</div>
         <button type="submit">Cadastrar</button>
     </form>
 </div>
@@ -119,6 +121,37 @@ doc.addEventListener('input', function () {
 });
 
     </script>
+
+<script>
+        // validação de senha em tempo real
+const senha = document.querySelector('input[name="senha"]');
+const confirmar = document.querySelector('input[name="confirmar_senha"]');
+const msg = document.getElementById('msgSenha');
+const botao = document.querySelector('button');
+
+function verificarSenha() {
+
+    if (!senha.value || !confirmar.value) {
+        msg.textContent = "";
+        botao.disabled = false;
+        return;
+    }
+
+    if (senha.value === confirmar.value) {
+        msg.textContent = "✔ Senhas coincidem";
+        msg.style.color = "green";
+        botao.disabled = false;
+    } else {
+        msg.textContent = "✖ Senhas não coincidem";
+        msg.style.color = "red";
+        botao.disabled = true;
+    }
+}
+
+senha.addEventListener('input', verificarSenha);
+confirmar.addEventListener('input', verificarSenha);
+
+</script>
 
     <script src="js/contas.js"> </script>
 </body>

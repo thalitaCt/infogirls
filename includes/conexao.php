@@ -1,4 +1,7 @@
 <?php
+
+date_default_timezone_set('America/Sao_Paulo');
+
     $host = "ep-square-cloud-acinz6ic-pooler.sa-east-1.aws.neon.tech";
     $db = "neondb";
     $user = "neondb_owner";

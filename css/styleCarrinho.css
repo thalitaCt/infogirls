@@ -185,6 +185,32 @@ p {
   text-decoration: none;
 }
 
+.form-qtd{
+  margin: 0;
+}
+
+
+.input-qtd{
+  width: 45px;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--rosa);
+  background-color: var(--branco);
+  color: var(--marrom3);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  transition: 0.3s;
+}
+
+
+.input-qtd:focus{
+  border-color: var(--rosa2);
+  box-shadow: 0 0 8px rgba(255, 135, 125, 0.4);
+}
+
 @media (max-width: 768px) {
 
     .item img {

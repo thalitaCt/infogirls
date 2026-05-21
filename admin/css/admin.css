@@ -361,6 +361,17 @@ body{
     cursor:pointer;
 }
 
+/* PREVIEW IMG */
+
+.preview-img{
+    width:180px;
+    border-radius:18px;
+
+    border:2px solid rgba(255,255,255,0.1);
+
+    margin-top:10px;
+}
+
 /* RESPONSIVO */
 
 @media(max-width:768px){

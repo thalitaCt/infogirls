@@ -372,6 +372,88 @@ body{
     margin-top:10px;
 }
 
+/* STATUS */
+
+.status{
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.status.pendente{
+    background:#facc15;
+    color:#000;
+}
+
+.status.enviado{
+    background:#3b82f6;
+}
+
+.status.entregue{
+    background:#22c55e;
+}
+
+.status.cancelado{
+    background:#ef4444;
+}
+
+/* PEDIDO */
+
+.pedido-box{
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+}
+
+.pedido-box h2{
+    margin-bottom:15px;
+}
+
+.item-pedido{
+    display:flex;
+    justify-content:space-between;
+
+    padding:12px 0;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.08);
+}
+
+/* SELECT */
+
+.select-status{
+    width:100%;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    margin-bottom:15px;
+
+    outline:none;
+}
+
+.select-status option{
+    background:#2e1065;
+}
+
 /* RESPONSIVO */
 
 @media(max-width:768px){

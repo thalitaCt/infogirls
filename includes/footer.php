@@ -417,10 +417,6 @@
                     Contato
                 </a>
 
-                <a href="pedidos.php">
-                    Pedidos
-                </a>
-
             </div>
 
         </div>

@@ -475,6 +475,94 @@ body{
     color:rgba(255,255,255,0.85);
 }
 
+/* TOPO */
+
+.topbar{
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.topbar h2{
+    color:white;
+    font-size:28px;
+}
+
+.topbar-direita{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.admin-user{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:rgba(255,255,255,0.08);
+
+    padding:10px 15px;
+
+    border-radius:14px;
+}
+
+.avatar-admin{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+    135deg,
+    #7c3aed,
+    #c084fc
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-size:18px;
+}
+
+.admin-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.nome-admin{
+    color:white;
+    font-weight:600;
+}
+
+.admin-info small{
+    color:rgba(255,255,255,0.6);
+}
+
+.btn-sair{
+    background:#ef4444;
+
+    color:white;
+    text-decoration:none;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.btn-sair:hover{
+    background:#dc2626;
+}
+
 /* RESPONSIVO */
 
 @media(max-width:768px){
@@ -494,5 +582,20 @@ body{
 
     .topo h1{
         font-size:28px;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .topbar-direita{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .topbar h2{
+        font-size:22px;
     }
 }

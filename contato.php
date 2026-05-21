@@ -205,7 +205,7 @@ session_start();
 
                     </div>
 
-                    div class="grupo">
+                    <div class="grupo">
 
                         <label>
                             Mensagem

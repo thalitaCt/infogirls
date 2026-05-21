@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>Navbar</title>
 
 
     <link rel="stylesheet"
@@ -596,17 +595,6 @@ if(isset($_SESSION['carrinho'])){
             <li>
                 <a href="contato.php">Contato</a>
             </li>
-
-
-            <?php if(isset($_SESSION['usuario'])): ?>
-
-
-            <li>
-                <a href="pedidos.php">Pedidos</a>
-            </li>
-
-
-            <?php endif; ?>
 
 
             <!-- MOBILE -->

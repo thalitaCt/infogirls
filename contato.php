@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contato | InfoGirls</title>
+    <title>Contato</title>
 
     <link rel="stylesheet" href="css/styleContato.css">
 
@@ -136,55 +136,45 @@ session_start();
 
                     <div class="grupo">
 
-                        <label>
-                            Nome completo
-                        </label>
+    <label>
+        Assunto
+    </label>
 
-                        <input
-                        type="text"
-                        name="nome"
-                        placeholder="Digite seu nome"
-                        required>
+    <select name="assunto" required>
 
-                    </div>
+        <option value="">
+            Selecione um assunto
+        </option>
 
-                    <div class="grupo">
+        <option value="Orçamento">
+            Solicitar orçamento
+        </option>
 
-                        <label>
-                            E-mail
-                        </label>
+        <option value="Suporte Técnico">
+            Suporte técnico
+        </option>
 
-                        <input
-                        type="email"
-                        name="email"
-                        placeholder="Digite seu e-mail"
-                        required>
+        <option value="Desenvolvimento de Sistemas">
+            Desenvolvimento de sistemas
+        </option>
 
-                    </div>
+        <option value="Criação de Sites">
+            Criação de sites
+        </option>
 
-                    <div class="grupo">
+        <option value="Produtos">
+            Produtos e equipamentos
+        </option>
 
-                        <label>
-                            Assunto
-                        </label>
+        <option value="Parceria">
+            Parcerias
+        </option>
 
-                        <input
-                        type="text"
-                        name="assunto"
-                        placeholder="Digite o assunto">
+        <option value="Outro">
+            Outro assunto
+        </option>
 
-                    </div>
-
-                    <div class="grupo">
-
-                        <label>
-                            Mensagem
-                        </label>
-
-                        <textarea
-                        name="mensagem"
-                        placeholder="Digite sua mensagem..."
-                        required></textarea>
+    </select>
 
                     </div>
 

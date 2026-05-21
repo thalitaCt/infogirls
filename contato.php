@@ -133,6 +133,33 @@ session_start();
             <form action="actions/processa_contato.php" method="POST">
 
                 <div class="linha">
+                                        <div class="grupo">
+
+                        <label>
+                            Nome completo
+                        </label>
+
+                        <input
+                        type="text"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        required>
+
+                    </div>
+
+                    <div class="grupo">
+
+                        <label>
+                            E-mail
+                        </label>
+
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                        required>
+
+                    </div>
 
                     <div class="grupo">
 
@@ -177,6 +204,19 @@ session_start();
     </select>
 
                     </div>
+
+                    div class="grupo">
+
+                        <label>
+                            Mensagem
+                        </label>
+
+                        <textarea
+                        name="mensagem"
+                        placeholder="Digite sua mensagem..."
+                        required></textarea>
+
+                </div>
 
                     <button type="submit">
 

@@ -465,6 +465,16 @@ body{
     margin-bottom:5px;
 }
 
+/* TEXTO MENSAGEM */
+
+.mensagem-texto{
+    line-height:1.8;
+
+    font-size:15px;
+
+    color:rgba(255,255,255,0.85);
+}
+
 /* RESPONSIVO */
 
 @media(max-width:768px){

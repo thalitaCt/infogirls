@@ -38,7 +38,7 @@ $itens = $pdo->prepare("
 
 SELECT *
 FROM itens_pedido
-WHERE id_pedido = ?
+WHERE pedido_id = ?
 
 ");
 
@@ -153,13 +153,31 @@ $pedido['total'],
 
 <div class="item-pedido">
 
-<p>
-<?= $item['nome_produto']; ?>
-</p>
+<div>
+
+<h3>
+<?= $item['nome']; ?>
+</h3>
 
 <p>
-Qtd: <?= $item['quantidade']; ?>
+
+Quantidade:
+<?= $item['quantidade']; ?>
+
 </p>
+
+</div>
+
+<div class="item-preco">
+
+R$
+
+<?= number_format(
+$item['preco'],
+2,
+',',
+'.'
+); ?>
 
 </div>
 

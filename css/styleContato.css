@@ -560,32 +560,49 @@ button:hover{
 .alerta{
     position:fixed;
 
-    top:20px;
+    top:120px;
     right:20px;
 
     background:#16a34a;
-
     color:var(--branco);
 
     padding:18px 24px;
 
-    border-radius:18px;
+    border-radius:14px;
 
     display:flex;
     align-items:center;
     gap:15px;
 
-    z-index:9999;
+    z-index:999999;
 
-    box-shadow:0 15px 25px rgba(0,0,0,0.25);
-}
+    font-weight:600;
 
-.alerta i{
-    font-size:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+    animation:slideIn 0.4s ease;
 }
 
 .alerta.erro{
     background:#dc2626;
+}
+
+@keyframes slideIn{
+
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.alerta i{
+    font-size:22px;
 }
 
 .fechar{

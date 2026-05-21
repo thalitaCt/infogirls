@@ -454,6 +454,17 @@ body{
     background:#2e1065;
 }
 
+/* ITEM PREÇO */
+
+.item-preco{
+    font-weight:700;
+    color:#c084fc;
+}
+
+.item-pedido h3{
+    margin-bottom:5px;
+}
+
 /* RESPONSIVO */
 
 @media(max-width:768px){

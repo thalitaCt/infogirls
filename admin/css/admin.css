@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --roxo1:#7c3aed;
+    --roxo2:#5b21b6;
+    --roxo3:#2e1065;
+
+    --claro:#a78bfa;
+    --branco:#ffffff;
+
+    --glass:rgba(255,255,255,0.08);
+    --borda:rgba(255,255,255,0.12);
+
+    --cinza:rgba(255,255,255,0.7);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins;
+}
+
+body{
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+    circle at top,
+    rgba(124,58,237,0.35),
+    transparent 35%
+    ),
+
+    linear-gradient(
+    180deg,
+    #2e1065,
+    #1e1b4b,
+    #0b061f
+    );
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* LAYOUT */
+
+.admin-layout{
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    min-height:100vh;
+
+    background:rgba(0,0,0,0.25);
+
+    backdrop-filter:blur(14px);
+
+    border-right:1px solid var(--borda);
+
+    padding:25px;
+}
+
+.logo-admin{
+    margin-bottom:40px;
+}
+
+.logo-admin h1{
+    font-size:28px;
+}
+
+.logo-admin span{
+    color:var(--claro);
+    font-size:14px;
+}
+
+/* MENU */
+
+.menu-admin{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu-admin a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:0.3s;
+}
+
+.menu-admin a:hover{
+    background:rgba(255,255,255,0.08);
+
+    transform:translateX(5px);
+}
+
+.menu-admin i{
+    font-size:18px;
+}
+
+/* CONTEÚDO */
+
+.conteudo{
+    flex:1;
+
+    padding:35px;
+}
+
+/* TOPO */
+
+.topo{
+    margin-bottom:30px;
+}
+
+.topo h1{
+    font-size:34px;
+}
+
+.topo p{
+    color:var(--cinza);
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.card{
+    background:var(--glass);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid var(--borda);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card i{
+    font-size:38px;
+
+    margin-bottom:15px;
+
+    color:#c084fc;
+}
+
+.card h2{
+    font-size:30px;
+}
+
+.card p{
+    color:var(--cinza);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .admin-layout{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        min-height:auto;
+    }
+
+    .conteudo{
+        padding:20px;
+    }
+
+    .topo h1{
+        font-size:28px;
+    }
+}

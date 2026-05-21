@@ -176,6 +176,119 @@ body{
 
 .card p{
     color:var(--cinza);
+}.
+
+/* BOTÃO ADMIN */
+
+.btn-admin{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 18px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #7c3aed,
+    #a855f7
+    );
+
+    color:white;
+    text-decoration:none;
+
+    border-radius:14px;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.btn-admin:hover{
+    transform:translateY(-3px);
+}
+
+/* TABELA */
+
+.tabela-container{
+    overflow-x:auto;
+}
+
+.tabela{
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+.tabela th{
+    background:rgba(255,255,255,0.08);
+
+    padding:18px;
+
+    text-align:left;
+}
+
+.tabela td{
+    padding:18px;
+
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.img-tabela{
+    width:70px;
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+}
+
+/* AÇÕES */
+
+.acoes-tabela{
+    display:flex;
+    gap:10px;
+}
+
+.editar,
+.excluir{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+.editar{
+    background:#3b82f6;
+}
+
+.excluir{
+    background:#ef4444;
+}
+
+.editar:hover,
+.excluir:hover{
+    transform:scale(1.08);
 }
 
 /* RESPONSIVO */

@@ -74,7 +74,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <th>Nome</th>
 <th>Preço</th>
 <th>Estoque</th>
-<th>Categoria</th>
 <th>Ações</th>
 
 </tr>
@@ -113,10 +112,6 @@ $produto['preco'],
 
 <td>
 <?= $produto['estoque']; ?>
-</td>
-
-<td>
-<?= $produto['categoria']; ?>
 </td>
 
 <td class="acoes-tabela">

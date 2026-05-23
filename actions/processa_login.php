@@ -58,7 +58,7 @@ if($usuario){
 
         switch($usuario['tipo']){
             case 'admin':
-                header("Location: ../admin.php?msg=login_sucesso");
+                header("Location: ../admin/index.php?msg=login_sucesso");
                 break;
 
             default:

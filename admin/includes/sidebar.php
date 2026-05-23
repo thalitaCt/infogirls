@@ -7,32 +7,32 @@
 
     <nav class="menu-admin">
 
-        <a href="../admin/index.php">
+        <a href="../index.php">
             <i class="fa-solid fa-chart-line"></i>
             Dashboard
         </a>
 
-        <a href="../admin/produtos/listar.php">
+        <a href="../produtos/listar.php">
             <i class="fa-solid fa-box"></i>
             Produtos
         </a>
 
-        <a href="../admin/pedidos/listar.php">
+        <a href="../pedidos/listar.php">
             <i class="fa-solid fa-cart-shopping"></i>
             Pedidos
         </a>
 
-        <a href="../admin/usuarios/listar.php">
+        <a href="../usuarios/listar.php">
             <i class="fa-solid fa-users"></i>
             Usuários
         </a>
 
-        <a href="../admin/contatos/listar.php">
+        <a href="../contatos/listar.php">
             <i class="fa-solid fa-envelope"></i>
             Contatos
         </a>
 
-        <a href="../logout.php">
+        <a href="../../logout.php">
             <i class="fa-solid fa-right-from-bracket"></i>
             Sair
         </a>

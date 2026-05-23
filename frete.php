@@ -795,42 +795,9 @@ estado.addEventListener('change', verificarEntrega);
 
 verificarEntrega();
 
-
 </script>
 
-<script>
-
-const cepInput = document.getElementById('cep');
-
-cepInput.addEventListener('blur', async function(){
-
-    let cep = cepInput.value.replace(/\D/g,'');
-
-    if(cep.length != 8){
-        return;
-    }
-
-    try{
-
-        const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const dados = await resposta.json();
-
-        if(dados.erro){
-            return;
-        }
-
-        document.querySelector('input[name="endereco"]').value = dados.logradouro || '';
-        document.querySelector('input[name="bairro"]').value = dados.bairro || '';
-        document.getElementById('cidade').value = dados.localidade || '';
-        document.getElementById('estado').value = dados.uf || '';
-
-    } catch(error){
-        console.log(error);
-    }
-
-});
-
-</script>
+v
 
 </body>
 </html>

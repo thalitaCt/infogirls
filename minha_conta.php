@@ -331,14 +331,11 @@ body{
 
 /* ALERTAS */
 
-.alerta,
-.alerta-sucesso{
+.alerta{
     position:fixed;
 
-    top:20px;
-    right:20px;
-
-    z-index:99999;
+    top:25px;
+    right:25px;
 
     padding:18px 22px;
 
@@ -348,29 +345,43 @@ body{
     align-items:center;
     gap:15px;
 
-    font-weight:600;
+    z-index:9999;
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,0.12);
+    0 10px 25px rgba(0,0,0,0.25);
+
+    font-weight:600;
+
+    animation:aparecer 0.3s ease;
 }
 
-.alerta{
-    background:var(--vermelhoBg);
-    color:var(--vermelho);
-    border-left:5px solid var(--vermelho);
+.sucesso{
+    background:#22c55e;
+    color:white;
 }
 
-.alerta-sucesso{
-    background:var(--verdeBg);
-    color:var(--verde);
-    border-left:5px solid var(--verde);
+.erro{
+    background:#ef4444;
+    color:white;
 }
 
 .fechar{
     cursor:pointer;
-    font-weight:700;
+    margin-left:10px;
 }
 
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 /* RESPONSIVO */
 
 @media(max-width:950px){
@@ -415,10 +426,12 @@ body{
         font-size:24px;
     }
 
-    .alerta,
-    .alerta-sucesso{
-        left:10px;
-        right:10px;
+    .alerta{
+        left:15px;
+        right:15px;
+
+        top:15px;
+
         font-size:14px;
     }
 
@@ -430,7 +443,10 @@ body{
 
 <?php if(isset($_GET['erro'])): ?>
 
-<div class="alerta">
+<div class="alerta erro">
+
+
+<i class="fa-solid fa-triangle-exclamation"></i>
 
 <?php
 
@@ -467,7 +483,9 @@ X
 
 <?php if(isset($_GET['msg'])): ?>
 
-<div class="alerta-sucesso">
+<div class="alerta sucesso">
+
+<i class="fa-solid fa-circle-check"></i>
 
 <?php
 
@@ -839,43 +857,65 @@ const estado = document.getElementById('estado');
 const regiao = document.getElementById('regiao');
 const cepInput = document.getElementById('cep');
 
-cepInput.addEventListener('blur', async function(){
+/* =========================
+   BUSCAR CEP
+========================= */
 
-let cep = cepInput.value.replace(/\D/g,'');
+async function buscarCEP(){
 
-if(cep.length != 8){
-    return;
+    let cep = cepInput.value.replace(/\D/g,'');
+
+    if(cep.length != 8){
+        return;
+    }
+
+    try{
+
+        const resposta =
+        await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+
+        const dados = await resposta.json();
+
+        if(dados.erro){
+            alert("CEP não encontrado.");
+            return;
+        }
+
+        document.querySelector('input[name="endereco"]').value =
+        dados.logradouro || '';
+
+        document.querySelector('input[name="bairro"]').value =
+        dados.bairro || '';
+
+        cidade.value = dados.localidade || '';
+
+        estado.value = dados.uf || '';
+
+        verificarEntrega();
+
+    }
+    catch(error){
+
+        console.log(error);
+
+    }
+
 }
 
-try{
+/* QUANDO SAI DO INPUT */
+cepInput.addEventListener('blur', buscarCEP);
 
-const resposta =
-await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+/* QUANDO APERTA ENTER */
+cepInput.addEventListener('keydown', async function(e){
 
-const dados = await resposta.json();
+    if(e.key === 'Enter'){
 
-if(dados.erro){
-    alert("CEP não encontrado.");
-    return;
-}
+        e.preventDefault();
 
-document.querySelector('input[name="endereco"]').value =
-dados.logradouro || '';
+        await buscarCEP();
 
-document.querySelector('input[name="bairro"]').value =
-dados.bairro || '';
-
-cidade.value = dados.localidade || '';
-
-estado.value = dados.uf || '';
-
-verificarEntrega();
-
-}
-catch(error){
-    console.log(error);
-}
-
+        document.querySelector('input[name="numero"]').focus();
+    }
 });
 
 function verificarEntrega(){

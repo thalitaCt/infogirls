@@ -560,56 +560,54 @@ button:hover{
 .alerta{
     position:fixed;
 
-    top:120px;
-    right:20px;
+    top:25px;
+    right:25px;
 
-    background:#16a34a;
-    color:var(--branco);
+    padding:18px 22px;
 
-    padding:18px 24px;
-
-    border-radius:14px;
+    border-radius:16px;
 
     display:flex;
     align-items:center;
     gap:15px;
 
-    z-index:999999;
+    z-index:9999;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.25);
 
     font-weight:600;
 
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-
-    animation:slideIn 0.4s ease;
+    animation:aparecer 0.3s ease;
 }
 
-.alerta.erro{
-    background:#dc2626;
+.sucesso{
+    background:#22c55e;
+    color:white;
 }
 
-@keyframes slideIn{
-
-    from{
-        opacity:0;
-        transform:translateX(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-
-}
-
-.alerta i{
-    font-size:22px;
+.erro{
+    background:#ef4444;
+    color:white;
 }
 
 .fechar{
     cursor:pointer;
-    font-weight:700;
+    margin-left:10px;
 }
 
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 /* =========================
    RESPONSIVO
 ========================= */
@@ -701,14 +699,12 @@ button:hover{
     }
 
     .alerta{
-        left:10px;
-        right:10px;
+        left:15px;
+        right:15px;
 
         top:15px;
 
-        justify-content:center;
-
-        text-align:center;
+        font-size:14px;
     }
 
 }

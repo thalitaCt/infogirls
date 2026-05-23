@@ -77,14 +77,14 @@ if(!in_array($estado, $estadosValidos)){
 /* REGIÕES INFO GIRLS */
 
 $regioesValidas = [
-
-"Sudeste",
-"Sul",
-"Centro-Oeste",
-"Nordeste",
-"Norte"
-
+"Centro",
+"Zona Sul",
+"Zona Norte",
+"Zona Oeste",
+"Zona Sudoeste",
+"Entrega Externa"
 ];
+
 
 if(!in_array($regiao, $regioesValidas)){
 

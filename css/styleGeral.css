@@ -33,33 +33,56 @@ body{
 
 /* ALERTA */
 
-.alerta-sucesso{
+.alerta{
     position:fixed;
 
-    top:20px;
-    right:20px;
+    top:25px;
+    right:25px;
 
-    background:#00b81f;
-    color:var(--branco);
+    padding:18px 22px;
 
-    padding:20px 28px;
+    border-radius:16px;
 
-    border-radius:14px;
+    display:flex;
+    align-items:center;
+    gap:15px;
 
-    z-index:99999;
+    z-index:9999;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.25);
 
     font-weight:600;
 
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    animation:aparecer 0.3s ease;
 }
 
-.alerta-sucesso .fechar{
-    position:absolute;
+.sucesso{
+    background:#22c55e;
+    color:white;
+}
 
-    top:6px;
-    right:10px;
+.erro{
+    background:#ef4444;
+    color:white;
+}
 
+.fechar{
     cursor:pointer;
+    margin-left:10px;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* HERO */
@@ -610,11 +633,11 @@ body{
         padding:10px 16px;
     }
 
-    .alerta-sucesso{
-        right:10px;
-        left:10px;
+    .alerta{
+        left:15px;
+        right:15px;
 
-        width:auto;
+        top:15px;
 
         font-size:14px;
     }

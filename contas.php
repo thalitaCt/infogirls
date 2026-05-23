@@ -10,7 +10,9 @@
 <body>
 
 <?php if(isset($_GET['msg'])): ?>
-<div class="alerta-sucesso">
+<div class="alerta sucesso">
+
+<i class="fa-solid fa-circle-check"></i>
 <?php
 if ($_GET['msg'] == 'email_enviado') echo "Email enviado!<br>Verifique sua caixa de entrada";
 if ($_GET['msg'] == 'senha_alterada') echo "Senha alterada com sucesso";
@@ -21,7 +23,9 @@ if ($_GET['msg'] == 'verificado') echo "Conta verificada com sucesso! <br>Faça 
 <?php endif; ?>
 
 <?php if (isset($_GET['erro'])): ?>
-<div class="alerta">
+<div class="alerta erro">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
 <?php
 if ($_GET['erro'] == 'email') echo "Email não encontrado";
 if ($_GET['erro'] == 'senha') echo "Senha incorreta";

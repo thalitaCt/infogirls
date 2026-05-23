@@ -21,9 +21,9 @@ session_start();
 
 <?php if(isset($_GET['msg']) && $_GET['msg'] == 'enviado'): ?>
 
-<div class="alerta">
+<div class="alerta sucesso">
 
-    <i class="fa-solid fa-circle-check"></i>
+<i class="fa-solid fa-circle-check"></i>
 
     <p>Mensagem enviada com sucesso!</p>
 

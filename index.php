@@ -21,7 +21,7 @@ session_start();
 
 <?php if (isset($_GET['msg'])): ?>
 
-<div class="alerta-sucesso">
+<div class="alerta sucesso">
 
 <?php
 

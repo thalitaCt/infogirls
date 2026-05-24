@@ -111,41 +111,92 @@ if(
    ATUALIZA DADOS
 ========================= */
 
-$sql = $pdo->prepare("
+$sqlTipo = $pdo->prepare("
 
-UPDATE clientes
-SET
-
-    nome = ?,
-    telefone = ?,
-    cep = ?,
-    endereco = ?,
-    numero = ?,
-    bairro = ?,
-    cidade = ?,
-    estado = ?,
-    regiao = ?
-
-WHERE usuario_id = ?
+SELECT tipo
+FROM usuarios
+WHERE id_usuario = ?
 
 ");
 
-/* EXECUTA */
 
-$sql->execute([
+$sqlTipo->execute([$idUsuario]);
 
-    $nome,
-    $telefone,
-    $cep,
-    $endereco,
-    $numero,
-    $bairro,
-    $cidade,
-    $estado,
-    $regiao,
-    $idUsuario
+$usuario = $sqlTipo->fetch(PDO::FETCH_ASSOC);
 
-]);
+if(!$usuario){
+
+    session_destroy();
+
+    header("Location: ../contas.php");
+    exit;
+}
+
+$tipo = $usuario['tipo'];
+
+/* =========================
+   ATUALIZA DADOS
+========================= */
+
+if($tipo == 'admin'){
+
+    $sql = $pdo->prepare("
+
+    UPDATE funcionarios
+    SET
+
+        nome = ?,
+        telefone = ?
+
+    WHERE usuario_id = ?
+
+    ");
+
+    $sql->execute([
+        $nome,
+        $telefone,
+        $idUsuario
+
+    ]);
+
+}
+else{
+
+    $sql = $pdo->prepare("
+
+    UPDATE clientes
+    SET
+
+        nome = ?,
+        telefone = ?,
+        cep = ?,
+        endereco = ?,
+        numero = ?,
+        bairro = ?,
+        cidade = ?,
+        estado = ?,
+        regiao = ?
+
+    WHERE usuario_id = ?
+
+    ");
+
+    $sql->execute([
+
+        $nome,
+        $telefone,
+        $cep,
+        $endereco,
+        $numero,
+        $bairro,
+        $cidade,
+        $estado,
+        $regiao,
+        $idUsuario
+
+    ]);
+
+}
 
 /* ATUALIZA SESSÃO */
 

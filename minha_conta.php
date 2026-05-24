@@ -14,8 +14,10 @@ $idUsuario = $_SESSION['id'];
 $sql = $pdo->prepare("
 SELECT 
     u.email,
-    c.nome,
-    c.telefone,
+
+    COALESCE(c.nome, f.nome) AS nome,
+    COALESCE(c.telefone, f.telefone) AS telefone,
+
     c.cep,
     c.endereco,
     c.numero,
@@ -23,18 +25,55 @@ SELECT
     c.cidade,
     c.estado,
     c.regiao
-FROM clientes c
-JOIN usuarios u ON u.id_usuario = c.usuario_id
-WHERE c.usuario_id = ?
+
+FROM usuarios u
+
+LEFT JOIN clientes c
+ON c.usuario_id = u.id_usuario
+
+LEFT JOIN funcionarios f
+ON f.usuario_id = u.id_usuario
+
+WHERE u.id_usuario = ?
 ");
 
 $sql->execute([$idUsuario]);
 
 $cliente = $sql->fetch(PDO::FETCH_ASSOC);
 
-$primeiroNome = explode(" ", trim($cliente['nome']))[0];
+if(!$cliente){
 
-$inicial = strtoupper(substr($primeiroNome, 0, 1));
+    $cliente = [
+        'nome' => '',
+        'telefone' => '',
+        'email' => '',
+        'cep' => '',
+        'endereco' => '',
+        'numero' => '',
+        'bairro' => '',
+        'cidade' => '',
+        'estado' => '',
+        'regiao' => ''
+    ];
+}
+
+$primeiroNome = '';
+
+if(!empty($cliente['nome'])){
+
+    $primeiroNome =
+    explode(" ", trim($cliente['nome']))[0];
+
+}
+
+$inicial = 'U';
+
+if($primeiroNome != ''){
+
+    $inicial =
+    strtoupper(substr($primeiroNome, 0, 1));
+
+}
 ?>
 
 <!DOCTYPE html>

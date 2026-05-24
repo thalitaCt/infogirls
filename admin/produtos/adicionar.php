@@ -163,7 +163,8 @@ required></textarea>
 
 <input
 type="file"
-name="imagem"
+name="imagem" 
+class="btn-admin"
 required>
 
 </div>

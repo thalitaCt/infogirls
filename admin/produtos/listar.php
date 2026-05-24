@@ -89,7 +89,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <td>
 
 <img
-src="../../<?= $produto['imagem']; ?>"
+src="<?= $produto['imagem']; ?>"
 class="img-tabela">
 
 </td>

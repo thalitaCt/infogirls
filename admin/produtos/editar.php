@@ -4,6 +4,10 @@ session_start();
 
 include '../../includes/conexao.php';
 
+include '../../includes/cloudinary.php';
+
+use Cloudinary\Api\Upload\UploadApi;
+
 include '../includes/verificar_admin.php';
 
 /* PEGAR PRODUTO */
@@ -60,22 +64,28 @@ if(isset($_POST['editar'])){
 
     }
 
-    $nomeOriginal =
-    str_replace(' ', '-', $imagem['name']);
+    try{
 
-    $nomeImagem =
-    uniqid() . "-" . $nomeOriginal;
+    $upload = new UploadApi();
 
-    $caminho =
-    "../../imagens/produtos/" . $nomeImagem;
+    $resultado = $upload->upload(
 
-    move_uploaded_file(
         $imagem['tmp_name'],
-        $caminho
+
+        [
+            'folder' => 'infogirls/produtos'
+        ]
+
     );
 
-    $imagemBanco =
-    "imagens/produtos/" . $nomeImagem;
+    $imagemBanco = $resultado['secure_url'];
+
+}
+catch(Exception $e){
+
+    die("Erro ao enviar imagem.");
+
+}
 }
 
     /* UPDATE */
@@ -209,7 +219,7 @@ required><?= $produto['descricao']; ?></textarea>
 <label>Imagem Atual</label>
 
 <img
-src="../../<?= $produto['imagem']; ?>"
+src="<?= $produto['imagem']; ?>"
 class="preview-img">
 
 </div>

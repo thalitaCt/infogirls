@@ -4,6 +4,10 @@ session_start();
 
 include '../../includes/conexao.php';
 
+include '../../includes/cloudinary.php';
+
+use Cloudinary\Api\Upload\UploadApi;
+
 include '../includes/verificar_admin.php';
 
 if(isset($_POST['cadastrar'])){
@@ -56,29 +60,28 @@ if(isset($_POST['cadastrar'])){
 
     }
 
-    /* NOME */
+   try{
 
-    $nomeOriginal = str_replace(
-        ' ',
-        '-',
-        $imagem['name']
-    );
+    $upload = new UploadApi();
 
-    $nomeImagem =
-    uniqid() . "-" . $nomeOriginal;
+    $resultado = $upload->upload(
 
-    /* CAMINHO */
-
-    $caminho =
-    "../../imagens/produtos/" . $nomeImagem;
-
-    move_uploaded_file(
         $imagem['tmp_name'],
-        $caminho
+
+        [
+            'folder' => 'infogirls/produtos'
+        ]
+
     );
 
-    $imagemBanco =
-    "imagens/produtos/" . $nomeImagem;
+    $imagemBanco = $resultado['secure_url'];
+
+}
+catch(Exception $e){
+
+    die("Erro ao enviar imagem.");
+
+}
 
     /* =========================
        INSERT

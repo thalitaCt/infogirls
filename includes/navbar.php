@@ -596,6 +596,10 @@ if(isset($_SESSION['carrinho'])){
                 <a href="contato.php">Contato</a>
             </li>
 
+            <li>
+                <a href="servicos.php">Serviços</a>
+            </li>
+
 
             <!-- MOBILE -->
 

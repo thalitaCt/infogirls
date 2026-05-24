@@ -15,7 +15,7 @@ if(isset($_GET['alterar'])){
     $sql = $pdo->prepare("
         SELECT tipo
         FROM usuarios
-        WHERE id_usuarios = ?
+        WHERE id_usuario = ?
     ");
 
     $sql->execute([$id]);
@@ -31,7 +31,7 @@ if(isset($_GET['alterar'])){
         $update = $pdo->prepare("
             UPDATE usuarios
             SET tipo = ?
-            WHERE id_usuarios = ?
+            WHERE id_usuario = ?
         ");
 
         $update->execute([$novoTipo, $id]);
@@ -48,7 +48,7 @@ if(isset($_GET['excluir'])){
 
     $delete = $pdo->prepare("
         DELETE FROM usuarios
-        WHERE id_usuarios = ?
+        WHERE id_usuario = ?
     ");
 
     $delete->execute([$id]);
@@ -71,7 +71,7 @@ if($busca != ""){
         FROM usuarios
         WHERE nome LIKE ?
         OR email LIKE ?
-        ORDER BY id_usuarios DESC
+        ORDER BY id_usuario DESC
     ");
 
     $sql->execute([
@@ -84,7 +84,7 @@ if($busca != ""){
     $sql = $pdo->query("
         SELECT *
         FROM usuarios
-        ORDER BY id_usuarios DESC
+        ORDER BY id_usuario DESC
     ");
 }
 
@@ -166,7 +166,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
                 <tr>
 
                     <td>
-                        #<?= $usuario['id_usuarios']; ?>
+                        #<?= $usuario['id_usuario']; ?>
                     </td>
 
                     <td>
@@ -198,7 +198,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
                     <td class="acoes">
 
                         <a
-                        href="usuarios.php?alterar=<?= $usuario['id_usuarios']; ?>"
+                        href="usuarios.php?alterar=<?= $usuario['id_usuario']; ?>"
                         class="btn-acao editar">
 
                             <i class="fa-solid fa-user-gear"></i>
@@ -206,7 +206,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
                         </a>
 
                         <a
-                        href="usuarios.php?excluir=<?= $usuario['id_usuarios']; ?>"
+                        href="usuarios.php?excluir=<?= $usuario['id_usuario']; ?>"
                         class="btn-acao excluir"
                         onclick="return confirm('Deseja excluir este usuário?')">
 

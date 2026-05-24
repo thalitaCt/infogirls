@@ -36,7 +36,6 @@ if(isset($_POST['editar'])){
     $nome = $_POST['nome'];
     $preco = $_POST['preco'];
     $estoque = $_POST['estoque'];
-    $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
 
     $imagemBanco = $produto['imagem'];
@@ -45,22 +44,39 @@ if(isset($_POST['editar'])){
 
     if(!empty($_FILES['imagem']['name'])){
 
-        $imagem = $_FILES['imagem'];
 
-        $nomeImagem =
-        uniqid() . "-" . $imagem['name'];
+    $imagem = $_FILES['imagem'];
 
-        $caminho =
-        "../../uploads/" . $nomeImagem;
 
-        move_uploaded_file(
+    $extensao = strtolower(
+    pathinfo($imagem['name'], PATHINFO_EXTENSION)
+    );
+
+    $permitidas = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'jfif'];
+
+    if(!in_array($extensao, $permitidas)){
+
+        die("Formato de imagem inválido.");
+
+    }
+
+    $nomeOriginal =
+    str_replace(' ', '-', $imagem['name']);
+
+    $nomeImagem =
+    uniqid() . "-" . $nomeOriginal;
+
+    $caminho =
+    "../../imagens/produtos/" . $nomeImagem;
+
+    move_uploaded_file(
         $imagem['tmp_name'],
         $caminho
-        );
+    );
 
-        $imagemBanco =
-        "uploads/" . $nomeImagem;
-    }
+    $imagemBanco =
+    "imagens/produtos/" . $nomeImagem;
+}
 
     /* UPDATE */
 
@@ -72,7 +88,6 @@ if(isset($_POST['editar'])){
     nome = ?,
     preco = ?,
     estoque = ?,
-    categoria = ?,
     descricao = ?,
     imagem = ?
 
@@ -84,7 +99,6 @@ if(isset($_POST['editar'])){
         $nome,
         $preco,
         $estoque,
-        $categoria,
         $descricao,
         $imagemBanco,
         $id

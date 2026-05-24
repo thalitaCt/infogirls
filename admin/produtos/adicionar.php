@@ -8,56 +8,107 @@ include '../includes/verificar_admin.php';
 
 if(isset($_POST['cadastrar'])){
 
-    $nome = $_POST['nome'];
+    $nome = trim($_POST['nome']);
     $preco = $_POST['preco'];
     $estoque = $_POST['estoque'];
-    $categoria = $_POST['categoria'];
-    $descricao = $_POST['descricao'];
+    $descricao = trim($_POST['descricao']);
 
-    /* IMAGEM */
+    /* =========================
+       IMAGEM
+    ========================= */
+
+    if(
+        !isset($_FILES['imagem'])
+        ||
+        $_FILES['imagem']['error'] != 0
+    ){
+
+        die("Envie uma imagem válida.");
+
+    }
 
     $imagem = $_FILES['imagem'];
 
+    /* EXTENSÃO */
+
+    $extensao = strtolower(
+        pathinfo(
+            $imagem['name'],
+            PATHINFO_EXTENSION
+        )
+
+    );
+
+    $permitidas = [
+
+        'jpg',
+        'jpeg',
+        'png',
+        'webp',
+        'jfif',
+        'avif'
+
+    ];
+
+    if(!in_array($extensao, $permitidas)){
+
+        die("Formato de imagem inválido.");
+
+    }
+
+    /* NOME */
+
+    $nomeOriginal = str_replace(
+        ' ',
+        '-',
+        $imagem['name']
+    );
+
     $nomeImagem =
-    uniqid() . "-" . $imagem['name'];
+    uniqid() . "-" . $nomeOriginal;
+
+    /* CAMINHO */
 
     $caminho =
-    "../../uploads/" . $nomeImagem;
+    "../../imagens/produtos/" . $nomeImagem;
 
     move_uploaded_file(
-    $imagem['tmp_name'],
-    $caminho
+        $imagem['tmp_name'],
+        $caminho
     );
 
     $imagemBanco =
-    "uploads/" . $nomeImagem;
+    "imagens/produtos/" . $nomeImagem;
 
-    /* INSERT */
+    /* =========================
+       INSERT
+    ========================= */
 
     $sql = $pdo->prepare("
 
     INSERT INTO produtos
     (
-    nome,
-    preco,
-    estoque,
-    categoria,
-    descricao,
-    imagem
+        nome,
+        preco,
+        estoque,
+        descricao,
+        imagem
     )
 
     VALUES
-    (?, ?, ?, ?, ?, ?)
+    (?, ?, ?, ?, ?)
+
 
     ");
 
     $sql->execute([
+
         $nome,
         $preco,
         $estoque,
-        $categoria,
         $descricao,
         $imagemBanco
+
     ]);
 
     header("Location: listar.php");

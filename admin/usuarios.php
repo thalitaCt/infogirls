@@ -60,33 +60,71 @@ if(isset($_GET['excluir'])){
 /* BUSCA */
 $busca = "";
 
+
 if(isset($_GET['busca'])){
     $busca = trim($_GET['busca']);
 }
 
+
 if($busca != ""){
 
+
     $sql = $pdo->prepare("
-        SELECT *
-        FROM usuarios
-        WHERE nome LIKE ?
-        OR email LIKE ?
-        ORDER BY id_usuario DESC
+        SELECT
+            u.*,
+            COALESCE(c.nome, f.nome) AS nome
+
+
+        FROM usuarios u
+
+
+        LEFT JOIN clientes c
+        ON c.usuario_id = u.id_usuario
+
+
+        LEFT JOIN funcionarios f
+        ON f.usuario_id = u.id_usuario
+
+
+        WHERE
+        COALESCE(c.nome, f.nome) LIKE ?
+        OR u.email LIKE ?
+
+
+        ORDER BY u.id_usuario DESC
     ");
+
 
     $sql->execute([
         "%$busca%",
         "%$busca%"
     ]);
 
+
 }else{
 
+
     $sql = $pdo->query("
-        SELECT *
-        FROM usuarios
-        ORDER BY id_usuario DESC
+        SELECT
+            u.*,
+            COALESCE(c.nome, f.nome) AS nome
+
+
+        FROM usuarios u
+
+
+        LEFT JOIN clientes c
+        ON c.usuario_id = u.id_usuario
+
+
+        LEFT JOIN funcionarios f
+        ON f.usuario_id = u.id_usuario
+
+
+        ORDER BY u.id_usuario DESC
     ");
 }
+
 
 $usuarios = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>

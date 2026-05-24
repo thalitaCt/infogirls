@@ -145,140 +145,216 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 </head>
 <body>
 
+
+<div class="admin-layout">
+
+
 <?php include 'includes/sidebar.php'; ?>
+
+
+<div class="conteudo">
+
+
 <?php include 'includes/topbar.php'; ?>
 
-<div class="main">
 
-    <div class="top-page">
+<div class="topo">
 
-        <div>
-            <h1>Usuários</h1>
-            <p>
-                Gerencie clientes e administradores da InfoGirls.
-            </p>
-        </div>
 
-    </div>
+    <h1>Usuários</h1>
 
-    <div class="card-admin">
 
-        <form method="GET" class="busca-form">
+    <p>
+        Gerencie clientes e administradores da InfoGirls.
+    </p>
 
-            <input
-            type="text"
-            name="busca"
-            placeholder="Buscar por nome ou email..."
-            value="<?= htmlspecialchars($busca) ?>">
-
-            <button type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-
-        </form>
-
-    </div>
-
-    <div class="card-admin">
-
-        <table class="tabela">
-
-            <thead>
-
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Tipo</th>
-                    <th>Ações</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-            <?php if(count($usuarios) > 0): ?>
-
-                <?php foreach($usuarios as $usuario): ?>
-
-                <tr>
-
-                    <td>
-                        #<?= $usuario['id_usuario']; ?>
-                    </td>
-
-                    <td>
-                        <?= htmlspecialchars($usuario['nome']); ?>
-                    </td>
-
-                    <td>
-                        <?= htmlspecialchars($usuario['email']); ?>
-                    </td>
-
-                    <td>
-
-                        <?php if($usuario['tipo'] == 'admin'): ?>
-
-                            <span class="status entregue">
-                                Admin
-                            </span>
-
-                        <?php else: ?>
-
-                            <span class="status pendente">
-                                Cliente
-                            </span>
-
-                        <?php endif; ?>
-
-                    </td>
-
-                    <td class="acoes">
-
-                        <a
-                        href="usuarios.php?alterar=<?= $usuario['id_usuario']; ?>"
-                        class="btn-acao editar">
-
-                            <i class="fa-solid fa-user-gear"></i>
-
-                        </a>
-
-                        <a
-                        href="usuarios.php?excluir=<?= $usuario['id_usuario']; ?>"
-                        class="btn-acao excluir"
-                        onclick="return confirm('Deseja excluir este usuário?')">
-
-                            <i class="fa-solid fa-trash"></i>
-
-                        </a>
-
-                    </td>
-
-                </tr>
-
-                <?php endforeach; ?>
-
-            <?php else: ?>
-
-                <tr>
-
-                    <td colspan="5">
-
-                        Nenhum usuário encontrado.
-
-                    </td>
-
-                </tr>
-
-            <?php endif; ?>
-
-            </tbody>
-
-        </table>
-
-    </div>
 
 </div>
+
+
+<div class="form-admin" style="max-width:100%; margin-bottom:25px;">
+
+
+    <form method="GET" style="display:flex; gap:10px;">
+
+
+        <input
+        type="text"
+        name="busca"
+        placeholder="Buscar por nome ou email..."
+        value="<?= htmlspecialchars($busca) ?>"
+        style="
+        flex:1;
+        background:rgba(255,255,255,0.08);
+        border:1px solid rgba(255,255,255,0.1);
+        border-radius:14px;
+        padding:14px;
+        color:white;
+        outline:none;
+        ">
+
+
+        <button type="submit" class="btn-admin">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Buscar
+        </button>
+
+
+    </form>
+
+
+</div>
+
+
+<div class="tabela-container">
+
+
+<table class="tabela">
+
+
+<thead>
+
+
+<tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Tipo</th>
+    <th>Ações</th>
+</tr>
+
+
+</thead>
+
+
+<tbody>
+
+
+<?php if(count($usuarios) > 0): ?>
+
+
+<?php foreach($usuarios as $usuario): ?>
+
+
+<tr>
+
+
+<td>
+    #<?= $usuario['id_usuario']; ?>
+</td>
+
+
+<td>
+    <?= htmlspecialchars($usuario['nome']); ?>
+</td>
+
+
+<td>
+    <?= htmlspecialchars($usuario['email']); ?>
+</td>
+
+
+<td>
+
+
+<?php if($usuario['tipo'] == 'admin'): ?>
+
+
+<span class="status entregue">
+Admin
+</span>
+
+
+<?php else: ?>
+
+
+<span class="status pendente">
+Cliente
+</span>
+
+
+<?php endif; ?>
+
+
+</td>
+
+
+<td>
+
+
+<div class="acoes-tabela">
+
+
+<a
+href="usuarios.php?alterar=<?= $usuario['id_usuario']; ?>"
+class="editar">
+
+
+<i class="fa-solid fa-user-gear"></i>
+
+
+</a>
+
+
+<a
+href="usuarios.php?excluir=<?= $usuario['id_usuario']; ?>"
+class="excluir"
+onclick="return confirm('Deseja excluir este usuário?')">
+
+
+<i class="fa-solid fa-trash"></i>
+
+
+</a>
+
+
+</div>
+
+
+</td>
+
+
+</tr>
+
+
+<?php endforeach; ?>
+
+
+<?php else: ?>
+
+
+<tr>
+
+
+<td colspan="5">
+
+
+Nenhum usuário encontrado.
+
+
+</td>
+
+
+</tr>
+
+
+<?php endif; ?>
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
 
 </body>
 </html>

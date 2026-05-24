@@ -182,18 +182,6 @@ required>
 
 <div class="grupo">
 
-<label>Categoria</label>
-
-<input
-type="text"
-name="categoria"
-value="<?= $produto['categoria']; ?>"
-required>
-
-</div>
-
-<div class="grupo">
-
 <label>Descrição</label>
 
 <textarea

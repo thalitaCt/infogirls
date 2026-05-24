@@ -149,17 +149,6 @@ required>
 
 <div class="grupo">
 
-<label>Categoria</label>
-
-<input
-type="text"
-name="categoria"
-required>
-
-</div>
-
-<div class="grupo">
-
 <label>Descrição</label>
 
 <textarea

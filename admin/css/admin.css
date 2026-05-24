@@ -176,16 +176,19 @@ body{
 
 .card p{
     color:var(--cinza);
-}.
+}
 
 /* BOTÃO ADMIN */
 
 .btn-admin{
     display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:10px;
 
+
     padding:12px 18px;
+
 
     background:
     linear-gradient(
@@ -194,17 +197,30 @@ body{
     #a855f7
     );
 
+
     color:white;
     text-decoration:none;
 
+
     border-radius:14px;
+
 
     margin-bottom:25px;
 
+
     font-weight:600;
 
+
     transition:0.3s;
+
+
+    border:none;
+    cursor:pointer;
+
+
+    font-size:15px;
 }
+
 
 .btn-admin:hover{
     transform:translateY(-3px);

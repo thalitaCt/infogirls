@@ -70,7 +70,7 @@ body{
     ),
 
 
-    url('imagens/banner-servicos.jfif') center/cover;
+    url('imagens/banner-servicos.jpg') center/cover;
 
 
     display:flex;
@@ -476,7 +476,7 @@ Escolha o pacote ideal para sua empresa.
 <div class="card">
 
 
-<img src="imagens/servico-vistoria.jfif">
+<img src="imagens/servico-vistoria.jpg">
 
 
 <div class="card-content">
@@ -538,7 +538,7 @@ Solicitar Orçamento
 <div class="card">
 
 
-<img src="imagens/servico-analise.jfif">
+<img src="imagens/servico-analise.jpg">
 
 
 <div class="card-content">
@@ -600,7 +600,7 @@ Solicitar Orçamento
 <div class="card">
 
 
-<img src="imagens/servico-premium.jfif">
+<img src="imagens/servico-premium.jpg">
 
 
 <div class="card-content">

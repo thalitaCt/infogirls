@@ -10,25 +10,35 @@
 
     <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Style+Script&display=swap');
-
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap');
     :root{
-        --roxoEscuro:#7c3aed;
-        --roxoEscuro2:#6d28d9;
-        --roxoEscuro3:#5b21b6;
-        --roxoEscuro4:#4c1d95;
-        --roxoEscuro5:#2e1065;
 
-        --roxoClaro:#8b5cf6;
-        --roxoClaro2:#a78bfa;
-        --roxoClaro3:#c4b5fd;
+    /* ROXOS PRINCIPAIS */
 
-        --amarelo:#fde047;
-        --amarelo2:#facc15;
+    --roxoEscuro:#584194;
+    --roxoEscuro2:#6b56a8;
+    --roxoEscuro3:#7b68b7;
+    --roxoEscuro4:#8b77c6;
+    --roxoEscuro5:#3f2d73;
 
-        --branco:#ffffff;
-        --preto:#333333;
-    }
+    /* ROXOS CLAROS */
+
+    --roxoClaro:#a596d6;
+    --roxoClaro2:#c4bae8;
+    --roxoClaro3:#e7e1f7;
+
+    /* DESTAQUES */
+
+    --amarelo:#fde047;
+    --amarelo2:#facc15;
+
+    /* NEUTROS */
+
+    --branco:#ffffff;
+    --preto:#333333;
+    --cinza:#6b7280;
+
+}
 
     *{
         margin:0;
@@ -109,7 +119,7 @@
     /* LOGO */
 
     .footer-logo h1{
-        font-family:"Style Script";
+        font-family:"Cormorant Garamond", serif;
         font-size:48px;
         font-weight:400;
 
@@ -375,7 +385,7 @@
 
         <div class="footer-logo">
 
-            <h1>InfoGirls</h1>
+            <h1>INFOGIRLS</h1>
 
             <p>
                 Transformamos empresas através da tecnologia,

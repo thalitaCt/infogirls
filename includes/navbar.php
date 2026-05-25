@@ -104,7 +104,6 @@
     .logo-img{
     width:58px;
     height:58px;
-    border-radius:50%;
     object-fit:cover;
 }
 
@@ -529,7 +528,7 @@ if(isset($_SESSION['carrinho'])){
         <img src="imagens/logo.png"class="logo-img">
 
         <div class="logo-text">
-            <h1>InfoGirls</h1>
+            <h1>INFOGIRLS</h1>
             <span>TECH STORE</span>
         </div>
 

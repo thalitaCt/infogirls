@@ -31,7 +31,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--roxoClaro2);
+    background-color: var(--roxoClaro3);
     overflow-x: hidden;
 }
 
@@ -125,12 +125,12 @@ form {
 button {
     width: 70%;
     height: 48px;
-    background-color: var(--roxoEscuro2);
+    background-color: var(--roxoEscuro3);
     border-radius: 10px;
     outline: none;
     cursor: pointer;
     border: none;
-    color: var(--roxoClaro3);
+    color: var(--roxoClaro);
     font-weight: 700;
     font-size: 12pt;
 }
@@ -147,7 +147,7 @@ button {
     left: -250px;
     width: 86%;
     height: 100%;
-    background-color: var(--roxoEscuro2);
+    background-color: var(--roxoEscuro3);
     z-index: 2;
     border-radius: 150px;
     transition: 1.8s ease-in-out;
@@ -201,7 +201,7 @@ button {
 }
 
 .container .form-box .titulo {
-    color: var(--roxoEscuro2);
+    color: var(--roxoEscuro3);
     font-weight: 800;
     font-size: 30pt;
 }

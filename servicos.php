@@ -22,14 +22,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 
 :root{
-    --roxo:#7c3aed;
-    --roxo2:#6d28d9;
-    --roxo3:#5b21b6;
-    --roxo4:#2e1065;
+    --roxo: #7660b3;
+    --roxo2: #584194;
+    --roxo3: #4a347f;
+    --roxo4: #2d1d52;
 
 
-    --branco:#fff;
-    --cinza:#d1d5db;
+    --branco: #fff;
+    --cinza: #d1d5db;
 }
 
 

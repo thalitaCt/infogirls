@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root{
-    --roxo1:#7c3aed;
-    --roxo2:#5b21b6;
-    --roxo3:#2e1065;
 
-    --claro:#a78bfa;
+    --roxo1:#584194;
+    --roxo2:#6b56a8;
+    --roxo3:#3f2d73;
+
+    --claro:#c4bae8;
     --branco:#ffffff;
 
     --glass:rgba(255,255,255,0.08);
     --borda:rgba(255,255,255,0.12);
 
-    --cinza:rgba(255,255,255,0.7);
+    --cinza:rgba(255,255,255,0.72);
+
 }
 
 *{

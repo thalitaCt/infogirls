@@ -35,9 +35,9 @@ html{
 body{
     background:
     radial-gradient(circle at top,
-    #4c1d95 0%,
-    #2e1065 45%,
-    #180535 100%);
+    #584194 0%,
+    #4a347f 45%,
+    #2d1d52 100%);
 
     color:var(--branco);
 
@@ -503,8 +503,8 @@ button:hover{
 .extra-card{
     background:linear-gradient(
     135deg,
-    rgba(124,58,237,0.4),
-    rgba(91,33,182,0.5)
+   #3f2d73,
+   #584194
     );
 
     border:1px solid rgba(255,255,255,0.08);

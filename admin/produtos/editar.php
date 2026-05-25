@@ -60,7 +60,8 @@ if(isset($_POST['editar'])){
 
     if(!in_array($extensao, $permitidas)){
 
-        die("Formato de imagem inválido.");
+        header("Location: editar.php?id=$id&erro=invalida");
+        exit;
 
     }
 
@@ -83,8 +84,8 @@ if(isset($_POST['editar'])){
 }
 catch(Exception $e){
 
-    die($e->getMessage());
-
+    header("Location: editar.php?id=$id&erro=upload");
+    exit;
 }
 }
 
@@ -145,6 +146,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 </head>
 
 <body>
+
+<?php if (isset($_GET['erro'])): ?>
+<div class="alerta erro">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+<?php
+if ($_GET['erro'] == 'invalida') echo "Envie uma imagem válida.";
+if ($_GET['erro'] == 'formato') echo "Formato de imagem inválido.";
+if ($_GET['erro'] == 'upload') echo "Erro ao enviar imagem.";
+
+?>
+<span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
+</div>
+<?php endif; ?>
 
 <div class="admin-layout">
 

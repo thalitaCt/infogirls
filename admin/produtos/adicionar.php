@@ -27,7 +27,8 @@ if(isset($_POST['cadastrar'])){
         $_FILES['imagem']['error'] != 0
     ){
 
-        die("Envie uma imagem válida.");
+        header("Location: adicionar.php?erro=invalida");
+        exit;
 
     }
 
@@ -56,7 +57,8 @@ if(isset($_POST['cadastrar'])){
 
     if(!in_array($extensao, $permitidas)){
 
-        die("Formato de imagem inválido.");
+        header("Location: adicionar.php?erro=formato");
+        exit;
 
     }
 
@@ -79,7 +81,8 @@ if(isset($_POST['cadastrar'])){
 }
 catch(Exception $e){
 
-    die("Erro ao enviar imagem.");
+    header("Location: adicionar.php?erro=upload");
+    exit;
 
 }
 
@@ -145,6 +148,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 </head>
 
 <body>
+
+<?php if (isset($_GET['erro'])): ?>
+<div class="alerta erro">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+<?php
+if ($_GET['erro'] == 'invalida') echo "Envie uma imagem válida.";
+if ($_GET['erro'] == 'formato') echo "Formato de imagem inválido.";
+if ($_GET['erro'] == 'upload') echo "Erro ao enviar imagem.";
+
+?>
+<span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
+</div>
+<?php endif; ?>
 
 <div class="admin-layout">
 

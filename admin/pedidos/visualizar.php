@@ -66,7 +66,7 @@ if(isset($_POST['status'])){
         $id
     ]);
 
-    header("Location: visualizar.php?id=$id");
+    header("Location: listar.php");
     exit;
 }
 

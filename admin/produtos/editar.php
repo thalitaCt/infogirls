@@ -218,8 +218,22 @@ required><?= $produto['descricao']; ?></textarea>
 
 <label>Imagem Atual</label>
 
+<?php
+
+if(str_contains($produto['imagem'], 'http')){
+
+    $imagemProduto = $produto['imagem'];
+
+}else{
+
+    $imagemProduto = '../../' . $produto['imagem'];
+
+}
+
+?>
+
 <img
-src="<?= $produto['imagem']; ?>"
+src="<?= $imagemProduto; ?>"
 class="preview-img">
 
 </div>

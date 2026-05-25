@@ -88,8 +88,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <td>
 
+<?php
+
+if(str_contains($produto['imagem'], 'http')){
+
+    $imagemProduto = $produto['imagem'];
+
+}else{
+
+    $imagemProduto = '../../' . $produto['imagem'];
+
+}
+
+?>
+
 <img
-src="<?= $produto['imagem']; ?>"
+src="<?= $imagemProduto; ?>"
 class="img-tabela">
 
 </td>

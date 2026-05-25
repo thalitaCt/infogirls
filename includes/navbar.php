@@ -12,17 +12,15 @@
 
 
     <style>
-
-
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Style+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap');
 
 
     :root{
-        --roxoEscuro:#7c3aed;
-        --roxoEscuro2:#6d28d9;
-        --roxoEscuro3:#5b21b6;
-        --roxoEscuro4:#4c1d95;
-        --roxoEscuro5:#2e1065;
+        --roxoEscuro:#8b77c6;
+        --roxoEscuro2:#7660b3;
+        --roxoEscuro3:#584194;
+        --roxoEscuro4:#4a347f;
+        --roxoEscuro5:#2d1d52;
 
 
         --roxoClaro:#8b5cf6;
@@ -70,11 +68,10 @@
 
         height:95px;
 
-        box-sizing: border-box;
         background:linear-gradient(
         90deg,
-        var(--roxoEscuro4),
-        var(--roxoEscuro3)
+        #584194,
+        #8b77c6
         );
 
 
@@ -104,31 +101,12 @@
     }
 
 
-    .logo-circle{
-        width:55px;
-        height:55px;
-
-
-        border-radius:50%;
-
-
-        background:linear-gradient(
-        135deg,
-        var(--amarelo),
-        var(--amarelo2)
-        );
-
-
-        display:flex;
-        align-items:center;
-        justify-content:center;
-
-
-        color:var(--roxoEscuro5);
-
-
-        font-size:24px;
-    }
+    .logo-img{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    object-fit:cover;
+}
 
 
     .logo-text{
@@ -139,10 +117,13 @@
 
 
     .logo-text h1{
-        font-family:"Style Script";
-        font-size:34px;
-        font-weight:400;
-    }
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:36px;
+    font-weight:700;
+
+    letter-spacing:0.5px;
+}
 
 
     .logo-text span{
@@ -545,11 +526,7 @@ if(isset($_SESSION['carrinho'])){
 
     <a href="index.php" class="logo">
 
-
-        <div class="logo-circle">
-            <i class="fa-solid fa-laptop-code"></i>
-        </div>
-
+        <img src="imagens/logo.png"class="logo-img">
 
         <div class="logo-text">
             <h1>InfoGirls</h1>

@@ -659,10 +659,11 @@ if(isset($_SESSION['carrinho'])){
 
             </a>
 
-
+<?php if($totalItens > 0): ?>
             <span id="numeroC">
                 <?= $totalItens; ?>
             </span>
+<?php endif; ?>
 
 
         </div>

@@ -767,37 +767,113 @@ const estado = document.getElementById('estado');
 const regiao = document.getElementById('regiao');
 window.addEventListener('load', verificarEntrega);
 
+verificarEntrega();
+
+async function buscarCEP(){
+
+    let cep = cepInput.value.replace(/\D/g,'');
+
+    if(cep.length != 8){
+        return;
+    }
+
+    try{
+
+        const resposta =
+        await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+
+        const dados = await resposta.json();
+
+        if(dados.erro){
+            alert("CEP não encontrado.");
+            return;
+        }
+
+        document.querySelector('input[name="endereco"]').value =
+        dados.logradouro || '';
+
+        document.querySelector('input[name="bairro"]').value =
+        dados.bairro || '';
+
+        cidade.value = dados.localidade || '';
+
+        estado.value = dados.uf || '';
+
+        verificarEntrega();
+
+    }
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+/* QUANDO SAI DO INPUT */
+cepInput.addEventListener('blur', buscarCEP);
+
+/* QUANDO APERTA ENTER */
+cepInput.addEventListener('keydown', async function(e){
+
+    if(e.key === 'Enter'){
+
+        e.preventDefault();
+
+        await buscarCEP();
+
+        document.querySelector('input[name="numero"]').focus();
+    }
+});
 
 function verificarEntrega(){
 
-    let cidadeValor = cidade.value.toLowerCase().trim();
-    let estadoValor = estado.value.toUpperCase().trim();
+let cidadeValor =
+cidade.value.toLowerCase().trim();
 
-    if(
-        cidadeValor === 'rio de janeiro' &&
-        estadoValor === 'RJ'
-    ){
+let estadoValor =
+estado.value.toUpperCase().trim();
 
-        regiao.disabled = false;
+if(
+cidadeValor === 'rio de janeiro'
+&&
+estadoValor === 'RJ'
+){
 
-        if(regiao.value === 'Entrega Externa'){
-            regiao.value = '';
-        }
+regiao.disabled = false;
 
-    } else {
-        regiao.value = 'Entrega Externa';
-        regiao.disabled = true;
-    }
+if(regiao.value === 'Entrega Externa'){
+    regiao.value = '';
+}
+
+}
+else{
+
+regiao.value = 'Entrega Externa';
+regiao.disabled = true;
+
+}
+
 }
 
 cidade.addEventListener('input', verificarEntrega);
 estado.addEventListener('change', verificarEntrega);
+window.addEventListener('load', verificarEntrega);
 
-verificarEntrega();
+window.addEventListener('load', () => {
 
-</script>
+    const resumo = document.getElementById('resumoFrete');
 
-v
+    if(resumo){
+
+        resumo.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+});
+</script> 
 
 </body>
 </html>

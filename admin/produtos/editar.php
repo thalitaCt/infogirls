@@ -83,7 +83,7 @@ if(isset($_POST['editar'])){
 }
 catch(Exception $e){
 
-    die("Erro ao enviar imagem.");
+    die($e->getMessage());
 
 }
 }

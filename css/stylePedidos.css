@@ -2,14 +2,21 @@
 
 
 :root{
-    --roxoEscuro:#7c3aed;
-    --roxoEscuro2:#6d28d9;
-    --roxoEscuro3:#5b21b6;
+    --roxoEscuro:#8b77c6;
+    --roxoEscuro2:#7660b3;
+    --roxoEscuro3:#584194;
+    --roxoEscuro4:#4a347f;
+    --roxoEscuro5:#2d1d52;
+
     --roxoClaro:#8b5cf6;
     --roxoClaro2:#a78bfa;
     --roxoClaro3:#c4b5fd;
+
     --amarelo:#fde047;
+    --amarelo2:#facc15;
+
     --branco:#ffffff;
+    --preto:#333333;
     --preto:#333333;
     --cinza:#666;
 }

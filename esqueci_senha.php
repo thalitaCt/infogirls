@@ -7,20 +7,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
 
-:root {
-    --roxoEscuro: #7c3aed;
-    --roxoEscuro2: #6d28d9;
-    --roxoEscuro3: #5b21b6;
-    --roxoEscuro4: #4c1d95;
-    --roxoEscuro5: #2e1065;
-    --branco: #ffffff;
-    --preto: #333333;
-    --roxoClaro: #8b5cf6;
-    --roxoClaro2: #a78bfa;
-    --roxoClaro3: #c4b5fd;
-    --amarelo: #fde047;
-    --amarelo2: #facc15;
-}
+:root{
+        --roxoEscuro:#8b77c6;
+        --roxoEscuro2:#7660b3;
+        --roxoEscuro3:#584194;
+        --roxoEscuro4:#4a347f;
+        --roxoEscuro5:#2d1d52;
+
+        --roxoClaro:#8b5cf6;
+        --roxoClaro2:#a78bfa;
+        --roxoClaro3:#c4b5fd;
+
+        --amarelo:#fde047;
+        --amarelo2:#facc15;
+
+        --branco:#ffffff;
+        --preto:#333333;
+    }
 
 * {
     font-family: Poppins;

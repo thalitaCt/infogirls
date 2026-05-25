@@ -91,25 +91,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 
 :root{
-    --roxoEscuro:#7c3aed;
-    --roxoEscuro2:#6d28d9;
-    --roxoEscuro3:#5b21b6;
-    --roxoEscuro4:#4c1d95;
-    --roxoEscuro5:#2e1065;
+        --roxoEscuro:#8b77c6;
+        --roxoEscuro2:#7660b3;
+        --roxoEscuro3:#584194;
+        --roxoEscuro4:#4a347f;
+        --roxoEscuro5:#2d1d52;
 
 
-    --roxoClaro:#8b5cf6;
-    --roxoClaro2:#a78bfa;
-    --roxoClaro3:#c4b5fd;
+        --roxoClaro:#8b5cf6;
+        --roxoClaro2:#a78bfa;
+        --roxoClaro3:#c4b5fd;
 
 
-    --amarelo:#fde047;
-    --amarelo2:#facc15;
+        --amarelo:#fde047;
+        --amarelo2:#facc15;
 
 
-    --branco:#ffffff;
-    --preto:#333333;
-}
+        --branco:#ffffff;
+        --preto:#333333;
+    }
 
 
 *{

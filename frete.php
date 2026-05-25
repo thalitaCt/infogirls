@@ -765,6 +765,7 @@ document.getElementById('cep').addEventListener('input', function(e){
 const cidade = document.getElementById('cidade');
 const estado = document.getElementById('estado');
 const regiao = document.getElementById('regiao');
+const cepInput = document.getElementById('cep');
 window.addEventListener('load', verificarEntrega);
 
 verificarEntrega();

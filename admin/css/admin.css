@@ -169,7 +169,7 @@ body{
 
     margin-bottom:15px;
 
-    color:#c084fc;
+    color:#e7e1f7;
 }
 
 .card h2{
@@ -195,8 +195,8 @@ body{
     background:
     linear-gradient(
     135deg,
-    #7c3aed,
-    #a855f7
+    #584194,
+    #a596d6
     );
 
 
@@ -384,8 +384,8 @@ input[type="file"]::file-selector-button{
 background:
 linear-gradient(
 135deg,
-#7c3aed,
-#a855f7
+#584194,
+#a596d6
 );
 
 border:none;

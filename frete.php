@@ -247,13 +247,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 
 :root{
-    --roxo:#7c3aed;
-    --roxo2:#6d28d9;
-    --roxo3:#2e1065;
-    --branco:#fff;
-    --preto:#1e1e1e;
-    --verde:#00b312;
-    --vermelho:#e53935;
+    --roxo: #7660b3;
+    --roxo2: #584194;
+    --roxo3: #4a347f;
+    --branco: #fff;
+    --preto: #1e1e1e;
+    --verde: #00b312;
+    --vermelho: #e53935;
 }
 
 

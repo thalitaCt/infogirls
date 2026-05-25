@@ -15,6 +15,10 @@ RUN a2enmod rewrite
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Aumenta limite de upload
+RUN echo "upload_max_filesize=20M" >> /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "post_max_size=20M" >> /usr/local/etc/php/conf.d/uploads.ini
+
 # Copia arquivos do projeto
 COPY . /var/www/html/
 

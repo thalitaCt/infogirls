@@ -14,7 +14,7 @@
 
 <i class="fa-solid fa-circle-check"></i>
 <?php
-if ($_GET['msg'] == 'email_enviado') echo "Email enviado!<br>Verifique sua caixa de entrada";
+if ($_GET['msg'] == 'email_enviado') echo "Email enviado!<br>Verifique sua caixa de spam";
 if ($_GET['msg'] == 'senha_alterada') echo "Senha alterada com sucesso";
 if ($_GET['msg'] == 'verificado') echo "Conta verificada com sucesso! <br>Faça login";
 ?>
@@ -33,6 +33,7 @@ if ($_GET['erro'] == 'email_existente') echo "E-mail já cadastrado";
 if ($_GET['erro'] == 'cpf_cnpj') echo "CPF ou CNPJ já cadastrado";
 if ($_GET['erro'] == 'geral') echo "Erro ao cadastrar";
 if ($_GET['erro'] == 'login') echo "Faça login ou crie uma conta para comprar produtos";
+if ($_GET['erro'] == 'login_carrinho') echo "Faça login ou crie uma conta para acessar seu carrinho";
 if ($_GET['erro'] == 'nao_verificado') echo "Verifique seu email antes de entrar";
 ?>
 <span class="fechar" onclick="this.parentElement.style.display='none'">X</span>

@@ -101,8 +101,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $cidadeNormalizada = mb_strtolower(trim($cidade));
 
 if(
-    $cidadeNormalizada != 'rio de janeiro' ||
-    strtoupper($estado) != 'RJ'
+    $cidadeNormalizada !== 'rio de janeiro' &&
+    strtoupper($estado) !== 'RJ'
 ){
 
     $frete = 50;

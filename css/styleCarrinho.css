@@ -14,11 +14,13 @@
     padding:0;
     box-sizing:border-box;
     font-family:Poppins;
-    overflow: hidden;
 }
 
 body{
     min-height:100vh;
+
+    overflow-x:hidden;
+    overflow-y:auto;
 
     background:
     radial-gradient(

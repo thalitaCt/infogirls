@@ -446,6 +446,7 @@ small{
     display:flex;
     align-items:center;
     gap:12px;
+    font-family: Poppins;
 }
 
 
@@ -492,7 +493,9 @@ small{
 
 <?php if(isset($msgFrete)): ?>
 <div class="alerta-sucesso">
+<i class="fa-solid fa-circle-check"></i>
     <?= $msgFrete ?>
+<span class="fechar" onclick="this.parentElement.style.display='none'">X</span>
 </div>
 <?php endif; ?>
 

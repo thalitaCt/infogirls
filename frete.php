@@ -480,6 +480,11 @@ small{
 
 <body>
 
+<?php if(isset($msgFrete)): ?>
+<div class="alerta-sucesso">
+    <?= $msgFrete ?>
+</div>
+<?php endif; ?>
 
 <div class="container">
 
@@ -697,6 +702,14 @@ Retirada na Loja
 
 </div>
 
+<script>
+document.querySelector('form').addEventListener('submit', function(){
+
+    verificarEntrega();
+
+});
+</script>
+
 <button type="submit" class="btn">
 
 <i class="fa-solid fa-truck"></i>
@@ -708,7 +721,7 @@ Calcular Entrega
 
 <?php if($frete !== null): ?>
 
-<div class="resumo">
+<div class="resumo" id="resumoFrete">
 
 <h2>Resumo da Entrega</h2>
 

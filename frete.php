@@ -214,15 +214,25 @@ if(
 
 
     $update->execute([
-        $cep,
-        $endereco,
-        $numero,
-        $bairro,
-        $cidade,
-        $estado,
-        $regiao,
-        $idUsuario
-    ]);
+    $cep,
+    $endereco,
+    $numero,
+    $bairro,
+    $cidade,
+    $estado,
+    $regiao,
+    $idUsuario
+]);
+
+$sql = $pdo->prepare("
+SELECT *
+FROM clientes
+WHERE usuario_id = ?
+");
+
+$sql->execute([$idUsuario]);
+
+$cliente = $sql->fetch(PDO::FETCH_ASSOC);
 
 
     $sucessoFrete = true;

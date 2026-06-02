@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $bairro = trim($_POST['bairro']);
     $cidade = trim($_POST['cidade']);
     $estado = trim($_POST['estado']);
-    $regiao = trim($_POST['regiao']);
+    $regiao = trim($_POST['regiao'] ?? '');
 
 
     /* =========================
@@ -87,10 +87,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
 
-    if(empty($regiao)){
-        header("Location: frete.php?erro=regiao_vazia");
-        exit;
-    }
+    if(
+    mb_strtolower(trim($cidade)) !== 'rio de janeiro' ||
+    strtoupper(trim($estado)) !== 'RJ'
+){
+    $regiao = 'Entrega Externa';
+}
+
+if(empty($regiao)){
+    header("Location: frete.php?erro=regiao_vazia");
+    exit;
+}
 
 
     /* =========================
@@ -101,10 +108,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $cidadeNormalizada = mb_strtolower(trim($cidade));
 
 if(
-    $cidadeNormalizada !== 'rio de janeiro' &&
+    $cidadeNormalizada !== 'rio de janeiro' ||
     strtoupper($estado) !== 'RJ'
 ){
-
     $frete = 50;
     $prazo = "5 a 7 dias úteis";
 

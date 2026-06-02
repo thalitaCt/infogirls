@@ -91,7 +91,8 @@ $regioesValidas = [
 "Zona Norte",
 "Zona Oeste",
 "Zona Sudoeste",
-"Entrega Externa"
+"Entrega Externa",
+"Retirada na Loja"
 ];
 
 

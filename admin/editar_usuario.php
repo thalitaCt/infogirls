@@ -72,7 +72,17 @@ href="css/admin.css">
 
 <div class="conteudo">
 
-<h1>Editar Usuário</h1>
+<div class="conteudo">
+
+<div class="topo">
+
+    <h1>Editar Usuários</h1>
+
+    <p>
+        Atualize as informações dos usuários.
+    </p>
+
+</div>
 
 <form action="salvar_usuario.php" method="POST">
 

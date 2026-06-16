@@ -7,40 +7,6 @@ if(!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 'admin'){
     exit;
 }
 
-/* ALTERAR TIPO */
-if(isset($_GET['alterar'])){
-
-    $id = $_GET['alterar'];
-
-    $sql = $pdo->prepare("
-        SELECT tipo
-        FROM usuarios
-        WHERE id_usuario = ?
-    ");
-
-    $sql->execute([$id]);
-
-    $usuario = $sql->fetch(PDO::FETCH_ASSOC);
-
-    if($usuario){
-
-        $novoTipo = ($usuario['tipo'] == 'admin')
-        ? 'cliente'
-        : 'admin';
-
-        $update = $pdo->prepare("
-            UPDATE usuarios
-            SET tipo = ?
-            WHERE id_usuario = ?
-        ");
-
-        $update->execute([$novoTipo, $id]);
-    }
-
-    header("Location: usuarios.php");
-    exit;
-}
-
 /* EXCLUIR */
 if(isset($_GET['excluir'])){
 
@@ -283,12 +249,10 @@ Cliente
 
 
 <a
-href="usuarios.php?alterar=<?= $usuario['id_usuario']; ?>"
+href="editar_usuario.php?id=<?= $usuario['id_usuario']; ?>"
 class="editar">
 
-
-<i class="fa-solid fa-user-gear"></i>
-
+<i class="fa-solid fa-pen"></i>
 
 </a>
 

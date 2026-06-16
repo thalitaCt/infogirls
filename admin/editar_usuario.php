@@ -7,77 +7,99 @@ if(!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 'admin'){
     exit;
 }
 
-if(!isset($_GET['id'])){
-    header("Location: usuarios.php");
-    exit;
-}
+$id = $_GET['id'] ?? 0;
 
-$id = intval($_GET['id']);
-
+/* BUSCA O USUÁRIO */
 $sql = $pdo->prepare("
-SELECT
-    u.id_usuario,
-    u.email,
-    u.tipo,
-    c.*
-FROM usuarios u
-LEFT JOIN clientes c
-ON c.usuario_id = u.id_usuario
-WHERE u.id_usuario = ?
+SELECT *
+FROM usuarios
+WHERE id_usuario = ?
 ");
 
 $sql->execute([$id]);
-
 $usuario = $sql->fetch(PDO::FETCH_ASSOC);
 
 if(!$usuario){
-    header("Location: usuarios.php");
-    exit;
+    die("Usuário não encontrado.");
+}
+
+$tipo = $usuario['tipo'];
+
+/* CLIENTE */
+if($tipo == 'cliente'){
+
+    $sqlDados = $pdo->prepare("
+    SELECT *
+    FROM clientes
+    WHERE usuario_id = ?
+    ");
+
+    $sqlDados->execute([$id]);
+    $dados = $sqlDados->fetch(PDO::FETCH_ASSOC);
+
+}
+
+/* ADMIN/FUNCIONÁRIO */
+else{
+
+    $sqlDados = $pdo->prepare("
+    SELECT *
+    FROM funcionarios
+    WHERE usuario_id = ?
+    ");
+
+    $sqlDados->execute([$id]);
+    $dados = $sqlDados->fetch(PDO::FETCH_ASSOC);
+
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Editar Usuário</title>
 
-<link rel="stylesheet" href="css/admin.css">
+<link
+rel="stylesheet"
+href="css/admin.css">
+
 </head>
 <body>
 
-<div class="admin-layout">
-
-<?php include 'includes/sidebar.php'; ?>
-
 <div class="conteudo">
 
-<div class="topo">
-    <h1>Editar Usuário</h1>
-</div>
-
-<div class="form-admin">
+<h1>Editar Usuário</h1>
 
 <form action="salvar_usuario.php" method="POST">
 
 <input
 type="hidden"
 name="id"
-value="<?= $usuario['id_usuario'] ?>">
+value="<?= $id ?>">
+
+<input
+type="hidden"
+name="tipo"
+value="<?= $tipo ?>">
 
 <div class="input-group">
+
 <label>Nome</label>
 
 <input
 type="text"
 name="nome"
-value="<?= htmlspecialchars($usuario['nome'] ?? '') ?>"
+value="<?= htmlspecialchars($dados['nome']) ?>"
 required>
+
 </div>
 
 <div class="input-group">
+
 <label>Email</label>
 
 <input
@@ -85,16 +107,22 @@ type="email"
 name="email"
 value="<?= htmlspecialchars($usuario['email']) ?>"
 required>
+
 </div>
 
 <div class="input-group">
+
 <label>Telefone</label>
 
 <input
 type="text"
 name="telefone"
-value="<?= htmlspecialchars($usuario['telefone'] ?? '') ?>">
+value="<?= htmlspecialchars($dados['telefone']) ?>"
+required>
+
 </div>
+
+<?php if($tipo == 'cliente'): ?>
 
 <div class="input-group">
 <label>CEP</label>
@@ -102,6 +130,97 @@ value="<?= htmlspecialchars($usuario['telefone'] ?? '') ?>">
 <input
 type="text"
 name="cep"
+value="<?= $dados['cep'] ?>">
+</div>
+
+<div class="input-group">
+<label>Endereço</label>
+
+<input
+type="text"
+name="endereco"
+value="<?= $dados['endereco'] ?>">
+</div>
+
+<div class="input-group">
+<label>Número</label>
+
+<input
+type="text"
+name="numero"
+value="<?= $dados['numero'] ?>">
+</div>
+
+<div class="input-group">
+<label>Bairro</label>
+
+<input
+type="text"
+name="bairro"
+value="<?= $dados['bairro'] ?>">
+</div>
+
+<div class="input-group">
+<label>Cidade</label>
+
+<input
+type="text"
+name="cidade"
+value="<?= $dados['cidade'] ?>">
+</div>
+
+<div class="input-group">
+<label>Estado</label>
+
+<input
+type="text"
+name="estado"
+value="<?= $dados['estado'] ?>">
+</div>
+
+<div class="input-group">
+<label>Região</label>
+
+<input
+type="text"
+name="regiao"
+value="<?= $dados['regiao'] ?>">
+</div>
+
+<?php else: ?>
+
+<div class="input-group">
+<label>Cargo</label>
+
+<input
+type="text"
+name="cargo"
+value="<?= $dados['cargo'] ?>"
+readonly>
+</div>
+
+<div class="input-group">
+<label>Salário</label>
+
+<input
+type="number"
+step="0.01"
+name="salario"
+value="<?= $dados['salario'] ?>">
+</div>
+
+<?php endif; ?>
+
+<button type="submit">
+Salvar Alterações
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>name="cep"
 value="<?= htmlspecialchars($usuario['cep'] ?? '') ?>">
 </div>
 

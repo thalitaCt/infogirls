@@ -52,6 +52,32 @@ else{
     $dados = $sqlDados->fetch(PDO::FETCH_ASSOC);
 
 }
+
+if($tipo == 'cliente'){
+
+    $sqlDados = $pdo->prepare("
+    SELECT *
+    FROM clientes
+    WHERE usuario_id = ?
+    ");
+
+    $sqlDados->execute([$id]);
+
+    $cliente = $sqlDados->fetch(PDO::FETCH_ASSOC);
+
+}else{
+
+    $sqlDados = $pdo->prepare("
+    SELECT *
+    FROM funcionarios
+    WHERE usuario_id = ?
+    ");
+
+    $sqlDados->execute([$id]);
+
+    $funcionario = $sqlDados->fetch(PDO::FETCH_ASSOC);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +112,7 @@ Atualize os dados do usuário.
 
 </div>
 
-<form method="POST" class="form-admin">
-
+<form method="POST" action="salvar_usuario.php" class="form-admin">
 <input
 type="hidden"
 name="id"

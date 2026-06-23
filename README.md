@@ -1,5 +1,7 @@
 # 💻 InfoGirls
 
+![Banner](assets/banner.png)
+
 Sistema web desenvolvido para uma empresa de informatização, oferecendo uma plataforma completa para venda de peças de informática e gerenciamento administrativo.
 
 ## 🌐 Demonstração
